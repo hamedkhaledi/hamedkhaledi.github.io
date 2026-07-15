@@ -23,26 +23,41 @@
 
   <main class="wrap resume">
     <header class="resume-header">
+      <span class="blob" aria-hidden="true"></span>
       <h1>Hamed Khademi Khaledi</h1>
       <p class="sub">AI Engineer &amp; NLP Researcher</p>
       <div class="contacts">
         <a href="mailto:khaledihkh@gmail.com">khaledihkh@gmail.com</a>
-        <a href="mailto:hamed.khaledi@ut.ac.ir">hamed.khaledi@ut.ac.ir</a>
         <a href="https://www.linkedin.com/in/hamed-khademi/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/hamedkhaledi" target="_blank" rel="noopener">GitHub</a>
         <span>Tehran, Iran</span>
       </div>
     </header>
 
-    <section class="section summary">
+    <nav class="toc" aria-label="Sections">
+      <div class="toc-inner wrap">
+        <a href="#summary">Summary</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#honors">Honors</a>
+        <a href="#skills">Skills</a>
+        <a href="#languages">Languages</a>
+        <a href="#interests">Interests</a>
+      </div>
+    </nav>
+
+    <section class="section" id="summary">
       <h2>Professional Summary</h2>
-      <p><strong>AI Engineer</strong> and <strong>NLP Researcher</strong> experienced in building and deploying <strong>Large Language Models (LLMs)</strong>, <strong>LLM-based agents</strong>, <strong>Retrieval-Augmented Generation (RAG)</strong> systems, and modular <strong>NLP microservices</strong>. Skilled in <strong>Python</strong>, <strong>PyTorch</strong>, <strong>vLLM</strong>, <strong>LangChain</strong>, and <strong>LangGraph</strong>. Published researcher in <strong>Persian NLP</strong>, passionate about designing <strong>scalable, production-grade AI systems</strong> that bridge research and industry.</p>
+      <div class="summary reveal">
+        <p><strong>AI Engineer</strong> and <strong>NLP Researcher</strong> experienced in building and deploying <strong>Large Language Models (LLMs)</strong>, <strong>LLM-based agents</strong>, <strong>Retrieval-Augmented Generation (RAG)</strong> systems, and modular <strong>NLP microservices</strong>. Skilled in <strong>Python</strong>, <strong>PyTorch</strong>, <strong>vLLM</strong>, <strong>LangChain</strong>, and <strong>LangGraph</strong>. Published researcher in <strong>Persian NLP</strong>, passionate about designing <strong>scalable, production-grade AI systems</strong> that bridge research and industry.</p>
+      </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="experience">
       <h2>Experience</h2>
 
-      <div class="entry">
+      <div class="entry reveal">
         <div class="row">
           <div><span class="title">Arusha Company</span> · <span class="org">Tehran, Iran</span></div>
           <div class="meta">NLP Engineer · Fall 2023 — Present</div>
@@ -58,7 +73,7 @@
         </ul>
       </div>
 
-      <div class="entry">
+      <div class="entry reveal">
         <div class="row">
           <div><span class="title">Ahdsoft Company</span> · <span class="org">Remote</span></div>
           <div class="meta">NLP Engineer · Feb 2021 — Fall 2023</div>
@@ -70,7 +85,7 @@
         </ul>
       </div>
 
-      <div class="entry">
+      <div class="entry reveal">
         <div class="row">
           <div><span class="title">University of Tehran</span> · <span class="org">Tehran, Iran</span></div>
           <div class="meta">Graduate Research Assistant · Fall 2022 — Summer 2025</div>
@@ -82,10 +97,10 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="projects">
       <h2>Selected Projects</h2>
 
-      <div class="entry">
+      <div class="entry reveal">
         <div class="row">
           <div><span class="title">Retrieval-Augmented Generation Chatbot</span></div>
           <div class="meta">Personal Project · 2024</div>
@@ -97,7 +112,7 @@
         </ul>
       </div>
 
-      <div class="entry">
+      <div class="entry reveal">
         <div class="row">
           <div><span class="title">HodHod Dataset</span> · <a href="https://github.com/UT-NLP-LAB/HodHod_Preprocess" target="_blank" rel="noopener">GitHub</a></div>
           <div class="meta">Creator · 2024</div>
@@ -108,7 +123,7 @@
         </ul>
       </div>
 
-      <div class="entry">
+      <div class="entry reveal">
         <div class="row">
           <div><span class="title">Piraye Text Normalization Library</span> · <a href="https://github.com/arushadev/piraye" target="_blank" rel="noopener">GitHub</a></div>
           <div class="meta">Developer · 2023</div>
@@ -119,7 +134,7 @@
         </ul>
       </div>
 
-      <div class="entry">
+      <div class="entry reveal">
         <div class="row">
           <div><span class="title">Persian NER &amp; POS Plugin</span> · <a href="https://github.com/hamedkhaledi/bachelor-project" target="_blank" rel="noopener">GitHub</a></div>
           <div class="meta">Developer · 2022</div>
@@ -131,16 +146,16 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="education">
       <h2>Education</h2>
-      <div class="entry">
+      <div class="entry reveal">
         <div class="row">
           <div><span class="title">University of Tehran</span> · <span class="org">Tehran, Iran</span></div>
           <div class="meta">2022 — 2025</div>
         </div>
         <div class="org">M.Sc. in Artificial Intelligence and Robotics</div>
       </div>
-      <div class="entry">
+      <div class="entry reveal">
         <div class="row">
           <div><span class="title">Shahid Beheshti University</span> · <span class="org">Tehran, Iran</span></div>
           <div class="meta">2018 — 2022</div>
@@ -149,9 +164,9 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="honors">
       <h2>Honors and Certificates</h2>
-      <ul>
+      <ul class="reveal">
         <li><strong>3rd Rank</strong> in B.Sc. Class, Shahid Beheshti University (2022)</li>
         <li><strong>Top 1%</strong> Rank in Iranian University Entrance Exam (2018)</li>
         <li><strong>Deep Learning Specialization</strong> — Online Course (2019–2022)</li>
@@ -160,35 +175,35 @@
       </ul>
     </section>
 
-    <section class="section">
+    <section class="section" id="skills">
       <h2>Technical Skills</h2>
       <div class="skills">
-        <div class="skill"><b>Programming Languages:</b> Python, Java, C++, MATLAB, R</div>
-        <div class="skill"><b>Machine Learning:</b> PyTorch, TensorFlow, Transformers, Scikit-learn</div>
-        <div class="skill"><b>LLM, Agents &amp; NLP Frameworks:</b> vLLM, RAGFlow, Llama.cpp, LangChain, LangGraph, Hermes, HuggingFace, FastAPI</div>
-        <div class="skill"><b>Agentic AI:</b> Tool-use / function calling, multi-step agent orchestration, agent-tool integration</div>
-        <div class="skill"><b>LLM APIs:</b> OpenAI API, Anthropic API, other LLM provider APIs</div>
-        <div class="skill"><b>Databases:</b> PostgreSQL, SQL</div>
-        <div class="skill"><b>Vector Databases:</b> Semantic search &amp; vector storage for RAG pipelines</div>
-        <div class="skill"><b>NLP Techniques:</b> Text Normalization, Tokenization, Knowledge Graphs, RAG, Semantic Search, Entity Linking, NER, Keyphrase Extraction, Summarization</div>
-        <div class="skill"><b>Data Tools:</b> NumPy, Pandas, SQL, Jupyter, Matplotlib, Power BI</div>
-        <div class="skill"><b>DevOps &amp; Deployment:</b> Git, Docker, Linux</div>
-        <div class="skill"><b>Web Technologies:</b> HTML, CSS, JavaScript, React</div>
+        <div class="skill reveal"><div class="label"><b>Programming Languages:</b> Python, Java, C++, MATLAB, R</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>Machine Learning:</b> PyTorch, TensorFlow, Transformers, Scikit-learn</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>LLM, Agents &amp; NLP Frameworks:</b> vLLM, RAGFlow, Llama.cpp, LangChain, LangGraph, Hermes, HuggingFace, FastAPI</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>Agentic AI:</b> Tool-use / function calling, multi-step agent orchestration, agent-tool integration</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>LLM APIs:</b> OpenAI API, Anthropic API, other LLM provider APIs</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>Databases:</b> PostgreSQL, SQL</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>Vector Databases:</b> Semantic search &amp; vector storage for RAG pipelines</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>NLP Techniques:</b> Text Normalization, Tokenization, Knowledge Graphs, RAG, Semantic Search, Entity Linking, NER, Keyphrase Extraction, Summarization</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>Data Tools:</b> NumPy, Pandas, SQL, Jupyter, Matplotlib, Power BI</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>DevOps &amp; Deployment:</b> Git, Docker, Linux</div><div class="bar"><div class="fill"></div></div></div>
+        <div class="skill reveal"><div class="label"><b>Web Technologies:</b> HTML, CSS, JavaScript, React</div><div class="bar"><div class="fill"></div></div></div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="languages">
       <h2>Languages</h2>
-      <ul>
+      <ul class="reveal">
         <li><b>Persian:</b> Native</li>
         <li><b>English:</b> Professional Working Proficiency (TOEFL: 100)</li>
         <li><b>Arabic:</b> Elementary</li>
       </ul>
     </section>
 
-    <section class="section">
+    <section class="section" id="interests">
       <h2>Interests</h2>
-      <ul>
+      <ul class="reveal">
         <li><strong>AI Research</strong>, Large Language Models, Open-Source NLP, Music, Hiking, Board Games</li>
       </ul>
     </section>
