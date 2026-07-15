@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamed Khademi Khaledi — Resume</title>
+  <meta name="description" content="AI Engineer & NLP Researcher. Resume of Hamed Khademi Khaledi." />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><a href="index.html">Hamed Khademi Khaledi</a></div>
+      <div class="nav-links">
+        <a href="cv.html">CV</a>
+        <a href="work.html">Academic</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" title="Toggle light/dark">🌓</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero wrap">
+    <h1>Hamed Khademi Khaledi</h1>
+    <p class="tagline">AI Engineer &amp; NLP Researcher — building and deploying LLMs, RAG systems, and production-grade NLP services.</p>
+    <div class="contacts">
+      <a href="mailto:khaledihkh@gmail.com">khaledihkh@gmail.com</a>
+      <a href="mailto:hamed.khaledi@ut.ac.ir">hamed.khaledi@ut.ac.ir</a>
+      <a href="https://www.linkedin.com/in/hamed-khademi/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/hamedkhaledi" target="_blank" rel="noopener">GitHub</a>
+      <span>Tehran, Iran</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="cards">
+      <a class="card" href="cv.html">
+        <div class="ico">💼</div>
+        <h3>CV / Industry</h3>
+        <p>Experience, selected projects, technical skills and interests — tailored for industry roles.</p>
+        <div class="go">View resume →</div>
+      </a>
+      <a class="card" href="work.html">
+        <div class="ico">🎓</div>
+        <h3>Academic / Work</h3>
+        <p>Education with GPAs, publications, teaching, courses and references — for academic contexts.</p>
+        <div class="go">View resume →</div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Hamed Khademi Khaledi · Built with HTML &amp; CSS</div>
+  </footer>
+
+  <script src="assets/theme.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

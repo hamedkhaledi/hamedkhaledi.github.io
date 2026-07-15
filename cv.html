@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamed Khademi Khaledi — CV</title>
+  <meta name="description" content="Industry CV of Hamed Khademi Khaledi, AI Engineer & NLP Researcher." />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand"><a href="index.html">Hamed Khademi Khaledi</a></div>
+      <div class="nav-links">
+        <a href="cv.html">CV</a>
+        <a href="work.html">Academic</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" title="Toggle light/dark">🌓</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap resume">
+    <header class="resume-header">
+      <h1>Hamed Khademi Khaledi</h1>
+      <p class="sub">AI Engineer &amp; NLP Researcher</p>
+      <div class="contacts">
+        <a href="mailto:khaledihkh@gmail.com">khaledihkh@gmail.com</a>
+        <a href="mailto:hamed.khaledi@ut.ac.ir">hamed.khaledi@ut.ac.ir</a>
+        <a href="https://www.linkedin.com/in/hamed-khademi/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/hamedkhaledi" target="_blank" rel="noopener">GitHub</a>
+        <span>Tehran, Iran</span>
+      </div>
+    </header>
+
+    <section class="section summary">
+      <h2>Professional Summary</h2>
+      <p><strong>AI Engineer</strong> and <strong>NLP Researcher</strong> experienced in building and deploying <strong>Large Language Models (LLMs)</strong>, <strong>LLM-based agents</strong>, <strong>Retrieval-Augmented Generation (RAG)</strong> systems, and modular <strong>NLP microservices</strong>. Skilled in <strong>Python</strong>, <strong>PyTorch</strong>, <strong>vLLM</strong>, <strong>LangChain</strong>, and <strong>LangGraph</strong>. Published researcher in <strong>Persian NLP</strong>, passionate about designing <strong>scalable, production-grade AI systems</strong> that bridge research and industry.</p>
+    </section>
+
+    <section class="section">
+      <h2>Experience</h2>
+
+      <div class="entry">
+        <div class="row">
+          <div><span class="title">Arusha Company</span> · <span class="org">Tehran, Iran</span></div>
+          <div class="meta">NLP Engineer · Fall 2023 — Present</div>
+        </div>
+        <ul>
+          <li>Core maintainer of <strong>Aisa</strong>, Arusha's modular suite of Persian NLP microservices (Entity Linking, NER, POS Tagging, Keyphrase Extraction, Summarization, Sentence/Paragraph Splitting, Mention Knowledge Base, Open Information Extraction, LLM Info-Box Extraction); owned service design, model training, and deployment across the suite.</li>
+          <li>Designed and built <strong>LLM-based agent and tool-use pipelines</strong> for autonomous task execution, integrating structured tool-calling with retrieval and reasoning steps.</li>
+          <li>Developed and optimized <strong>text normalization pipelines</strong> using <strong>Piraye</strong> (<a href="https://pypi.org/project/piraye/" target="_blank" rel="noopener">PyPI</a>).</li>
+          <li>Contributed to <strong>knowledge graph</strong> design and entity relationship extraction for Persian-language datasets.</li>
+          <li>Built hybrid <strong>text retrieval</strong> systems integrating lexical (BM25) and semantic (vector) methods.</li>
+          <li>Integrated <strong>LLM-based components</strong> into production services for search and question-answering, and worked on <strong>LLM serving infrastructure</strong>, <strong>PostgreSQL</strong>, and <strong>vector databases</strong> for scalable semantic search and <strong>RAG</strong>.</li>
+          <li>Containerized and deployed NLP services using <strong>Docker</strong> for consistent, scalable production environments.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <div><span class="title">Ahdsoft Company</span> · <span class="org">Remote</span></div>
+          <div class="meta">NLP Engineer · Feb 2021 — Fall 2023</div>
+        </div>
+        <ul>
+          <li>Worked on NLP models including <strong>text similarity</strong>, <strong>NER</strong>, and <strong>text summarization</strong>.</li>
+          <li>Developed HTTP services for <strong>entity linking</strong> and <strong>information extraction</strong>.</li>
+          <li>Created multilingual <strong>text normalizers</strong> for English, Persian, and Arabic.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <div><span class="title">University of Tehran</span> · <span class="org">Tehran, Iran</span></div>
+          <div class="meta">Graduate Research Assistant · Fall 2022 — Summer 2025</div>
+        </div>
+        <ul>
+          <li>Researched and improved <strong>Large Language Models</strong> for Persian university entrance exam tasks.</li>
+          <li>Published at <strong>COLING 2025</strong> — <a href="https://aclanthology.org/2025.coling-main.434/" target="_blank" rel="noopener">“IRUEX: A Study on Large Language Models Problem-Solving Skills in Iran’s University Entrance Exam”</a>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Selected Projects</h2>
+
+      <div class="entry">
+        <div class="row">
+          <div><span class="title">Retrieval-Augmented Generation Chatbot</span></div>
+          <div class="meta">Personal Project · 2024</div>
+        </div>
+        <ul>
+          <li>Implemented a hybrid <strong>RAG pipeline</strong> combining <strong>BM25</strong> and <strong>vector-based semantic search</strong>.</li>
+          <li>Built a <strong>RAG dataset</strong> and integrated it into a conversational <strong>chatbot</strong> for factual question answering.</li>
+          <li>Employed <strong>vLLM</strong>, <strong>RAGFlow</strong>, and <strong>Llama.cpp</strong> for efficient inference and retrieval.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <div><span class="title">HodHod Dataset</span> · <a href="https://github.com/UT-NLP-LAB/HodHod_Preprocess" target="_blank" rel="noopener">GitHub</a></div>
+          <div class="meta">Creator · 2024</div>
+        </div>
+        <ul>
+          <li>Created the first large-scale cleaned <strong>Persian text dataset</strong> with parallelized preprocessing.</li>
+          <li>Developed an <strong>end-to-end pipeline</strong> for tokenization, normalization, and data cleaning.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <div><span class="title">Piraye Text Normalization Library</span> · <a href="https://github.com/arushadev/piraye" target="_blank" rel="noopener">GitHub</a></div>
+          <div class="meta">Developer · 2023</div>
+        </div>
+        <ul>
+          <li>Developed a multilingual <strong>text normalization library</strong> for Persian, Arabic, and English.</li>
+          <li>Published on <strong>PyPI</strong> (<a href="https://pypi.org/project/piraye/" target="_blank" rel="noopener">piraye</a>) and integrated into enterprise NLP systems.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <div><span class="title">Persian NER &amp; POS Plugin</span> · <a href="https://github.com/hamedkhaledi/bachelor-project" target="_blank" rel="noopener">GitHub</a></div>
+          <div class="meta">Developer · 2022</div>
+        </div>
+        <ul>
+          <li>Built neural <strong>NER</strong> and <strong>POS tagging models</strong> for Persian using deep learning.</li>
+          <li>Created a <strong>Chrome plugin</strong> for real-time Persian text annotation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="row">
+          <div><span class="title">University of Tehran</span> · <span class="org">Tehran, Iran</span></div>
+          <div class="meta">2022 — 2025</div>
+        </div>
+        <div class="org">M.Sc. in Artificial Intelligence and Robotics</div>
+      </div>
+      <div class="entry">
+        <div class="row">
+          <div><span class="title">Shahid Beheshti University</span> · <span class="org">Tehran, Iran</span></div>
+          <div class="meta">2018 — 2022</div>
+        </div>
+        <div class="org">B.Sc. in Computer Engineering</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Honors and Certificates</h2>
+      <ul>
+        <li><strong>3rd Rank</strong> in B.Sc. Class, Shahid Beheshti University (2022)</li>
+        <li><strong>Top 1%</strong> Rank in Iranian University Entrance Exam (2018)</li>
+        <li><strong>Deep Learning Specialization</strong> — Online Course (2019–2022)</li>
+        <li><strong>Data Structures and Algorithms Course</strong> — Online (2019)</li>
+        <li>Winner — <strong>Irancell Labs AI Hackathon</strong>, Tehran (2023)</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <div class="skill"><b>Programming Languages:</b> Python, Java, C++, MATLAB, R</div>
+        <div class="skill"><b>Machine Learning:</b> PyTorch, TensorFlow, Transformers, Scikit-learn</div>
+        <div class="skill"><b>LLM, Agents &amp; NLP Frameworks:</b> vLLM, RAGFlow, Llama.cpp, LangChain, LangGraph, Hermes, HuggingFace, FastAPI</div>
+        <div class="skill"><b>Agentic AI:</b> Tool-use / function calling, multi-step agent orchestration, agent-tool integration</div>
+        <div class="skill"><b>LLM APIs:</b> OpenAI API, Anthropic API, other LLM provider APIs</div>
+        <div class="skill"><b>Databases:</b> PostgreSQL, SQL</div>
+        <div class="skill"><b>Vector Databases:</b> Semantic search &amp; vector storage for RAG pipelines</div>
+        <div class="skill"><b>NLP Techniques:</b> Text Normalization, Tokenization, Knowledge Graphs, RAG, Semantic Search, Entity Linking, NER, Keyphrase Extraction, Summarization</div>
+        <div class="skill"><b>Data Tools:</b> NumPy, Pandas, SQL, Jupyter, Matplotlib, Power BI</div>
+        <div class="skill"><b>DevOps &amp; Deployment:</b> Git, Docker, Linux</div>
+        <div class="skill"><b>Web Technologies:</b> HTML, CSS, JavaScript, React</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Languages</h2>
+      <ul>
+        <li><b>Persian:</b> Native</li>
+        <li><b>English:</b> Professional Working Proficiency (TOEFL: 100)</li>
+        <li><b>Arabic:</b> Elementary</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Interests</h2>
+      <ul>
+        <li><strong>AI Research</strong>, Large Language Models, Open-Source NLP, Music, Hiking, Board Games</li>
+      </ul>
+    </section>
+
+    <a class="back-link" href="index.html">← Back to all versions</a>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Hamed Khademi Khaledi</div>
+  </footer>
+
+  <script src="assets/theme.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
