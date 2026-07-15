@@ -1,41 +1,65 @@
+/* ============================================================
+   Hamed Khademi Khaledi — Resume site
+   One committed brand color (editorial blue, OKLCH).
+   Tinted neutrals lean toward that hue, not toward warmth.
+   Serif display + sans body = contrast axis, not Inter-everywhere.
+   ============================================================ */
+
 :root {
-  --bg: #f7f8fb;
-  --bg-elev: #ffffff;
-  --bg-soft: #eef1f7;
-  --text: #1a1f2b;
-  --text-soft: #5b6472;
-  --accent: #4f46e5;
-  --accent-soft: #eef0ff;
-  --border: #e3e7ef;
-  --shadow: 0 10px 30px rgba(20, 30, 60, 0.08);
-  --radius: 16px;
+  /* Brand anchor — one saturated color, identity-driven */
+  --accent:        oklch(0.48 0.16 250);
+  --accent-strong: oklch(0.40 0.18 250);
+  --accent-soft:   oklch(0.96 0.018 250);
+
+  /* Tinted neutrals — slight cool lean toward the accent hue */
+  --bg:        oklch(0.985 0.004 250);
+  --bg-elev:   oklch(1 0 0);
+  --bg-soft:   oklch(0.965 0.006 250);
+  --text:      oklch(0.22 0.02 256);
+  --text-soft: oklch(0.36 0.018 256);
+  --border:    oklch(0.90 0.012 250);
+  --rule:      oklch(0.88 0.012 250);
+
+  --shadow: 0 1px 2px oklch(0.22 0.02 256 / 0.04),
+            0 8px 24px oklch(0.22 0.02 256 / 0.06);
+  --radius: 14px;
   --max: 880px;
 
-  --hero-grad: linear-gradient(120deg, #eef0ff 0%, #f6f0ff 45%, #e8fbff 100%);
-  --blob-1: rgba(99, 102, 241, 0.35);
-  --blob-2: rgba(74, 214, 196, 0.30);
-  --blob-3: rgba(155, 140, 255, 0.32);
-  --hero-text: #1a1f2b;
-  --hero-sub: #4a5260;
+  /* Quiet hero surface — single-hue tonal shift, no rainbow blobs */
+  --hero-surface: linear-gradient(
+    160deg,
+    oklch(0.97 0.018 250) 0%,
+    oklch(0.95 0.022 250) 100%
+  );
+  --hero-text: var(--text);
+  --hero-sub:  oklch(0.36 0.02 256);
 }
 
 [data-theme="dark"] {
-  --bg: #0e1117;
-  --bg-elev: #161b22;
-  --bg-soft: #1c232d;
-  --text: #e6e9ef;
-  --text-soft: #97a0b0;
-  --accent: #818cf8;
-  --accent-soft: #1e2440;
-  --border: #2a313c;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --accent:        oklch(0.72 0.15 250);
+  /* ponytail: saturated blue link tops out ~4.2:1 on this dark bg; it is
+     interactive UI text (not body prose) and gains contrast via underline. */
+  --accent-strong: oklch(0.94 0.12 250);
+  --accent-soft:   oklch(0.30 0.04 250);
 
-  --hero-grad: linear-gradient(120deg, #1b2138 0%, #271b3c 45%, #102a33 100%);
-  --blob-1: rgba(129, 140, 248, 0.40);
-  --blob-2: rgba(74, 214, 196, 0.28);
-  --blob-3: rgba(155, 140, 255, 0.34);
-  --hero-text: #eef1f8;
-  --hero-sub: #aab2c2;
+  --bg:        oklch(0.20 0.012 256);
+  --bg-elev:   oklch(0.24 0.014 256);
+  --bg-soft:    oklch(0.28 0.016 256);
+  --text:      oklch(0.97 0.005 256);
+  --text-soft: oklch(0.95 0.014 256);
+  --border:    oklch(0.34 0.014 256);
+  --rule:      oklch(0.36 0.014 256);
+
+  --shadow: 0 1px 2px oklch(0 0 0 / 0.3),
+            0 8px 24px oklch(0 0 0 / 0.4);
+
+  --hero-surface: linear-gradient(
+    160deg,
+    oklch(0.255 0.022 256) 0%,
+    oklch(0.215 0.020 256) 100%
+  );
+  --hero-text: oklch(0.98 0.005 256);
+  --hero-sub:  oklch(0.93 0.014 256);
 }
 
 * { box-sizing: border-box; }
@@ -48,13 +72,24 @@ body {
     Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.65;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   transition: background 0.25s ease, color 0.25s ease;
 }
 
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* Serif display face — headings only, contrast axis against Inter body */
+h1, h2, h3 {
+  font-family: "Source Serif 4", "Newsreader", Georgia, "Times New Roman",
+    serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+a { color: var(--accent-strong); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
@@ -62,21 +97,22 @@ a:hover { text-decoration: underline; }
 .nav {
   position: sticky;
   top: 0;
-  z-index: 20;
-  background: color-mix(in srgb, var(--bg-elev) 85%, transparent);
-  backdrop-filter: saturate(180%) blur(12px);
+  z-index: 30;
+  background: color-mix(in srgb, var(--bg-elev) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
   border-bottom: 1px solid var(--border);
 }
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 62px;
+  height: 60px;
 }
-.brand { font-weight: 700; letter-spacing: -0.01em; }
+.brand { font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; }
 .brand a { color: var(--text); }
 .brand a:hover { text-decoration: none; }
-.nav-links { display: flex; align-items: center; gap: 18px; }
+.nav-links { display: flex; align-items: center; gap: 22px; }
 .nav-links a {
   color: var(--text-soft);
   font-size: 0.92rem;
@@ -88,220 +124,206 @@ a:hover { text-decoration: underline; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
   border: 1px solid var(--border);
   background: var(--bg-elev);
   color: var(--text);
   cursor: pointer;
-  font-size: 1rem;
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
-.theme-toggle:hover { transform: translateY(-1px); border-color: var(--accent); }
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent-strong); }
 
-/* ---------- Gradient hero + floating blobs ---------- */
+/* ---------- Hero surfaces (landing + resume headers) ----------
+   Single-hue tonal gradient, no blurred color blobs, no
+   background-clip:text. Solid ink for the name, serif face
+   carries the hierarchy. */
 .hero,
 .resume-header {
   position: relative;
-  overflow: hidden;
-  border-radius: var(--radius);
-  background: var(--hero-grad);
-  background-size: 200% 200%;
-  animation: heroShift 14s ease infinite;
+  background: var(--hero-surface);
   color: var(--hero-text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
 .hero > *,
-.resume-header > * { position: relative; z-index: 2; }
-
-.hero::before, .hero::after,
-.resume-header::before, .resume-header::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(46px);
-  z-index: 1;
-  pointer-events: none;
-}
-.hero::before, .resume-header::before {
-  width: 260px; height: 260px;
-  background: var(--blob-1);
-  top: -70px; left: -40px;
-  animation: float1 11s ease-in-out infinite;
-}
-.hero::after, .resume-header::after {
-  width: 220px; height: 220px;
-  background: var(--blob-2);
-  bottom: -70px; right: -30px;
-  animation: float2 13s ease-in-out infinite;
-}
-/* third blob via an inner span for richer motion */
-.blob {
-  position: absolute;
-  width: 180px; height: 180px;
-  border-radius: 50%;
-  background: var(--blob-3);
-  filter: blur(40px);
-  z-index: 1;
-  top: 30%; right: 30%;
-  animation: float3 15s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes heroShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes float1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(40px, 30px) scale(1.1); }
-}
-@keyframes float2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-35px, -25px) scale(1.12); }
-}
-@keyframes float3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-30px, 35px) scale(0.9); }
-}
+.resume-header > * { position: relative; }
 
 /* ---------- Hero (landing) ---------- */
 .hero {
-  padding: 78px 28px 46px;
+  padding: 72px 32px 52px;
   text-align: center;
-  margin-top: 34px;
+  margin-top: 32px;
 }
 .hero h1 {
-  font-size: clamp(2.2rem, 6vw, 3.4rem);
-  margin: 0 0 10px;
-  letter-spacing: -0.02em;
-  background: linear-gradient(120deg, var(--accent), #9b8cff 60%, #2bb6a8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  line-height: 1.08;
+  margin: 0 0 12px;
+  color: var(--hero-text);
 }
+.hero h1 .accent { color: var(--accent-strong); }
 .hero .tagline {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: var(--hero-sub);
-  margin: 0 auto 22px;
-  max-width: 620px;
+  margin: 0 auto 24px;
+  max-width: 56ch;
+  text-wrap: pretty;
 }
 .hero .contacts {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 22px;
+  gap: 8px 22px;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: 0.94rem;
 }
 .hero .contacts a { color: var(--hero-sub); }
-.hero .contacts a:hover { color: var(--accent); }
+.hero .contacts a:hover { color: var(--accent-strong); text-decoration: none; }
+.hero .contacts span { color: var(--hero-sub); }
 
 /* ---------- Version cards ---------- */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
-  padding: 36px 0 60px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 40px 0 64px;
 }
 .card {
   display: block;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 28px;
+  padding: 30px 28px;
   box-shadow: var(--shadow);
   transition: transform 0.18s ease, border-color 0.18s ease;
   color: var(--text);
 }
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   border-color: var(--accent);
   text-decoration: none;
 }
-.card .ico {
-  font-size: 1.8rem;
-  width: 52px; height: 52px;
-  display: grid; place-items: center;
-  border-radius: 14px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  margin-bottom: 16px;
+.card h3 {
+  font-size: 1.3rem;
+  margin: 0 0 8px;
+  color: var(--text);
 }
-.card h3 { margin: 0 0 6px; font-size: 1.25rem; }
-.card p { margin: 0; color: var(--text-soft); font-size: 0.95rem; }
-.card .go { margin-top: 16px; font-weight: 600; color: var(--accent); }
+.card p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.96rem;
+  max-width: 42ch;
+  text-wrap: pretty;
+}
+
+/* One deliberate accent marker — not a card icon, not a site-wide
+   numbered scaffold. A short rule, only on the landing cards. */
+.card .marker {
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: 18px;
+  border-radius: 2px;
+}
 
 /* ---------- Resume page ---------- */
-.resume { padding: 40px 0 70px; }
+.resume { padding: 32px 0 70px; }
 .resume-header {
   text-align: center;
-  padding: 54px 28px 40px;
-  margin-bottom: 8px;
+  padding: 48px 28px 36px;
+  margin-bottom: 4px;
 }
 .resume-header h1 {
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  line-height: 1.1;
   margin: 0 0 8px;
-  letter-spacing: -0.02em;
   color: var(--hero-text);
 }
-.resume-header .sub { color: var(--hero-sub); margin: 0 0 12px; }
+.resume-header .sub {
+  color: var(--hero-sub);
+  margin: 0 0 14px;
+  font-size: 1.02rem;
+}
 .resume-header .contacts {
-  display: flex; flex-wrap: wrap; gap: 6px 18px;
-  justify-content: center; font-size: 0.9rem; color: var(--hero-sub);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  justify-content: center;
+  font-size: 0.88rem;
+  color: var(--hero-sub);
 }
 .resume-header .contacts a { color: var(--hero-sub); }
-.resume-header .contacts a:hover { color: var(--accent); }
+.resume-header .contacts a:hover { color: var(--accent-strong); text-decoration: none; }
 
 /* ---------- Section pill nav (TOC) ---------- */
 .toc {
   position: sticky;
-  top: 62px;
-  z-index: 15;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: saturate(160%) blur(10px);
+  top: 60px;
+  z-index: 20;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: saturate(150%) blur(10px);
+  -webkit-backdrop-filter: saturate(150%) blur(10px);
   border-bottom: 1px solid var(--border);
-  margin: 22px 0 8px;
+  margin: 20px 0 4px;
 }
 .toc-inner {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   padding: 10px 0;
   overflow-x: auto;
   scrollbar-width: none;
 }
 .toc-inner::-webkit-scrollbar { display: none; }
 .toc a {
-  padding: 6px 14px;
+  padding: 6px 13px;
   border-radius: 999px;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-soft);
-  border: 1px solid var(--border);
-  background: var(--bg-elev);
+  border: 1px solid transparent;
   white-space: nowrap;
-  transition: all 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
-.toc a:hover { color: var(--text); text-decoration: none; border-color: var(--accent); }
+.toc a:hover {
+  color: var(--text);
+  text-decoration: none;
+  border-color: var(--border);
+}
+/* Active = ink text + accent underline bar, not a saturated fill */
 .toc a.active {
-  background: var(--accent);
-  color: #fff;
+  color: var(--text);
   border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
-/* ---------- Sections & reveal ---------- */
-.section { margin-top: 34px; scroll-margin-top: 120px; }
+/* ---------- Sections ---------- */
+.section {
+  margin-top: 38px;
+  scroll-margin-top: 110px;
+}
 .section > h2 {
-  font-size: 1.05rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  margin: 0 0 14px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--border);
+  font-size: 1.32rem;
+  line-height: 1.25;
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  color: var(--text);
+  border-bottom: 1px solid var(--rule);
+  /* Short accent rule above the section, not a side-stripe on cards
+     and not a tiny tracked uppercase eyebrow */
+  position: relative;
+}
+.section > h2::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-bottom: 12px;
 }
 
-.entry { margin-bottom: 18px; }
+.entry { margin-bottom: 20px; }
 .entry .row {
   display: flex;
   justify-content: space-between;
@@ -309,55 +331,99 @@ a:hover { text-decoration: underline; }
   gap: 16px;
   flex-wrap: wrap;
 }
-.entry .title { font-weight: 700; }
-.entry .org { color: var(--text-soft); font-weight: 500; }
-.entry .meta { color: var(--text-soft); font-size: 0.88rem; white-space: nowrap; }
-.entry ul { margin: 6px 0 0; padding-left: 20px; }
-.entry ul li { margin: 3px 0; }
+.entry .title { font-weight: 700; color: var(--text); }
+.entry .org {
+  color: var(--text-soft);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.entry .meta {
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.entry ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+.entry ul li {
+  margin: 4px 0;
+  max-width: 70ch;
+  text-wrap: pretty;
+}
+.entry ul li b { color: var(--text); font-weight: 600; }
 
-.summary p { color: var(--text); margin: 0; }
+.summary p {
+  color: var(--text);
+  margin: 0;
+  max-width: 70ch;
+  text-wrap: pretty;
+}
 
-/* ---------- Animated skill bars ---------- */
+/* Publication entry — indent so it reads as a citation, not a bullet */
+#publications ul li {
+  list-style: none;
+  margin-left: -20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--rule);
+  max-width: 68ch;
+}
+
+/* ---------- Skills ---------- */
+/* Definition-list grid: category label + inline comma-separated tools.
+   No animated bars — they all filled to 100% and carried no signal. */
 .skills {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px 28px;
+  gap: 14px 28px;
+  padding: 4px 0;
 }
-.skill { margin: 0; }
-.skill .label { font-size: 0.92rem; }
-.skill .label b { color: var(--text); }
-.skill .bar {
-  height: 7px;
-  border-radius: 999px;
-  background: var(--bg-soft);
-  margin-top: 7px;
-  overflow: hidden;
+.skill {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
 }
-.skill .fill {
-  height: 100%;
-  width: 0;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), #9b8cff 70%, #2bb6a8);
-  transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+.skill .label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+  letter-spacing: 0.01em;
+  text-transform: none;
 }
-.skill.is-visible .fill { width: 100%; }
+.skill .items {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.5;
+}
 
-.back-link { display: inline-block; margin-top: 30px; color: var(--text-soft); font-size: 0.9rem; }
-.back-link:hover { color: var(--accent); }
+.back-link {
+  display: inline-block;
+  margin-top: 36px;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+}
+.back-link:hover { color: var(--accent-strong); }
 
 footer {
   text-align: center;
   color: var(--text-soft);
-  font-size: 0.85rem;
-  padding: 30px 0 50px;
+  font-size: 0.82rem;
+  padding: 28px 0 50px;
   border-top: 1px solid var(--border);
 }
 
-/* ---------- Scroll-reveal ---------- */
+/* ---------- Scroll-reveal (toned down) ----------
+   Was 26px translate + 0.6s — too much, read as "AI entrance".
+   Now 10px + 0.4s, opacity-based, subtle presence. */
 .reveal {
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .reveal.is-visible {
   opacity: 1;
@@ -365,14 +431,21 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero, .resume-header, .hero::before, .hero::after,
-  .resume-header::before, .resume-header::after, .blob { animation: none; }
-  .skill .fill { transition: none; }
-  .skill.is-visible .fill { width: 100%; }
+  .card { transition: none; }
 }
 
 @media (max-width: 520px) {
-  .nav-links { gap: 12px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 0.88rem; }
+  .hero { padding: 56px 22px 40px; }
+  .resume-header { padding: 40px 22px 30px; }
   .resume-header .contacts { font-size: 0.82rem; }
+  .entry .meta { white-space: normal; }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); }
+  .card { padding: 24px 22px; }
 }

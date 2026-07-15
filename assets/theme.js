@@ -16,7 +16,7 @@
     applyTheme(current === "dark" ? "light" : "dark");
   });
 
-  // ---- Scroll-reveal + skill bar trigger ----
+  // ---- Scroll-reveal (subtle opacity + small translate) ----
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
     var revealObserver = new IntersectionObserver(

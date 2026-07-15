@@ -7,7 +7,8 @@
   <meta name="description" content="AI Engineer & NLP Researcher. Resume of Hamed Khademi Khaledi." />
   <link rel="stylesheet" href="assets/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <nav class="nav">
@@ -22,9 +23,8 @@
   </nav>
 
   <header class="hero wrap">
-    <span class="blob" aria-hidden="true"></span>
     <h1>Hamed Khademi Khaledi</h1>
-    <p class="tagline">AI Engineer &amp; NLP Researcher — building and deploying LLMs, RAG systems, and production-grade NLP services.</p>
+    <p class="tagline">AI Engineer & NLP Researcher — building and deploying LLMs, RAG systems, and production-grade NLP services.</p>
     <div class="contacts">
       <a href="mailto:khaledihkh@gmail.com">khaledihkh@gmail.com</a>
       <a href="https://www.linkedin.com/in/hamed-khademi/" target="_blank" rel="noopener">LinkedIn</a>
@@ -36,25 +36,26 @@
   <main class="wrap">
     <section class="cards reveal">
       <a class="card" href="cv.html">
-        <div class="ico">💼</div>
+        <div class="marker" aria-hidden="true"></div>
         <h3>CV / Industry</h3>
         <p>Experience, selected projects, technical skills and interests — tailored for industry roles.</p>
-        <div class="go">View resume →</div>
       </a>
       <a class="card" href="work.html">
-        <div class="ico">🎓</div>
+        <div class="marker" aria-hidden="true"></div>
         <h3>Academic / Work</h3>
         <p>Education with GPAs, publications, teaching, courses and references — for academic contexts.</p>
-        <div class="go">View resume →</div>
       </a>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">© <span id="year"></span> Hamed Khademi Khaledi · Built with HTML &amp; CSS</div>
+    <div class="wrap">© <span id="year"></span> Hamed Khademi Khaledi</div>
   </footer>
 
   <script src="assets/theme.js"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js"></script>
+<!-- impeccable-live-end -->
 </body>
 </html>
