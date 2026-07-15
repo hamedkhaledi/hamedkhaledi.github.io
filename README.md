@@ -8,7 +8,7 @@ A clean, modern, dark-mode-aware GitHub Pages site presenting two versions of my
 
 ## Live site
 
-**https://hamedkhaledi.github.io/**
+**https://ham3d.me/** (also available at https://hamedkhaledi.github.io/)
 
 ## Local preview
 
@@ -34,7 +34,8 @@ git push -u origin main
 ```
 
 Then on GitHub: **Settings → Pages → Source: Deploy from a branch → `main` / root**.
-The site goes live at https://hamedkhaledi.github.io/ within a minute or two.
+The site goes live at https://ham3d.me/ (and https://hamedkhaledi.github.io/) within a minute or two.
+Enable **Enforce HTTPS** so http://ham3d.me/ redirects to HTTPS automatically.
 
 ## Structure
 
