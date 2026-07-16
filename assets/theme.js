@@ -1,5 +1,7 @@
 (function () {
   var root = document.documentElement;
+  root.classList.remove("no-js");
+  document.body.classList.add("js-loaded");
   var stored = localStorage.getItem("theme");
   var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   root.setAttribute("data-theme", stored || (prefersDark ? "dark" : "light"));
