@@ -6,3 +6,8 @@
 .claude/
 .codex/
 .cursor/
+
+# Skill / design-pass artifacts (not part of the site)
+DESIGN.md
+PRODUCT.md
+.impeccible/
