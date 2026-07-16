@@ -1,41 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" data-theme="light">
+<html lang="en" class="no-js" data-theme="light" data-default-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamed Khademi Khaledi — CV</title>
-  <meta name="description" content="Industry CV of Hamed Khademi Khaledi, AI Engineer & NLP Researcher." />
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Hamed Khademi Khaledi — The Engineer's Wing</title>
+  <meta name="description" content="Industry CV of Hamed Khademi Khaledi, AI Engineer & NLP Researcher: experience, selected projects, and technical skills." />
+  <link rel="stylesheet" href="assets/wing-engineer.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <noscript><style>.reveal{opacity:1!important;transform:none!important}.hero::before,.hero::after{opacity:1!important;transform:none!important}.crest-orbit{display:none}</style></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <noscript><style>.reveal,.stagger>*{opacity:1!important;transform:none!important}.spark{animation:none!important}</style></noscript>
 </head>
 <body>
-  <div class="stars" aria-hidden="true"></div>
-  <div class="stars-2" aria-hidden="true"></div>
-  <div class="aurora-rot" aria-hidden="true"></div>
-  <div class="aurora" aria-hidden="true"></div>
-  <div class="aurora-grain" aria-hidden="true"></div>
+  <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0">
+    <defs>
+      <symbol id="book-mark" viewBox="0 0 32 32">
+        <path d="M6 5h9a3 3 0 0 1 3 3v19l-12-4V5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M26 5h-9a3 3 0 0 0-3 3v19l12-4V5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M12 11h8M12 15h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="forge-scene" aria-hidden="true"></div>
+  <div class="forge-aurora" aria-hidden="true"></div>
+  <div class="forge-plates" aria-hidden="true"></div>
+  <div class="forge-wash" aria-hidden="true"></div>
+  <div class="forge-shimmer" aria-hidden="true"></div>
+  <div class="forge-sparks" aria-hidden="true"></div>
+  <div class="forge-comets" aria-hidden="true"></div>
+  <div class="forge-vignette" aria-hidden="true"></div>
+  <div class="rune-field" aria-hidden="true"></div>
+  <div class="sigil-ring" aria-hidden="true"></div>
+  <div class="wing-cursor-glow" aria-hidden="true"></div>
+
   <nav class="nav">
     <div class="wrap nav-inner">
       <div class="brand">
-        <a href="index.html">
+        <a href="index.html" aria-label="Hamed Khademi Khaledi — home">
           <span class="mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.3"/>
-              <path d="M16 4 27 22H5L16 4Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-              <path d="M16 28 5 10h22L16 28Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-              <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.1"/>
-            </svg>
+            <svg class="mark-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#book-mark"/></svg>
           </span>
-          Hamed Khademi Khaledi
         </a>
       </div>
       <div class="nav-links">
-        <a href="cv.html">CV</a>
-        <a href="work.html">Academic</a>
-        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" title="Toggle light/dark">
+        <a href="cv.html">Engineer's Wing</a>
+        <a href="work.html">Scholar's Archive</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle light and dark library" title="Toggle theme">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
             <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
           </svg>
@@ -44,27 +55,28 @@
     </div>
   </nav>
 
-  <main class="wrap resume">
-    <header class="resume-header hero-anim">
-      <div class="crest-wrap">
-        <span class="crest-orbit" aria-hidden="true">
-          <span class="rune-dot"></span>
-          <span class="rune-dot b"></span>
-        </span>
-        <svg class="crest" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="0.8" opacity="0.25"/>
-          <g class="ring-spin">
-            <circle cx="32" cy="32" r="27" stroke="currentColor" stroke-width="1" stroke-dasharray="1.5 5" opacity="0.7"/>
-            <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="0.6" stroke-dasharray="0.5 3" opacity="0.45"/>
-          </g>
-          <path d="M32 8 52 19.5v25L32 56 12 44.5v-25L32 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          <g class="ring-spin-rev">
-            <circle cx="32" cy="32" r="14" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.55"/>
-          </g>
-          <text x="32" y="40" text-anchor="middle" font-family="Space Grotesk, Inter, sans-serif" font-size="20" font-weight="700" fill="currentColor" letter-spacing="-1">HK</text>
-        </svg>
-      </div>
-      <h1>Hamed Khademi Khaledi</h1>
+  <main class="wing wrap" data-wing="engineer">
+    <header class="wing-header reveal stagger">
+      <svg class="arc-rule" viewBox="0 0 220 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 11C40 1 180 1 214 11" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+        <circle cx="110" cy="4" r="2.4" fill="currentColor"/>
+        <circle cx="64" cy="6.5" r="1.4" fill="currentColor" opacity="0.6"/>
+        <circle cx="156" cy="6.5" r="1.4" fill="currentColor" opacity="0.6"/>
+      </svg>
+      <svg class="crest" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g class="crest-ring crest-ring--outer">
+          <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="0.8" stroke-dasharray="1 5" opacity="0.7"/>
+        </g>
+        <circle cx="32" cy="32" r="23" stroke="currentColor" stroke-width="0.7" opacity="0.45"/>
+        <g stroke="currentColor" stroke-width="1" stroke-linecap="round">
+          <path d="M32 6v9M32 49v9M6 32h9M49 32h9M13.7 13.7l6.4 6.4M43.9 43.9l6.4 6.4M50.3 13.7l-6.4 6.4M20.1 43.9l-6.4 6.4"/>
+        </g>
+        <path d="M32 14 36 30 52 32 36 34 32 50 28 34 12 32 28 30Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" opacity="0.85"/>
+        <path d="M32 26v12M26 32h12" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.6"/>
+        <circle cx="32" cy="32" r="4.2" fill="currentColor" opacity="0.85"/>
+        <circle cx="32" cy="32" r="2" fill="var(--bg)"/>
+      </svg>
+      <h1>The Engineer's Wing</h1>
       <p class="sub">AI Engineer &amp; NLP Researcher</p>
       <div class="contacts">
         <a class="contact-chip" href="mailto:khaledihkh@gmail.com">
@@ -86,196 +98,213 @@
       </div>
     </header>
 
-    <nav class="toc" aria-label="Sections">
+    <nav class="toc" aria-label="Sections of the Engineer's Wing">
       <div class="toc-inner wrap">
         <a href="#summary">Summary</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#honors">Honors</a>
         <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
         <a href="#languages">Languages</a>
-        <a href="#interests">Interests</a>
       </div>
     </nav>
 
-    <section class="section" id="summary">
-      <h2>Professional Summary</h2>
-      <div class="summary reveal">
-        <p><strong>AI Engineer</strong> and <strong>NLP Researcher</strong> experienced in building and deploying <strong>Large Language Models (LLMs)</strong>, <strong>LLM-based agents</strong>, <strong>Retrieval-Augmented Generation (RAG)</strong> systems, and modular <strong>NLP microservices</strong>. Skilled in <strong>Python</strong>, <strong>PyTorch</strong>, <strong>vLLM</strong>, <strong>LangChain</strong>, and <strong>LangGraph</strong>. Published researcher in <strong>Persian NLP</strong>, passionate about designing <strong>scalable, production-grade AI systems</strong> that bridge research and industry.</p>
+    <section class="shelf-section leaf reveal" id="summary">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.2"/><path d="M16 3v26M3 16h26" stroke="currentColor" stroke-width="1"/><path d="M16 3 19 13 16 16 13 13Z M16 29 13 19 16 16 19 19Z M3 16 13 13 16 16 13 19Z M29 16 19 19 16 16 19 13Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg>
+        <h2>Professional Summary</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
+      </div>
+      <div class="ledger">
+        <div class="row">
+          <p><strong>AI Engineer</strong> and <strong>NLP Researcher</strong> experienced in building and deploying <strong>Large Language Models (LLMs)</strong>, <strong>LLM-based agents</strong>, <strong>Retrieval-Augmented Generation (RAG)</strong> systems, and modular <strong>NLP microservices</strong>. Skilled in <strong>Python</strong>, <strong>PyTorch</strong>, <strong>vLLM</strong>, <strong>LangChain</strong>, and <strong>LangGraph</strong>. Published researcher in <strong>Persian NLP</strong>, passionate about designing <strong>scalable, production-grade AI systems</strong> that bridge research and industry.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="experience">
-      <h2>Experience</h2>
-
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">Arusha Company</span> · <span class="org">Tehran, Iran</span></div>
-          <div class="meta">NLP Engineer · Fall 2023 — Present</div>
-        </div>
-        <ul>
-          <li>Core maintainer of <strong>Aisa</strong>, Arusha's modular suite of Persian NLP microservices (Entity Linking, NER, POS Tagging, Keyphrase Extraction, Summarization, Sentence/Paragraph Splitting, Mention Knowledge Base, Open Information Extraction, LLM Info-Box Extraction); owned service design, model training, and deployment across the suite.</li>
-          <li>Designed and built <strong>LLM-based agent and tool-use pipelines</strong> for autonomous task execution, integrating structured tool-calling with retrieval and reasoning steps.</li>
-          <li>Developed and optimized <strong>text normalization pipelines</strong> using <strong>Piraye</strong> (<a href="https://pypi.org/project/piraye/" target="_blank" rel="noopener">PyPI</a>).</li>
-          <li>Contributed to <strong>knowledge graph</strong> design and entity relationship extraction for Persian-language datasets.</li>
-          <li>Built hybrid <strong>text retrieval</strong> systems integrating lexical (BM25) and semantic (vector) methods.</li>
-          <li>Integrated <strong>LLM-based components</strong> into production services for search and question-answering, and worked on <strong>LLM serving infrastructure</strong>, <strong>PostgreSQL</strong>, and <strong>vector databases</strong> for scalable semantic search and <strong>RAG</strong>.</li>
-          <li>Containerized and deployed NLP services using <strong>Docker</strong> for consistent, scalable production environments.</li>
-        </ul>
+    <section class="shelf-section leaf reveal" id="experience">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="1.3"/><circle cx="16" cy="16" r="2.4" fill="currentColor"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M7 7l3 3M22 22l3 3M25 7l-3 3M10 22l-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <h2>Experience</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
       </div>
-
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">Ahdsoft Company</span> · <span class="org">Remote</span></div>
-          <div class="meta">NLP Engineer · Feb 2021 — Fall 2023</div>
-        </div>
-        <ul>
-          <li>Worked on NLP models including <strong>text similarity</strong>, <strong>NER</strong>, and <strong>text summarization</strong>.</li>
-          <li>Developed HTTP services for <strong>entity linking</strong> and <strong>information extraction</strong>.</li>
-          <li>Created multilingual <strong>text normalizers</strong> for English, Persian, and Arabic.</li>
-        </ul>
-      </div>
-
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">University of Tehran</span> · <span class="org">Tehran, Iran</span></div>
-          <div class="meta">Graduate Research Assistant · Fall 2022 — Summer 2025</div>
-        </div>
-        <ul>
-          <li>Researched and improved <strong>Large Language Models</strong> for Persian university entrance exam tasks.</li>
-          <li>Published at <strong>COLING 2025</strong> — <a href="https://aclanthology.org/2025.coling-main.434/" target="_blank" rel="noopener">“IRUEX: A Study on Large Language Models Problem-Solving Skills in Iran’s University Entrance Exam”</a>.</li>
-        </ul>
+      <div class="entries entries--rows">
+        <article class="entry lit">
+          <div class="entry-head">
+            <h3 class="entry-title">Arusha Company</h3>
+            <p class="entry-meta">NLP Engineer · Tehran, Iran · Fall 2023 — Present</p>
+          </div>
+          <div class="entry-body">
+            <ul><li>Core maintainer of <strong>Aisa</strong>, Arusha’s modular suite of Persian NLP microservices (Entity Linking, NER, POS Tagging, Keyphrase Extraction, Summarization, Sentence/Paragraph Splitting, Mention Knowledge Base, Open Information Extraction, LLM Info-Box Extraction); owned service design, model training, and deployment across the suite.</li><li>Designed and built <strong>LLM-based agent and tool-use pipelines</strong> for autonomous task execution, integrating structured tool-calling with retrieval and reasoning steps.</li><li>Developed and optimized <strong>text normalization pipelines</strong> using <strong>Piraye</strong> (<a href='https://pypi.org/project/piraye/' target='_blank' rel='noopener'>PyPI</a>).</li><li>Contributed to <strong>knowledge graph</strong> design and entity relationship extraction for Persian-language datasets.</li><li>Built hybrid <strong>text retrieval</strong> systems integrating lexical (BM25) and semantic (vector) methods.</li><li>Integrated <strong>LLM-based components</strong> into production services for search and question-answering, and worked on <strong>LLM serving infrastructure</strong>, <strong>PostgreSQL</strong>, and <strong>vector databases</strong> for scalable semantic search and <strong>RAG</strong>.</li><li>Containerized and deployed NLP services using <strong>Docker</strong> for consistent, scalable production environments.</li></ul>
+          </div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head">
+            <h3 class="entry-title">Ahdsoft Company</h3>
+            <p class="entry-meta">NLP Engineer · Remote · Feb 2021 — Fall 2023</p>
+          </div>
+          <div class="entry-body">
+            <ul><li>Worked on NLP models including <strong>text similarity</strong>, <strong>NER</strong>, and <strong>text summarization</strong>.</li><li>Developed HTTP services for <strong>entity linking</strong> and <strong>information extraction</strong>.</li><li>Created multilingual <strong>text normalizers</strong> for English, Persian, and Arabic.</li></ul>
+          </div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head">
+            <h3 class="entry-title">University of Tehran</h3>
+            <p class="entry-meta">Graduate Research Assistant · Tehran, Iran · Fall 2022 — Summer 2025</p>
+          </div>
+          <div class="entry-body">
+            <ul><li>Researched and improved <strong>Large Language Models</strong> for Persian university entrance exam tasks.</li><li>Published at <strong>COLING 2025</strong> — <a href='https://aclanthology.org/2025.coling-main.434/' target='_blank' rel='noopener'>“IRUEX: A Study on Large Language Models Problem-Solving Skills in Iran’s University Entrance Exam”</a>.</li></ul>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="projects">
-      <h2>Selected Projects</h2>
-
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">Retrieval-Augmented Generation Chatbot</span></div>
-          <div class="meta">Personal Project · 2024</div>
-        </div>
-        <ul>
-          <li>Implemented a hybrid <strong>RAG pipeline</strong> combining <strong>BM25</strong> and <strong>vector-based semantic search</strong>.</li>
-          <li>Built a <strong>RAG dataset</strong> and integrated it into a conversational <strong>chatbot</strong> for factual question answering.</li>
-          <li>Employed <strong>vLLM</strong>, <strong>RAGFlow</strong>, and <strong>Llama.cpp</strong> for efficient inference and retrieval.</li>
-        </ul>
+    <section class="shelf-section leaf reveal" id="projects">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 27 9v14L16 29 5 23V9Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M16 9v14M11 12l5 3 5-3M11 20l5-3 5 3" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+        <h2>Selected Projects</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
       </div>
-
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">HodHod Dataset</span> · <a href="https://github.com/UT-NLP-LAB/HodHod_Preprocess" target="_blank" rel="noopener">GitHub</a></div>
-          <div class="meta">Creator · 2024</div>
-        </div>
-        <ul>
-          <li>Created the first large-scale cleaned <strong>Persian text dataset</strong> with parallelized preprocessing.</li>
-          <li>Developed an <strong>end-to-end pipeline</strong> for tokenization, normalization, and data cleaning.</li>
-        </ul>
-      </div>
-
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">Piraye Text Normalization Library</span> · <a href="https://github.com/arushadev/piraye" target="_blank" rel="noopener">GitHub</a></div>
-          <div class="meta">Developer · 2023</div>
-        </div>
-        <ul>
-          <li>Developed a multilingual <strong>text normalization library</strong> for Persian, Arabic, and English.</li>
-          <li>Published on <strong>PyPI</strong> (<a href="https://pypi.org/project/piraye/" target="_blank" rel="noopener">piraye</a>) and integrated into enterprise NLP systems.</li>
-        </ul>
-      </div>
-
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">Persian NER &amp; POS Plugin</span> · <a href="https://github.com/hamedkhaledi/bachelor-project" target="_blank" rel="noopener">GitHub</a></div>
-          <div class="meta">Developer · 2022</div>
-        </div>
-        <ul>
-          <li>Built neural <strong>NER</strong> and <strong>POS tagging models</strong> for Persian using deep learning.</li>
-          <li>Created a <strong>Chrome plugin</strong> for real-time Persian text annotation.</li>
-        </ul>
+      <div class="entries entries--rows">
+        <article class="entry lit">
+          <div class="entry-head">
+            <h3 class="entry-title">RAG Chatbot</h3>
+            <p class="entry-meta">Personal Project · 2024</p>
+          </div>
+          <div class="entry-body">
+            <ul><li>Implemented a hybrid <strong>RAG pipeline</strong> combining <strong>BM25</strong> and <strong>vector-based semantic search</strong>.</li><li>Built a <strong>RAG dataset</strong> and integrated it into a conversational <strong>chatbot</strong> for factual question answering.</li><li>Employed <strong>vLLM</strong>, <strong>RAGFlow</strong>, and <strong>Llama.cpp</strong> for efficient inference and retrieval.</li></ul>
+          </div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head">
+            <h3 class="entry-title">HodHod Dataset</h3>
+            <p class="entry-meta">Creator · 2024 · <a href='https://github.com/UT-NLP-LAB/HodHod_Preprocess' target='_blank' rel='noopener'>GitHub</a></p>
+          </div>
+          <div class="entry-body">
+            <ul><li>Created the first large-scale cleaned <strong>Persian text dataset</strong> with parallelized preprocessing.</li><li>Developed an <strong>end-to-end pipeline</strong> for tokenization, normalization, and data cleaning.</li></ul>
+          </div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head">
+            <h3 class="entry-title">Piraye Library</h3>
+            <p class="entry-meta">Developer · 2023 · <a href='https://github.com/arushadev/piraye' target='_blank' rel='noopener'>GitHub</a></p>
+          </div>
+          <div class="entry-body">
+            <ul><li>Developed a multilingual <strong>text normalization library</strong> for Persian, Arabic, and English.</li><li>Published on <strong>PyPI</strong> (<a href='https://pypi.org/project/piraye/' target='_blank' rel='noopener'>piraye</a>) and integrated into enterprise NLP systems.</li></ul>
+          </div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head">
+            <h3 class="entry-title">Persian NER &amp; POS Plugin</h3>
+            <p class="entry-meta">Developer · 2022 · <a href='https://github.com/hamedkhaledi/bachelor-project' target='_blank' rel='noopener'>GitHub</a></p>
+          </div>
+          <div class="entry-body">
+            <ul><li>Built neural <strong>NER</strong> and <strong>POS tagging models</strong> for Persian using deep learning.</li><li>Created a <strong>Chrome plugin</strong> for real-time Persian text annotation.</li></ul>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="education">
-      <h2>Education</h2>
-      <div class="entry reveal">
+    <section class="shelf-section leaf reveal" id="skills">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 26 7v8c0 7-4.5 11.5-10 14C10.5 26.5 6 22 6 15V7Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M11 16 14.5 19.5 21 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h2>Technical Skills</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
+      </div>
+      <div class="entries">
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Programming Languages</h3><p class="entry-meta">Proficiency: Mastery</p></div>
+          <div class="entry-body"><p>Python, Java, C++, MATLAB, R</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Machine Learning</h3><p class="entry-meta">Proficiency: Advanced</p></div>
+          <div class="entry-body"><p>PyTorch, TensorFlow, Transformers, Scikit-learn</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">LLM, Agents &amp; NLP Frameworks</h3><p class="entry-meta">Proficiency: Advanced</p></div>
+          <div class="entry-body"><p>vLLM, RAGFlow, Llama.cpp, LangChain, LangGraph, Hermes, HuggingFace, FastAPI</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Agentic AI</h3><p class="entry-meta">Proficiency: Advanced</p></div>
+          <div class="entry-body"><p>Tool-use / function calling, multi-step agent orchestration, agent-tool integration</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">LLM APIs</h3><p class="entry-meta">Proficiency: Advanced</p></div>
+          <div class="entry-body"><p>OpenAI API, Anthropic API, other LLM provider APIs</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Databases</h3><p class="entry-meta">Proficiency: Proficient</p></div>
+          <div class="entry-body"><p>PostgreSQL, SQL</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Vector Databases</h3><p class="entry-meta">Proficiency: Proficient</p></div>
+          <div class="entry-body"><p>Semantic search &amp; vector storage for RAG pipelines</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">NLP Techniques</h3><p class="entry-meta">Proficiency: Advanced</p></div>
+          <div class="entry-body"><p>Text Normalization, Tokenization, Knowledge Graphs, RAG, Semantic Search, Entity Linking, NER, Keyphrase Extraction, Summarization</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Data Tools</h3><p class="entry-meta">Proficiency: Proficient</p></div>
+          <div class="entry-body"><p>NumPy, Pandas, SQL, Jupyter, Matplotlib, Power BI</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">DevOps &amp; Deployment</h3><p class="entry-meta">Proficiency: Proficient</p></div>
+          <div class="entry-body"><p>Git, Docker, Linux</p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Web Technologies</h3><p class="entry-meta">Proficiency: Working</p></div>
+          <div class="entry-body"><p>HTML, CSS, JavaScript, React</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shelf-section leaf reveal" id="education">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 6 28 12 16 18 4 12Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9 14.5V20c0 1.6 3.1 3 7 3s7-1.4 7-3v-5.5" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M28 12v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <h2>Education</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
+      </div>
+      <div class="ledger">
         <div class="row">
-          <div><span class="title">University of Tehran</span> · <span class="org">Tehran, Iran</span></div>
-          <div class="meta">2022 — 2025</div>
+          <strong>University of Tehran</strong> · Tehran, Iran — <span class="meta">2022 — 2025</span><br/>
+          M.Sc. in Artificial Intelligence and Robotics
         </div>
-        <div class="org">M.Sc. in Artificial Intelligence and Robotics</div>
-      </div>
-      <div class="entry reveal">
         <div class="row">
-          <div><span class="title">Shahid Beheshti University</span> · <span class="org">Tehran, Iran</span></div>
-          <div class="meta">2018 — 2022</div>
+          <strong>Shahid Beheshti University</strong> · Tehran, Iran — <span class="meta">2018 — 2022</span><br/>
+          B.Sc. in Computer Engineering
         </div>
-        <div class="org">B.Sc. in Computer Engineering</div>
       </div>
     </section>
 
-    <section class="section" id="honors">
-      <h2>Honors and Certificates</h2>
-      <ul class="reveal">
-        <li><strong>3rd Rank</strong> in B.Sc. Class, Shahid Beheshti University (2022)</li>
-        <li><strong>Top 1%</strong> Rank in Iranian University Entrance Exam (2018)</li>
-        <li><strong>Deep Learning Specialization</strong> — Online Course (2019–2022)</li>
-        <li><strong>Data Structures and Algorithms Course</strong> — Online (2019)</li>
-        <li>Winner — <strong>Irancell Labs AI Hackathon</strong>, Tehran (2023)</li>
-      </ul>
-    </section>
-
-    <section class="section" id="skills">
-      <h2>Technical Skills</h2>
-      <div class="skills">
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 6l-2 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="label">Programming Languages</div><div class="items">Python, Java, C++, MATLAB, R</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3a4 4 0 0 0-4 4 3 3 0 0 0-1 5.8V16a3 3 0 0 0 5 2.2A3 3 0 0 0 17 16v-3.2A3 3 0 0 0 16 7a4 4 0 0 0-4-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><div><div class="label">Machine Learning</div><div class="items">PyTorch, TensorFlow, Transformers, Scikit-learn</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M9 8V6.5A2.5 2.5 0 0 1 11.5 4h1A2.5 2.5 0 0 1 15 6.5V8M8.5 12h7M8.5 15h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><div><div class="label">LLM, Agents &amp; NLP Frameworks</div><div class="items">vLLM, RAGFlow, Llama.cpp, LangChain, LangGraph, Hermes, HuggingFace, FastAPI</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="2.6" fill="currentColor"/><circle cx="12" cy="5" r="1.8" fill="currentColor"/><circle cx="12" cy="19" r="1.8" fill="currentColor"/><circle cx="5" cy="9" r="1.8" fill="currentColor"/><circle cx="19" cy="9" r="1.8" fill="currentColor"/><circle cx="5" cy="15" r="1.8" fill="currentColor"/><circle cx="19" cy="15" r="1.8" fill="currentColor"/><path d="M12 7.4v3.2M10.3 6.2 6.8 8M13.7 6.2 17.2 8M6.8 10.6v2.8M17.2 10.6v2.8M10.3 17.8 6.8 16M13.7 17.8 17.2 16M12 14.6v3.2" stroke="currentColor" stroke-width="1"/></svg><div><div class="label">Agentic AI</div><div class="items">Tool-use / function calling, multi-step agent orchestration, agent-tool integration</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="label">LLM APIs</div><div class="items">OpenAI API, Anthropic API, other LLM provider APIs</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3" stroke="currentColor" stroke-width="1.5"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3" stroke="currentColor" stroke-width="1.5"/></svg><div><div class="label">Databases</div><div class="items">PostgreSQL, SQL</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><circle cx="5" cy="7" r="1.8" fill="currentColor"/><circle cx="19" cy="7" r="1.8" fill="currentColor"/><circle cx="5" cy="17" r="1.8" fill="currentColor"/><circle cx="19" cy="17" r="1.8" fill="currentColor"/><path d="m6.6 8 4 3M17.4 8l-4 3M6.6 16l4-3M17.4 16l-4-3" stroke="currentColor" stroke-width="1.2"/></svg><div><div class="label">Vector Databases</div><div class="items">Semantic search &amp; vector storage for RAG pipelines</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 5h14v9H5z" stroke="currentColor" stroke-width="1.5"/><path d="M8 18h8M12 14v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 9.5h7M8.5 12h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><div><div class="label">NLP Techniques</div><div class="items">Text Normalization, Tokenization, Knowledge Graphs, RAG, Semantic Search, Entity Linking, NER, Keyphrase Extraction, Summarization</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 19V5M4 19h16M8 16V9M12 16V6M16 16v-4M20 16v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><div class="label">Data Tools</div><div class="items">NumPy, Pandas, SQL, Jupyter, Matplotlib, Power BI</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3 4 6v5c0 4.5 3.2 7.8 8 9 4.8-1.2 8-4.5 8-9V6l-8-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="label">DevOps &amp; Deployment</div><div class="items">Git, Docker, Linux</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke="currentColor" stroke-width="1.3"/></svg><div><div class="label">Web Technologies</div><div class="items">HTML, CSS, JavaScript, React</div></div></div>
+    <section class="shelf-section leaf reveal" id="languages">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.2"/><path d="M5 16h22M16 5c3.5 3 3.5 19 0 22M16 5c-3.5 3-3.5 19 0 22" stroke="currentColor" stroke-width="1.1"/></svg>
+        <h2>Languages</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
+      </div>
+      <div class="ledger">
+        <div class="row"><strong>Persian:</strong> Native</div>
+        <div class="row"><strong>English:</strong> Professional Working Proficiency (TOEFL: 100)</div>
+        <div class="row"><strong>Arabic:</strong> Elementary</div>
       </div>
     </section>
 
-    <section class="section" id="languages">
-      <h2>Languages</h2>
-      <ul class="reveal">
-        <li><b>Persian:</b> Native</li>
-        <li><b>English:</b> Professional Working Proficiency (TOEFL: 100)</li>
-        <li><b>Arabic:</b> Elementary</li>
-      </ul>
-    </section>
-
-    <section class="section" id="interests">
-      <h2>Interests</h2>
-      <ul class="reveal">
-        <li><strong>AI Research</strong>, Large Language Models, Open-Source NLP, Music, Hiking, Board Games</li>
-      </ul>
-    </section>
-
-    <a class="back-link" href="index.html">← Back to all versions</a>
+    <a class="back-link" href="index.html">← Return to the entrance hall</a>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="wrap">
-      <p class="footer-line">He builds AI systems that ship.</p>
-      <p class="footer-contact">
+      <p class="line">He builds AI systems that ship.</p>
+      <p class="contact">
         <a href="mailto:khaledihkh@gmail.com">khaledihkh@gmail.com</a>
         · <a href="https://www.linkedin.com/in/hamed-khademi/" target="_blank" rel="noopener">LinkedIn</a>
         · <a href="https://github.com/hamedkhaledi" target="_blank" rel="noopener">GitHub</a>
       </p>
-      <p class="footer-copy">© <span id="year"></span> Hamed Khademi Khaledi</p>
+      <p class="copy">© <span id="year"></span> Hamed Khademi Khaledi</p>
     </div>
   </footer>
 
-  <script src="assets/theme.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="assets/wing.js"></script>
 </body>
 </html>

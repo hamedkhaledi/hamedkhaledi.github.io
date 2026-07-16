@@ -1,0 +1,1452 @@
+/* ============================================================
+   Hamed Khademi Khaledi — Arcane Library resume
+   A warm, candlelit ancient library atmosphere kept as the
+   identity: deep walnut walls, a soft arcane glow from runes
+   and a candle flame, drifting dust motes. Sections are shown
+   openly on the page (no book/scroll reading mechanic).
+   Pure CSS + vanilla JS. No build step, no external calls
+   beyond the Google Fonts stylesheet.
+   ============================================================ */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Arcane identity */
+  --gold:        oklch(0.80 0.11 82);   /* aged brass / gold leaf */
+  --gold-bright: oklch(0.86 0.12 85);   /* lit gold */
+  --gold-deep:   oklch(0.62 0.10 70);   /* antique gold, AA on light */
+  --rune:        oklch(0.72 0.12 278);  /* arcane blue-violet glow */
+  --rune-soft:   oklch(0.78 0.10 300);  /* soft violet */
+  --flame:       oklch(0.82 0.13 72);   /* candle amber */
+
+  /* Dark library (default) */
+  --bg:        oklch(0.19 0.018 60);    /* deep walnut */
+  --bg-2:      oklch(0.15 0.02 58);     /* shadowed corner */
+  --bg-elev:   oklch(0.25 0.022 55);    /* raised shelf / panel */
+
+  /* Open-book pages (aged parchment printed on the dark scene) */
+  --page:        oklch(0.29 0.028 72 / 0.94);  /* warm dark parchment */
+  --page-2:      oklch(0.24 0.026 70 / 0.96);  /* shadowed page fold */
+  --page-ink:    oklch(0.95 0.012 85);         /* ink on the page */
+  --page-soft:   oklch(0.92 0.025 80);         /* muted ink — AA on dark page */
+  --page-rule:   oklch(0.42 0.04 70);          /* hairline on paper */
+  --text:      oklch(0.93 0.015 85);    /* warm white ink */
+  --text-soft: oklch(0.80 0.03 80);     /* muted caption */
+  --text-dim:  oklch(0.70 0.03 78);     /* faint label */
+  --meta:      var(--gold);             /* gold, AA on dark bg */
+  --border:    oklch(0.42 0.04 70);
+  --border-lit: oklch(0.62 0.09 82);    /* glowing gold hairline */
+  --rule:      oklch(0.38 0.035 68);
+
+  --shadow: 0 1px 2px oklch(0 0 0 / 0.4),
+            0 18px 40px oklch(0 0 0 / 0.5);
+
+  --max: 1080px;
+  --gutter: clamp(18px, 4vw, 40px);
+  --radius: 14px;
+
+  --font-display: "Spectral", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-ui: "Spectral", Georgia, serif;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Wing-persona accent — defaults to the library gold. Overridden per
+     wing below so each hall carries its own arcane hue. */
+  --wing-accent:       var(--gold);
+  --wing-accent-bright: var(--gold-bright);
+  --wing-accent-soft:  var(--rune-soft);
+  --wing-glow:         oklch(0.80 0.11 82);
+
+  /* Drenched arcane hero surface — indigo/violet gradient lit by amber. */
+  --hero-surface: linear-gradient(158deg, oklch(0.20 0.06 288) 0%, oklch(0.14 0.07 300) 100%);
+}
+
+/* Engineer's Wing leans into the flame-amber of the forge. */
+.wing[data-wing="engineer"] {
+  --wing-accent:       var(--flame);
+  --wing-accent-bright: var(--gold-bright);
+  --wing-accent-soft:  oklch(0.82 0.13 72);
+  --wing-glow:         oklch(0.82 0.13 72);
+}
+
+/* Scholar's Archive leans into the rune-violet of the midnight quill. */
+.wing[data-wing="scholar"] {
+  --wing-accent:       var(--rune);
+  --wing-accent-bright: var(--rune-soft);
+  --wing-accent-soft:  oklch(0.78 0.10 300);
+  --wing-glow:         oklch(0.72 0.12 278);
+}
+
+[data-theme="light"] {
+  --bg:        oklch(0.95 0.018 88);    /* warm parchment wall */
+  --bg-2:      oklch(0.90 0.02 85);
+  --bg-elev:   oklch(0.99 0.012 90);
+  --page:        oklch(0.975 0.012 90);  /* lit parchment */
+  --page-2:      oklch(0.94 0.015 88);
+  --page-ink:    oklch(0.26 0.03 60);
+  --page-soft:   oklch(0.42 0.035 62);
+  --page-rule:   oklch(0.78 0.04 72);
+  --text:      oklch(0.26 0.03 60);     /* ink */
+  --text-soft: oklch(0.28 0.035 60);
+  --text-dim:  oklch(0.27 0.035 62);
+  --meta:      oklch(0.58 0.11 68);     /* gold, AA on light bg */
+  --border:    oklch(0.80 0.04 72);
+  --border-lit: oklch(0.66 0.11 78);
+  --rule:      oklch(0.82 0.035 72);
+  --shadow: 0 1px 2px oklch(0.26 0.03 60 / 0.08),
+             0 16px 38px oklch(0.26 0.03 60 / 0.14);
+}
+
+/* Light-mode wing personas: slightly deeper accents to keep AA on parchment. */
+[data-theme="light"] .wing[data-wing="engineer"] {
+  --wing-accent:       oklch(0.56 0.14 62);
+  --wing-accent-bright: oklch(0.54 0.14 64);
+  --wing-accent-soft:  oklch(0.60 0.11 68);
+  --wing-glow:         oklch(0.62 0.12 70);
+}
+[data-theme="light"] .wing[data-wing="scholar"] {
+  --wing-accent:       oklch(0.42 0.13 285);
+  --wing-accent-bright: oklch(0.40 0.13 288);
+  --wing-accent-soft:  oklch(0.46 0.10 300);
+  --wing-glow:         oklch(0.48 0.11 290);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background 0.45s ease, color 0.45s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* The library is a fixed, atmospheric backdrop behind all content. */
+.library-scene {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 50% -10%, oklch(0.28 0.04 65 / 0.55), transparent 60%),
+    radial-gradient(90% 70% at 50% 120%, oklch(0.10 0.02 55 / 0.7), transparent 55%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+
+/* Receding shelves: two perspective walls of wood, suggested with
+   repeating gradient bands + a soft vignette. Pure CSS, no images. */
+.shelves {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.5;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 118px,
+      oklch(0 0 0 / 0.28) 118px 122px,
+      oklch(0.34 0.03 55 / 0.22) 122px 132px,
+      transparent 132px 134px
+    );
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 35%, #000 35%, transparent 85%);
+          mask-image: radial-gradient(120% 90% at 50% 35%, #000 35%, transparent 85%);
+}
+
+/* Arcane glow wash — soft blue/violet bloom from runes + amber candle. */
+.arcane-wash {
+  position: fixed;
+  inset: -10vmax;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(40vmax 40vmax at 12% 18%, oklch(0.72 0.12 278 / 0.10), transparent 60%),
+    radial-gradient(46vmax 46vmax at 88% 30%, oklch(0.78 0.10 300 / 0.09), transparent 62%),
+    radial-gradient(36vmax 36vmax at 50% 100%, oklch(0.82 0.13 72 / 0.08), transparent 60%);
+  animation: wash-drift 24s ease-in-out infinite alternate;
+}
+/* Slow-rotating conic hue-shift for color-drifting light */
+.arcane-wash::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    oklch(0.72 0.12 278 / 0.04),
+    oklch(0.82 0.13 85 / 0.05),
+    oklch(0.62 0.18 300 / 0.04),
+    oklch(0.82 0.13 72 / 0.05),
+    oklch(0.72 0.12 278 / 0.04)
+  );
+  animation: conic-spin 60s linear infinite;
+}
+@keyframes conic-spin { to { transform: rotate(360deg); } }
+
+/* Vignette to seat content in shadowed corners. */
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(130% 100% at 50% 40%, transparent 55%, oklch(0 0 0 / 0.55) 100%);
+}
+
+/* Arcane starfield — faint pentagram nodes + constellation lines. */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.38;
+  background:
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg 38deg,
+      oklch(0.80 0.11 82 / 0.08) 38deg 39deg,
+      transparent 39deg 72deg
+    );
+  animation: starfield-rotate 120s linear infinite;
+}
+.starfield::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(100% 100% at 50% 50%, transparent 40%, oklch(0 0 0 / 0.4) 100%);
+}
+@keyframes starfield-rotate { to { transform: rotate(360deg); } }
+
+/* Dust motes — populated by JS as tiny drifting spans. */
+.dust {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.mote {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: oklch(0.92 0.05 85 / 0.8);
+  box-shadow: 0 0 6px oklch(0.85 0.10 82 / 0.9);
+  will-change: transform, opacity;
+  animation: mote-float linear infinite;
+}
+
+/* Candle cursor-follow glow (lightweight radial light). */
+.candle-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 360px;
+  margin: -180px 0 0 -180px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, oklch(0.82 0.13 72 / 0.10), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  will-change: transform;
+}
+
+/* Wand sigil: a small glowing star-rune that trails the pointer, as if
+   the visitor's cursor were tipped with a wand. Sits just behind content. */
+.wand-sigil {
+  position: fixed;
+  top: 0; left: 0;
+  width: 24px; height: 24px;
+  pointer-events: none;
+  z-index: -1;
+  color: var(--gold);
+  opacity: 0;
+  filter: drop-shadow(0 0 8px oklch(0.80 0.11 82 / 0.7));
+  transition: opacity 0.5s ease;
+  will-change: transform;
+}
+.wand-sigil svg { width: 100%; height: 100%; display: block; }
+
+@keyframes wash-drift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  100% { transform: translate3d(2vmax,-1.5vmax,0) scale(1.06); }
+}
+@keyframes mote-float {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-120px) translateX(20px); opacity: 0; }
+}
+
+/* ---------- Layout helpers ---------- */
+.wrap { width: min(100% - 2 * var(--gutter), var(--max)); margin-inline: auto; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--gold-bright); }
+
+/* ---------- Top navigation ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--bg) 72%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.brand { display: flex; align-items: center; gap: 11px; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.01em; color: var(--text); }
+.brand:hover { color: var(--gold); }
+.brand .mark { display: inline-flex; width: 44px; height: 44px; color: var(--gold); flex: none; }
+.brand .mark svg { width: 100%; height: 100%; display: block; }
+.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.mark-svg { width: 100%; height: 100%; display: block; color: currentColor; }
+.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-links a { color: var(--text-soft); font-family: var(--font-ui); letter-spacing: 0.02em; }
+.nav-links a:hover { color: var(--gold); }
+/* Keyboard focus ring — visible only for keyboard nav, not mouse. */
+:where(a, button, .theme-toggle):focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px oklch(0.80 0.11 82 / 0.22);
+}
+.page:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 4px;
+  box-shadow: 0 0 44px oklch(0.80 0.11 82 / 0.32), var(--shadow);
+}
+.theme-toggle {
+  display: inline-grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: transparent; color: var(--gold);
+  border: 1px solid var(--border); cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.theme-toggle:hover { border-color: var(--border-lit); box-shadow: 0 0 14px oklch(0.80 0.11 82 / 0.35); transform: translateY(-1px); }
+
+/* ============================================================
+   ENTRANCE HALL (index.html) — an open book lying flat
+   ============================================================ */
+.entrance {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(30px, 7vh, 80px) var(--gutter) 60px;
+  position: relative;
+}
+
+/* --- Book header: name, title, bio — embossed above the open book --- */
+.book-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: clamp(28px, 5vh, 50px);
+  padding: 0 var(--gutter);
+}
+/* Drenched spell-circle aura behind the whole hero block. */
+.book-header::before {
+  content: "";
+  position: absolute;
+  top: -22%; left: 50%;
+  width: min(620px, 110vw);
+  height: min(620px, 110vw);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, oklch(0.80 0.11 82 / 0.12) 0%, oklch(0.72 0.12 278 / 0.08) 38%, transparent 64%);
+  filter: blur(10px);
+  animation: hero-aura 18s ease-in-out infinite alternate;
+}
+@keyframes hero-aura {
+  0%   { transform: translateX(-50%) scale(1); opacity: 0.85; }
+  100% { transform: translateX(-50%) scale(1.08); opacity: 1; }
+}
+.book-header .eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--rune-soft);
+  margin: 0 0 14px;
+  opacity: 0.9;
+}
+.book-header .eyebrow::before,
+.book-header .eyebrow::after { content: "✦"; margin: 0 0.7em; color: var(--gold); opacity: 0.7; }
+.book-header .rune-hero {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 18px;
+  color: var(--gold);
+  filter: drop-shadow(0 0 14px oklch(0.80 0.11 82 / 0.5));
+  position: relative;
+}
+/* Counter-rotating sigil rings orbiting the hero crest — mirrors the
+   wing crests so the entrance hall shares the same arcane grammar. */
+.book-header .rune-hero::before,
+.book-header .rune-hero::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1px solid oklch(0.80 0.11 82 / 0.45);
+}
+.book-header .rune-hero::before {
+  width: 120px; height: 120px;
+  transform: translate(-50%, -50%);
+  border-style: dashed;
+  border-color: oklch(0.80 0.11 82 / 0.4);
+  opacity: 0.6;
+  animation: hero-ring-spin 60s linear infinite;
+}
+.book-header .rune-hero::after {
+  width: 156px; height: 156px;
+  transform: translate(-50%, -50%);
+  border-color: oklch(0.72 0.12 278 / 0.3);
+  box-shadow: inset 0 0 26px oklch(0.72 0.12 278 / 0.16);
+  opacity: 0.4;
+  animation: hero-ring-spin 90s linear infinite reverse;
+}
+.book-header .rune-hero svg {
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+/* Rotating outer ring behind the hero rune */
+.hero-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 120px; height: 120px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px dashed oklch(0.80 0.11 82 / 0.3);
+  pointer-events: none;
+  animation: hero-ring-spin 50s linear infinite;
+}
+.hero-ring--inner {
+  width: 100px; height: 100px;
+  border-style: solid;
+  border-color: oklch(0.72 0.12 278 / 0.2);
+  animation-duration: 40s;
+  animation-direction: reverse;
+}
+@keyframes hero-ring-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* Orbiting asterism — a slow ring of gilded rune-nodes circling the crest. */
+.hero-asterism {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 150px; height: 150px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: hero-asterism-spin 56s linear infinite;
+}
+.hero-asterism::before,
+.hero-asterism::after {
+  content: "";
+  position: absolute;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px oklch(0.80 0.11 82 / 0.8);
+}
+.hero-asterism::before { transform: translate(-50%, -75px); }
+.hero-asterism::after  { transform: translate(-50%, 75px); box-shadow: 0 0 10px oklch(0.72 0.12 278 / 0.8); background: var(--rune); }
+@keyframes hero-asterism-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+.book-header h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: var(--text);
+  text-wrap: balance;
+  text-shadow: 0 0 30px oklch(0.80 0.11 82 / 0.15);
+}
+.book-header .title {
+  margin: 12px 0 0;
+  font-family: var(--font-ui);
+  font-size: clamp(0.92rem, 2vw, 1.1rem);
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.book-header .title::before,
+.book-header .title::after { content: "·"; margin: 0 0.6em; color: var(--text-dim); }
+.book-header .bio {
+  max-width: 52ch;
+  margin: 18px auto 0;
+  color: var(--text-soft);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+.book-header .bio strong { color: var(--text); }
+/* Decorative rule below the header */
+.book-header::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 1px;
+  margin: 24px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+
+/* --- Book frame: leather cover wrapping the open pages --- */
+.book-frame {
+  position: relative;
+  width: min(100% - 2 * var(--gutter), var(--max));
+  margin-inline: auto;
+}
+/* Leather cover board behind the book — a raised binding the pages sit IN.
+   Reads as a solid board: top/outer edge catches candlelight (inset
+   highlight), inner/under edge is shadowed, rounded corners thicken the
+   board so the parchment reads as recessed in a well. */
+.book-frame::before {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  border-radius: 22px;
+  background:
+    /* leather grain noise */
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      oklch(0.16 0.03 300 / 0.09) 0 1px,
+      transparent 1px 3px
+    ),
+    /* arcane leather base, lit from upper area */
+    linear-gradient(160deg, oklch(0.20 0.05 300) 0%, oklch(0.13 0.05 295) 52%, oklch(0.15 0.04 305) 100%);
+  z-index: -1;
+  /* Board thickness: outer highlight (raised) + deep under-edge shadow. */
+  box-shadow:
+    inset 0 2px 1px oklch(0.40 0.05 300 / 0.35),
+    inset 0 0 0 2px oklch(0.30 0.06 300 / 0.30),
+    inset 0 -10px 22px oklch(0 0 0 / 0.55),
+    inset 12px 0 26px -14px oklch(0 0 0 / 0.45),
+    inset -12px 0 26px -14px oklch(0 0 0 / 0.45),
+    0 10px 22px oklch(0 0 0 / 0.45),
+    0 34px 60px oklch(0 0 0 / 0.4);
+  border: 1px solid oklch(0.34 0.06 300 / 0.5);
+}
+/* Warm candlelight glow cast from above */
+.book-frame::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 60%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 60% 55% at 50% 20%,
+    oklch(0.82 0.13 72 / 0.09),
+    transparent 70%
+  );
+  z-index: 1;
+}
+/* Embossed arcane seal behind the book frame — a faint rotating pentacle. */
+.book-seal {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 340px; height: 340px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  animation: seal-rotate 90s linear infinite;
+}
+.book-seal svg {
+  width: 100%; height: 100%;
+  color: var(--gold);
+  filter: drop-shadow(0 0 20px oklch(0.80 0.11 82 / 0.3));
+}
+@keyframes seal-rotate { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* Drenched spell-circle seated beneath the open book — a large engraved
+   arcane ring the tome rests within, slowly breathing and counter-rotating
+   to seat the entrance as a ritual throne. */
+.spell-circle {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: min(760px, 128%);
+  height: min(760px, 128%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  color: var(--gold);
+  opacity: 0.16;
+  animation: spell-circle-rotate 140s linear infinite, spell-circle-breathe 12s ease-in-out infinite;
+  filter: drop-shadow(0 0 26px oklch(0.80 0.11 82 / 0.22));
+}
+.spell-circle svg {
+  width: 100%; height: 100%;
+  display: block;
+}
+@keyframes spell-circle-rotate { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes spell-circle-breathe {
+  0%, 100% { opacity: 0.12; }
+  50%      { opacity: 0.22; }
+}
+
+/* The open book: two facing pages + a center spine. */
+.book {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 14px;
+  /* Grounded shadow: tight contact under the book + wide soft cast onto the
+     "table", with a faint warm candle bloom kept subordinate. */
+  box-shadow:
+    0 2px 4px oklch(0 0 0 / 0.5),
+    0 14px 26px oklch(0 0 0 / 0.45),
+    0 40px 70px -10px oklch(0 0 0 / 0.55),
+    0 70px 120px -30px oklch(0 0 0 / 0.5),
+    0 0 60px oklch(0.82 0.13 72 / 0.05);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s ease;
+}
+
+/* Each printed page. */
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 34px);
+  padding: clamp(38px, 5vw, 68px) clamp(30px, 4.5vw, 60px);
+  text-align: center;
+  text-decoration: none;
+  color: var(--page-ink);
+  background:
+    /* paper grain fiber texture */
+    repeating-linear-gradient(
+      87deg,
+      oklch(1 0 0 / 0.012) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(
+      100% 100% at 50% 50%,
+      oklch(1 0 0 / 0.008),
+      transparent 70%
+    ),
+    /* aged paper fiber + mottling */
+    radial-gradient(120% 90% at 30% 20%, oklch(0.34 0.03 72 / 0.5), transparent 55%),
+    radial-gradient(110% 80% at 80% 90%, oklch(0.20 0.02 60 / 0.45), transparent 60%),
+    repeating-linear-gradient(92deg, oklch(1 0 0 / 0.015) 0 2px, transparent 2px 4px),
+    linear-gradient(165deg, var(--page), var(--page-2));
+  background-blend-mode: normal, normal, normal, normal, overlay, normal;
+  border: 1px solid var(--page-rule);
+  cursor: pointer;
+  transition: transform 0.5s var(--ease), box-shadow 0.4s ease, border-color 0.4s ease, filter 0.4s ease;
+  /* Vignette at page edges for worn parchment look */
+  box-shadow:
+    inset 0 0 60px -20px oklch(0 0 0 / 0.25);
+}
+/* Page-block thickness: the stacked sheets of paper beneath the top leaf.
+   A thin cream deckle peeks out along the bottom + outer edges so the open
+   book reads as a real block of pages, not a single flat plane. */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: auto -2px -7px -2px;
+  height: 9px;
+  border-radius: 0 0 10px 10px;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      oklch(0.86 0.03 85 / 0.0) 0 2px,
+      oklch(0.90 0.03 88 / 0.55) 2px 3px,
+      oklch(0.78 0.03 82 / 0.0) 3px 4px
+    ),
+    linear-gradient(180deg, oklch(0.84 0.03 86 / 0.7), oklch(0.70 0.03 80 / 0.85));
+  box-shadow: 0 6px 8px -4px oklch(0 0 0 / 0.5);
+  z-index: -1;
+}
+/* Concave gutter valley: each page dips into the spine. Darkest at the fold,
+   with a soft highlight ridge just outside the well so the paper visibly
+   curves toward the binding. */
+.page::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 26%;
+  pointer-events: none;
+  z-index: 1;
+}
+.page-left {
+  border-radius: 12px 4px 4px 12px;
+  transform: perspective(1700px) rotateY(1.6deg);
+  transform-origin: right center;
+  box-shadow:
+    inset 0 0 60px -20px oklch(0 0 0 / 0.25),
+    inset -46px 0 60px -30px oklch(0 0 0 / 0.62),
+    inset 18px 0 38px -22px oklch(0.80 0.11 82 / 0.18),
+    inset 0 0 80px -30px oklch(0 0 0 / 0.3);
+}
+.page-left::after {
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(0.86 0.03 85 / 0.10) 58%,
+    oklch(1 0 0 / 0.16) 82%,
+    oklch(0 0 0 / 0.45) 100%
+  );
+}
+.page-right {
+  border-radius: 4px 12px 12px 4px;
+  transform: perspective(1700px) rotateY(-1.6deg);
+  transform-origin: left center;
+  box-shadow:
+    inset 0 0 60px -20px oklch(0 0 0 / 0.25),
+    inset 46px 0 60px -30px oklch(0 0 0 / 0.62),
+    inset -18px 0 38px -22px oklch(0.72 0.12 278 / 0.16),
+    inset 0 0 80px -30px oklch(0 0 0 / 0.3);
+}
+.page-right::after {
+  left: 0;
+  background: linear-gradient(
+    270deg,
+    transparent 0%,
+    oklch(0.86 0.03 85 / 0.10) 58%,
+    oklch(1 0 0 / 0.16) 82%,
+    oklch(0 0 0 / 0.45) 100%
+  );
+}
+.page:hover, .page:focus-visible {
+  outline: none;
+  border-color: var(--border-lit);
+  filter: brightness(1.06);
+  box-shadow:
+    inset 0 0 60px -20px oklch(0 0 0 / 0.25),
+    0 0 44px oklch(0.80 0.11 82 / 0.32),
+    0 0 80px oklch(0.80 0.11 82 / 0.12),
+    var(--shadow);
+}
+/* Hover keeps each page's concave gutter shading; the glow layers on top. */
+.page-left:hover, .page-left:focus-visible {
+  transform: perspective(1700px) rotateY(0.7deg) translateY(-4px);
+  box-shadow:
+    inset 0 0 60px -20px oklch(0 0 0 / 0.25),
+    inset -46px 0 60px -30px oklch(0 0 0 / 0.62),
+    inset 18px 0 38px -22px oklch(0.80 0.11 82 / 0.18),
+    inset 0 0 80px -30px oklch(0 0 0 / 0.3),
+    0 0 44px oklch(0.80 0.11 82 / 0.30);
+}
+.page-right:hover, .page-right:focus-visible {
+  transform: perspective(1700px) rotateY(-0.7deg) translateY(-4px);
+  box-shadow:
+    inset 0 0 60px -20px oklch(0 0 0 / 0.25),
+    inset 46px 0 60px -30px oklch(0 0 0 / 0.62),
+    inset -18px 0 38px -22px oklch(0.72 0.12 278 / 0.16),
+    inset 0 0 80px -30px oklch(0 0 0 / 0.3),
+    0 0 44px oklch(0.72 0.12 278 / 0.28);
+}
+
+/* Corner flourishes — gold-leaf ornamental corners on each page */
+.corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  color: var(--gold);
+  opacity: 0.4;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+  z-index: 2;
+}
+.corner svg { width: 100%; height: 100%; display: block; }
+.corner-tl { top: 10px; left: 10px; }
+.corner-tr { top: 10px; right: 10px; }
+.corner-bl { bottom: 10px; left: 10px; }
+.corner-br { bottom: 10px; right: 10px; }
+.page:hover .corner,
+.page:focus-visible .corner {
+  opacity: 0.7;
+  filter: drop-shadow(0 0 6px oklch(0.80 0.11 82 / 0.5));
+}
+
+/* Dog-eared corner — a folded page tip at the right page's lower-right,
+   giving the open book a worn, handled character. Pure CSS triangle with
+   a soft cast shadow into the page. */
+.dogear {
+  position: absolute;
+  right: 0; bottom: 0;
+  width: 30px; height: 30px;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, transparent 50%, oklch(0.86 0.03 86 / 0.95) 50%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  box-shadow: -3px -3px 8px -2px oklch(0 0 0 / 0.4);
+  border-bottom-right-radius: 12px;
+}
+.dogear::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 48%, oklch(0 0 0 / 0.18) 52%, transparent 70%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* The center gutter / spine where the pages meet. */
+.book-spine {
+  position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  width: clamp(28px, 4.4%, 50px);
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
+  /* Deep recessed binding channel — the lowest point of the gutter valley */
+  background: linear-gradient(
+    90deg,
+    oklch(0.12 0.02 50 / 0.35) 0%,
+    oklch(0 0 0 / 0.65) 26%,
+    oklch(0 0 0 / 0.8) 50%,
+    oklch(0 0 0 / 0.65) 74%,
+    oklch(0.12 0.02 50 / 0.35) 100%
+  );
+  box-shadow:
+    inset 4px 0 10px oklch(0 0 0 / 0.35),
+    inset -4px 0 10px oklch(0 0 0 / 0.35);
+}
+/* Gold thread running down the fold + diamond nodes along the stitching */
+.book-spine::after {
+  content: "";
+  position: absolute;
+  top: 6%; bottom: 6%; left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 28px,
+      oklch(0.80 0.11 82 / 0.4) 28px 30px,
+      transparent 30px 58px
+    ),
+    linear-gradient(180deg, transparent, oklch(0.80 0.11 82 / 0.55), transparent);
+}
+/* Binding stitches — repeating dashed gold pattern along the spine */
+.book-spine::before {
+  content: "";
+  position: absolute;
+  top: 8%; bottom: 8%; left: 50%;
+  width: 0;
+  transform: translateX(-50%);
+  border-left: 1px dashed oklch(0.80 0.11 82 / 0.25);
+}
+
+/* Right page heading block */
+.page-head {
+  position: relative;
+  z-index: 2;
+  margin: auto 0;
+}
+.page-head h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  margin: 0;
+  letter-spacing: 0.01em;
+  color: var(--page-ink);
+  text-wrap: balance;
+}
+.page-sigil-wrap {
+  position: relative;
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+}
+.page-sigil {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--gold);
+  filter: drop-shadow(0 0 10px oklch(0.80 0.11 82 / 0.4));
+  opacity: 0.75;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+  animation: sigil-breathe 4s ease-in-out infinite;
+}
+/* Wax-seal ring: a gilded circle that draws in on hover. */
+.page-sigil-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 80px; height: 80px;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.page-sigil-ring circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-dasharray: 244;
+  stroke-dashoffset: 244;
+  transition: stroke-dashoffset 0.7s var(--ease);
+}
+.page:hover .page-sigil-ring,
+.page:focus-visible .page-sigil-ring { opacity: 0.6; }
+.page:hover .page-sigil-ring circle,
+.page:focus-visible .page-sigil-ring circle { stroke-dashoffset: 0; }
+.page-right .page-sigil {
+  color: var(--rune);
+  filter: drop-shadow(0 0 10px oklch(0.72 0.12 278 / 0.4));
+  animation: sigil-breathe-violet 4s ease-in-out infinite;
+}
+.page-right .page-sigil-ring circle { stroke: var(--rune); }
+.page:hover .page-sigil,
+.page:focus-visible .page-sigil {
+  opacity: 1;
+  filter: drop-shadow(0 0 16px oklch(0.80 0.11 82 / 0.6));
+}
+.page-right:hover .page-sigil,
+.page-right:focus-visible .page-sigil {
+  filter: drop-shadow(0 0 16px oklch(0.72 0.12 278 / 0.6));
+}
+@keyframes sigil-breathe {
+  0%, 100% { filter: drop-shadow(0 0 8px oklch(0.80 0.11 82 / 0.3)); }
+  50%      { filter: drop-shadow(0 0 16px oklch(0.80 0.11 82 / 0.55)); }
+}
+@keyframes sigil-breathe-violet {
+  0%, 100% { filter: drop-shadow(0 0 8px oklch(0.72 0.12 278 / 0.3)); }
+  50%      { filter: drop-shadow(0 0 16px oklch(0.72 0.12 278 / 0.55)); }
+}
+.page-intro {
+  max-width: 46ch;
+  margin: 16px auto 0;
+  color: var(--page-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.page-fact {
+  max-width: 46ch;
+  margin: 14px auto 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--page-rule);
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Contact chips */
+.contacts {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+  margin-top: clamp(34px, 6vh, 52px);
+}
+.contact-chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 9px 16px; border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.contact-chip svg { width: 17px; height: 17px; color: var(--gold); flex: none; }
+.contact-chip:hover {
+  color: var(--text); border-color: var(--border-lit);
+  box-shadow: 0 0 16px oklch(0.80 0.11 82 / 0.22); transform: translateY(-2px);
+}
+
+/* ============================================================
+   WING PAGES (cv.html / work.html)
+   ============================================================ */
+.wing {
+  padding: clamp(34px, 6vh, 64px) 0 80px;
+}
+.wing-header {
+  text-align: center;
+  margin-bottom: clamp(30px, 5vh, 54px);
+}
+.wing-header .crest { width: 56px; height: 56px; color: var(--gold); margin: 0 auto 14px; display: block; }
+.wing-header h1 {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.9rem, 5vw, 2.9rem); margin: 0; letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.wing-header .sub {
+  font-family: var(--font-ui); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--gold); margin: 10px 0 0; font-size: 1rem;
+}
+.wing-header .contacts { margin-top: 22px; }
+
+/* Sticky section TOC pills */
+.toc {
+  position: sticky; top: 60px; z-index: 30;
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: clamp(28px, 5vh, 48px);
+}
+.toc-inner {
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0;
+  scrollbar-width: thin;
+}
+.toc a {
+  flex: none;
+  font-family: var(--font-ui); font-size: 0.86rem; letter-spacing: 0.03em;
+  color: var(--text-soft);
+  padding: 7px 15px; border-radius: 999px; border: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  white-space: nowrap;
+}
+.toc a:hover { color: var(--gold); }
+.toc a.active {
+  color: var(--gold-bright);
+  border-color: var(--border-lit);
+  background: oklch(0.80 0.11 82 / 0.10);
+}
+
+/* A section of the wing, led by a rune + title divider. */
+.shelf-section { margin-bottom: clamp(48px, 8vh, 86px); }
+.shelf-head {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 26px;
+}
+.shelf-head h2 {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem); margin: 0; letter-spacing: 0.01em;
+  color: var(--text);
+}
+.shelf-head .rune { width: 30px; height: 30px; color: var(--gold); flex: none; }
+.shelf-head .line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border-lit), transparent); }
+
+/* ============================================================
+   ENTRY (always-expanded inline block — replaces the old
+   book/scroll reading mechanic; details stay open on the page)
+   ============================================================ */
+.entries {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+/* Vertical stack for content-heavy sections (long prose/long lists). */
+.entries--rows {
+  grid-template-columns: 1fr;
+}
+/* ponytail: heuristic — entries whose body lists 4+ items get a full row
+   so long text isn't squeezed into a narrow grid cell. Drop if over-spanning. */
+.entries:has(.entry-body li:nth-child(4)) .entry {
+  grid-column: 1 / -1;
+}
+.entry {
+  padding: 18px 22px;
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.entry:hover {
+  border-color: var(--border-lit);
+  box-shadow: 0 0 18px oklch(0.80 0.11 82 / 0.18);
+}
+.entry-head { margin-bottom: 10px; }
+.entry-title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 1.15rem; margin: 0; letter-spacing: 0.01em;
+  color: var(--text);
+}
+.entry-meta {
+  font-family: var(--font-ui); font-size: 0.86rem; letter-spacing: 0.04em;
+  color: var(--meta); text-transform: uppercase; margin: 4px 0 0;
+}
+.entry-body { color: var(--text-soft); line-height: 1.6; }
+.entry-body p, .entry-body li { color: var(--text-soft); }
+.entry-body ul { padding-left: 1.1em; margin: 8px 0; }
+.entry-body li { margin: 6px 0; }
+.entry-body strong { color: var(--text); }
+.entry-body a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+.entry-body a:hover { color: var(--gold-bright); }
+
+/* ============================================================
+   Generic content blocks (for non-book sections like References)
+   ============================================================ */
+.ledger { display: grid; gap: 14px; }
+.courses-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 28px; align-items: start; }
+@media (max-width: 640px) { .courses-columns { grid-template-columns: 1fr; gap: 20px; } }
+.courses-columns .course-col { display: flex; flex-direction: column; gap: 8px; }
+.courses-columns .row { padding: 11px 14px; }
+.ledger .row {
+  padding: 16px 20px; border-radius: 10px;
+  background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
+  border: 1px solid var(--border);
+}
+.ledger .row strong { color: var(--text); }
+.ledger .row .meta { color: var(--text-dim); font-size: 0.88rem; }
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+  padding: 34px var(--gutter);
+  text-align: center;
+  background: color-mix(in oklab, var(--bg-2) 70%, transparent);
+}
+.footer-rune {
+  display: block;
+  width: 100px;
+  height: 10px;
+  margin: 0 auto 18px;
+  color: var(--gold);
+  opacity: 0.6;
+}
+.footer .line { font-family: var(--font-display); font-size: 1.15rem; color: var(--gold); letter-spacing: 0.02em; }
+.footer .contact { margin-top: 10px; color: var(--text-soft); font-size: 0.92rem; }
+.footer .contact a { color: var(--text-soft); }
+.footer .contact a:hover { color: var(--gold); }
+.footer .copy { margin-top: 12px; color: var(--text-dim); font-size: 0.82rem; }
+
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 8px 0 0; font-family: var(--font-ui);
+  color: var(--text-soft); letter-spacing: 0.03em;
+}
+.back-link:hover { color: var(--gold); }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: none; }
+.stagger > * { opacity: 0; transform: translateY(22px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.stagger.is-visible > * { opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+
+/* ---------- Entrance hall load choreography ----------
+   Default visible (no blank section if stagger never fires); when JS
+   marks the body `.js-loaded`, the staged entrance plays, then settles. */
+body.js-loaded .entrance .reveal { opacity: 0; transform: translateY(26px); }
+body.js-loaded .entrance .reveal.is-visible {
+  opacity: 1; transform: none;
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+body.js-loaded .entrance .book-header.is-visible { transition-delay: 0.05s; }
+body.js-loaded .entrance .book-frame.is-visible { transition-delay: 0.18s; }
+body.js-loaded .entrance .contacts.is-visible { transition-delay: 0.30s; }
+
+/* Open-book arrival: the tome swings open from the spine on load. The
+   book starts closed (leaves folded nearly shut), then falls open to its
+   resting perspective. Settled-open is the default state, so there is no
+   blank section if the JS never fires. */
+body.js-loaded .book.is-opening { animation: book-lift 1.15s var(--ease) both; }
+body.js-loaded .book.is-opening .page-left { animation: page-open-left 1.15s var(--ease) both; }
+body.js-loaded .book.is-opening .page-right { animation: page-open-right 1.15s var(--ease) both; }
+@keyframes page-open-left {
+  0%   { transform: perspective(1700px) rotateY(62deg); opacity: 0.35; }
+  60%  { opacity: 1; }
+  100% { transform: perspective(1700px) rotateY(1.6deg); }
+}
+@keyframes page-open-right {
+  0%   { transform: perspective(1700px) rotateY(-62deg); opacity: 0.35; }
+  60%  { opacity: 1; }
+  100% { transform: perspective(1700px) rotateY(-1.6deg); }
+}
+@keyframes book-lift {
+  0%   { transform: translateY(22px) scale(0.97); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Hero crest rise — the rune-hero seal lifts and settles on load. */
+.book-header .rune-hero { transform-origin: 50% 50%; }
+body.js-loaded .book-header .rune-hero { animation: hero-crest-rise 1.2s var(--ease) both; }
+@keyframes hero-crest-rise {
+  0%   { opacity: 0; transform: rotate(-14deg) scale(0.8); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .toc { top: 60px; }
+  .book-header { margin-bottom: clamp(20px, 4vh, 36px); }
+  .book-header .rune-hero { width: 64px; height: 64px; }
+  .hero-ring { width: 96px; height: 96px; }
+  .hero-ring--inner { width: 80px; height: 80px; }
+  .book-header .bio { font-size: 0.96rem; }
+  /* Book frame shrinks on mobile */
+  .book-frame::before { inset: -6px; border-radius: 14px; }
+  .book-frame::after { display: none; }
+  .book { grid-template-columns: 1fr; }
+  .page-left, .page-right {
+    transform: none;
+    border-radius: 12px;
+    box-shadow:
+      inset 0 0 50px -18px oklch(0 0 0 / 0.3),
+      inset 0 -26px 44px -28px oklch(0 0 0 / 0.5),
+      inset 0 26px 44px -28px oklch(0 0 0 / 0.4);
+  }
+  /* Stacked pages: the gutter valley becomes a horizontal fold shadow at the
+     bottom edge (where this page meets the next), not a side gradient. */
+  .page::after {
+    top: auto; bottom: 0; left: 0; right: 0;
+    width: auto; height: 22%;
+    background: linear-gradient(
+      0deg,
+      oklch(0 0 0 / 0.42) 0%,
+      oklch(1 0 0 / 0.12) 38%,
+      transparent 100%
+    );
+  }
+  /* Page-block deckle: thicker where the stack sits on the "table". */
+  .page::before { inset: auto -1px -6px -1px; height: 8px; }
+  .page-left { border-bottom: none; }
+  .page-right { border-top: none; }
+  /* Corner flourishes reduce on mobile */
+  .corner { opacity: 0.2; width: 30px; height: 30px; }
+  /* Page sigils shrink on mobile */
+  .page-sigil-wrap { width: 48px; height: 48px; }
+  .book-seal { width: 240px; height: 240px; }
+  /* spine becomes a horizontal fold between the stacked pages */
+  .book-spine {
+    top: auto; bottom: auto; left: 0; right: 0;
+    width: auto; height: clamp(22px, 4%, 40px);
+    transform: translateY(-50%);
+    background: linear-gradient(
+      180deg,
+      transparent 0,
+      oklch(0 0 0 / 0.35) 32%,
+      oklch(0 0 0 / 0.62) 50%,
+      oklch(0 0 0 / 0.35) 68%,
+      transparent 100%
+    );
+  }
+  .book-spine::after {
+    top: 50%; bottom: auto; left: 6%; right: 6%;
+    width: auto; height: 1px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, transparent, oklch(0.80 0.11 82 / 0.5), transparent);
+  }
+  .book-spine::before {
+    top: 50%; bottom: auto; left: 0; right: 0;
+    width: auto; height: 0;
+    border-left: none;
+    border-top: 1px dashed oklch(0.80 0.11 82 / 0.25);
+    transform: translateY(-50%);
+  }
+  .footer-rune { width: 80px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .mote, .arcane-wash, .arcane-wash::after, .plaque { animation: none !important; }
+  .hero-ring, .book-seal, .starfield, .page-sigil,
+  .hero-asterism, .book-header::before, .book-header .rune-hero { animation: none !important; }
+  .spell-circle, .book-header .rune-hero::before, .book-header .rune-hero::after,
+  .wand-sigil, .book.is-opening, .book.is-opening .page-left, .book.is-opening .page-right { animation: none !important; }
+  .spell-circle { opacity: 0.16; }
+  .page-left, .page-right { transform: none !important; }
+  .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+  .wing-header .crest.is-loaded { animation: none !important; transform: none !important; }
+  .wing-header.stagger > * { opacity: 1 !important; transform: none !important; }
+  .entry.lit:hover { animation: none !important; }
+  .book-frame::after { animation: none !important; }
+}
+
+/* ---------- No-JS fallback ---------- */
+.no-js .reveal, .no-js .stagger > * { opacity: 1 !important; transform: none !important; }
+
+/* ---------- Print: clean CV, no arcane atmosphere ---------- */
+@media print {
+  .library-scene, .shelves, .arcane-wash, .starfield, .dust,
+  .vignette, .candle-glow, .nav, .footer-rune, .book-seal, .book-frame::before,
+  .book-frame::after, .book-spine, .corner, .hero-ring, .hero-asterism,
+  .page-sigil-ring, .book-header::before, .dogear,
+  .page::before, .page::after { display: none !important; }
+  body { background: #fff !important; color: #111 !important; overflow: visible; }
+  .entrance { min-height: 0; padding: 0; }
+  .wrap, .book-frame { width: 100%; margin: 0; }
+  .book-header h1, .book-header .title, .book-header .bio { color: #111 !important; text-shadow: none; }
+  .book-header .eyebrow { color: #444 !important; }
+  .book { grid-template-columns: 1fr 1fr; box-shadow: none; gap: 0; }
+  .page {
+    background: #fff !important; color: #111 !important; border: 1px solid #ccc;
+    box-shadow: none !important; filter: none !important; transform: none !important;
+  }
+  .page-sigil { color: #111 !important; filter: none; opacity: 1; }
+  .page-intro, .contact-chip { color: #222 !important; }
+  .contact-chip { border-color: #ccc; background: #fff; }
+  .contact-chip svg { color: #111; }
+  .footer { background: #fff; border-top: 1px solid #ccc; }
+  .footer .line, .footer .contact a { color: #111 !important; }
+  a { color: #111 !important; }
+}
+
+/* ============================================================
+   WING CRAFT — ornate sigils, gilded drop-caps, alchemy rules,
+   lit entries, choreographed header. All scoped to `.wing`, so
+   the entrance hall (index.html) is untouched. Reduced-motion
+   parity handled above.
+   ============================================================ */
+
+/* --- One-time choreographed wing header reveal ---
+   Default state is visible (no blank section if the stagger
+   never fires); when JS marks the body `.js-loaded` the
+   cascade lets the staged entrance play, then settles.
+   Scoped to `.wing-header` only — page sections keep their
+   existing `.reveal` observer. */
+body.js-loaded .wing-header.stagger > * { opacity: 0; transform: translateY(22px); }
+body.js-loaded .wing-header.stagger.is-visible > * {
+  opacity: 1; transform: none;
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+body.js-loaded .wing-header.stagger.is-visible > *:nth-child(2) { transition-delay: 0.10s; }
+body.js-loaded .wing-header.stagger.is-visible > *:nth-child(3) { transition-delay: 0.20s; }
+body.js-loaded .wing-header.stagger.is-visible > *:nth-child(4) { transition-delay: 0.30s; }
+
+.wing-header .crest.is-loaded {
+  animation: crest-rise 1.1s var(--ease) both;
+}
+@keyframes crest-rise {
+  0%   { opacity: 0; transform: rotate(-12deg) scale(0.82); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+
+/* A faint perpetual spin on the outermost ring of an ornate crest —
+   decorative only, frozen under reduced-motion (handled above). */
+.crest-ring--outer { transform-origin: 50% 50%; animation: ring-slow 38s linear infinite; }
+@keyframes ring-slow { to { transform: rotate(360deg); } }
+
+/* --- Alchemy-rule divider: gold hairline + a centered diamond node. ---
+   Replaces the plain gradient line on `.shelf-head`. Same flex slot. */
+.shelf-head .alchemy-rule {
+  flex: 1;
+  height: 1px;
+  position: relative;
+  background: linear-gradient(90deg, color-mix(in oklab, var(--wing-glow) 70%, transparent), transparent 92%);
+}
+.shelf-head .alchemy-rule::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  width: 7px; height: 7px;
+  transform: translateY(-50%) rotate(45deg);
+  background: var(--wing-accent);
+  box-shadow: 0 0 8px color-mix(in oklab, var(--wing-glow) 75%, transparent);
+}
+
+/* --- Lit entry headers: stronger glow + a brief candle flicker on hover. ---
+   Flicker is hover-only and capped (animation-iteration-count: 2) so it
+   never loops distractingly; reduced-motion kills it above. */
+.entry.lit {
+  position: relative;
+}
+.entry.lit::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.entry.lit:hover {
+  border-color: transparent; /* swap to the ::after border so the glow reads as a halo */
+}
+.entry.lit:hover::after {
+  border-color: color-mix(in oklab, var(--wing-glow) 70%, transparent);
+  box-shadow: 0 0 22px color-mix(in oklab, var(--wing-glow) 32%, transparent),
+              inset 0 0 14px color-mix(in oklab, var(--wing-glow) 12%, transparent);
+  animation: candle-flicker 0.46s ease-in-out 2;
+}
+@keyframes candle-flicker {
+  0%, 100% { box-shadow: 0 0 22px color-mix(in oklab, var(--wing-glow) 32%, transparent),
+                          inset 0 0 14px color-mix(in oklab, var(--wing-glow) 10%, transparent); }
+  50%      { box-shadow: 0 0 30px color-mix(in oklab, var(--wing-glow) 50%, transparent),
+                          inset 0 0 18px color-mix(in oklab, var(--wing-glow) 20%, transparent); }
+}
+
+/* Subtle alternating row tint for long entries lists (Teaching, Projects,
+   Courses) — improves scannability without "card-grid" reflex. */
+.entries .entry:nth-child(even),
+.ledger .row:nth-child(even) {
+  background: color-mix(in oklab, var(--bg-elev) 80%, color-mix(in oklab, var(--wing-glow) 6%, var(--bg-2)));
+}
+
+/* Select Courses: per-course rows. Grade is accent-tinted and pushed to the
+   right so the eye scans course → score without a card grid. */
+.ledger .row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+.ledger .row .grade {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  color: var(--wing-accent-bright);
+  letter-spacing: 0.02em;
+}
+.ledger .row.period {
+  display: block;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  border-top: 1px solid color-mix(in oklab, var(--wing-glow) 22%, transparent);
+}
+.ledger .row.period:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* Per-section sigil accent: the rune glyph inherits the wing accent and
+   glows softly on section hover. */
+.shelf-section:hover .shelf-head .rune {
+  color: var(--wing-accent-bright);
+  filter: drop-shadow(0 0 8px color-mix(in oklab, var(--wing-glow) 60%, transparent));
+  transition: color 0.4s ease, filter 0.4s ease;
+}
+.shelf-head .rune { color: var(--wing-accent); transition: color 0.4s ease, filter 0.4s ease; }
+
+/* Wing persona TOC active pill glows in the wing accent. */
+.wing[data-wing] .toc a.active {
+  color: var(--wing-accent-bright);
+  border-color: color-mix(in oklab, var(--wing-glow) 80%, transparent);
+  background: color-mix(in oklab, var(--wing-glow) 14%, transparent);
+  box-shadow: 0 0 14px color-mix(in oklab, var(--wing-glow) 28%, transparent);
+}
+
+/* Contact chips share the wing accent on hover in the wing pages. */
+.wing[data-wing] .contact-chip:hover {
+  color: var(--text);
+  border-color: color-mix(in oklab, var(--wing-glow) 80%, transparent);
+  box-shadow: 0 0 16px color-mix(in oklab, var(--wing-glow) 26%, transparent);
+}
+
+/* Ornate crest scaling on small screens — keep the sigil legible, not huge. */
+@media (max-width: 720px) {
+  .wing-header .crest { width: 46px; height: 46px; }
+  .entry-title.lead-cap::first-letter { font-size: 2.3em; }
+}
+

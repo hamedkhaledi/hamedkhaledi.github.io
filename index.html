@@ -1,41 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" data-theme="light">
+<html lang="en" class="no-js" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamed Khademi Khaledi — Resume</title>
-  <meta name="description" content="AI Engineer & NLP Researcher. Resume of Hamed Khademi Khaledi." />
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Hamed Khademi Khaledi — The Arcane Library</title>
+  <meta name="description" content="AI Engineer & NLP Researcher. Enter the Arcane Library — choose the Engineer's Wing or the Scholar's Archive." />
+  <link rel="stylesheet" href="assets/library.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <noscript><style>.reveal{opacity:1!important;transform:none!important}.hero::before,.hero::after{opacity:1!important;transform:none!important}.crest-orbit{display:none}</style></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <noscript><style>.reveal,.stagger>*{opacity:1!important;transform:none!important}.mote,.arcane-wash,.plaque{animation:none!important}</style></noscript>
 </head>
 <body>
-  <div class="stars" aria-hidden="true"></div>
-  <div class="stars-2" aria-hidden="true"></div>
-  <div class="aurora-rot" aria-hidden="true"></div>
-  <div class="aurora" aria-hidden="true"></div>
-  <div class="aurora-grain" aria-hidden="true"></div>
+  <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0">
+    <defs>
+      <symbol id="book-mark" viewBox="0 0 32 32">
+        <path d="M6 5h9a3 3 0 0 1 3 3v19l-12-4V5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M26 5h-9a3 3 0 0 0-3 3v19l12-4V5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M12 11h8M12 15h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="library-scene" aria-hidden="true"></div>
+  <div class="shelves" aria-hidden="true"></div>
+  <div class="arcane-wash" aria-hidden="true"></div>
+  <div class="starfield" aria-hidden="true"></div>
+  <div class="dust" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="candle-glow" aria-hidden="true"></div>
+
   <nav class="nav">
     <div class="wrap nav-inner">
       <div class="brand">
-        <a href="index.html">
+        <a href="index.html" aria-label="Hamed Khademi Khaledi — home">
           <span class="mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.3"/>
-              <path d="M16 4 27 22H5L16 4Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-              <path d="M16 28 5 10h22L16 28Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-              <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.1"/>
-            </svg>
+            <svg class="mark-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#book-mark"/></svg>
           </span>
-          Hamed Khademi Khaledi
         </a>
       </div>
       <div class="nav-links">
-        <a href="cv.html">CV</a>
-        <a href="work.html">Academic</a>
-        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" title="Toggle light/dark">
+        <a href="cv.html">Engineer's Wing</a>
+        <a href="work.html">Scholar's Archive</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle light and dark library" title="Toggle theme">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
             <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
           </svg>
@@ -44,30 +51,137 @@
     </div>
   </nav>
 
-  <header class="hero wrap hero-anim">
-    <div class="crest-wrap">
-      <span class="crest-orbit" aria-hidden="true">
-        <span class="rune-dot"></span>
-        <span class="rune-dot b"></span>
-      </span>
-      <span class="crest" aria-hidden="true">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="0.8" opacity="0.25"/>
-          <g class="ring-spin">
-            <circle cx="32" cy="32" r="27" stroke="currentColor" stroke-width="1" stroke-dasharray="1.5 5" opacity="0.7"/>
-            <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="0.6" stroke-dasharray="0.5 3" opacity="0.45"/>
-          </g>
-          <path d="M32 8 52 19.5v25L32 56 12 44.5v-25L32 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          <g class="ring-spin-rev">
-            <circle cx="32" cy="32" r="14" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.55"/>
-          </g>
-          <text x="32" y="40" text-anchor="middle" font-family="Space Grotesk, Inter, sans-serif" font-size="20" font-weight="700" fill="currentColor" letter-spacing="-1">HK</text>
+  <main class="entrance wrap">
+    <div class="book-header reveal">
+      <span class="rune-hero" aria-hidden="true">
+        <span class="hero-ring" aria-hidden="true"></span>
+        <span class="hero-ring hero-ring--inner" aria-hidden="true"></span>
+        <span class="hero-asterism" aria-hidden="true"></span>
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="36" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.6"/>
+          <circle cx="40" cy="40" r="32" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+          <path d="M40 6v6M40 68v6M6 40h6M68 40h6" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+          <path d="M40 16v48M20 28l40 24M60 28l-40 24" stroke="currentColor" stroke-width="0.6" opacity="0.3"/>
+          <path d="M40 30l6 10-6 10-6-10z" stroke="currentColor" stroke-width="0.9" fill="none" opacity="0.7"/>
+          <circle cx="40" cy="40" r="2.5" stroke="currentColor" stroke-width="0.8"/>
+          <circle cx="40" cy="40" r="1" fill="currentColor" opacity="0.6"/>
+          <circle cx="20" cy="20" r="1.2" fill="currentColor" opacity="0.25"/>
+          <circle cx="60" cy="20" r="1.2" fill="currentColor" opacity="0.25"/>
+          <circle cx="20" cy="60" r="1.2" fill="currentColor" opacity="0.25"/>
+          <circle cx="60" cy="60" r="1.2" fill="currentColor" opacity="0.25"/>
         </svg>
       </span>
+      <h2 class="eyebrow">The Arcane Library</h2>
+      <h1>Hamed Khademi Khaledi</h1>
+      <p class="title">AI Engineer &amp; NLP Researcher</p>
+      <p class="bio">
+        Welcome, traveler. Within these halls lie two accounts of the same sorcerer of systems —
+        the <strong>Engineer's Wing</strong> of production AI, and the <strong>Scholar's Archive</strong>
+        of research and teaching. Turn to the page that suits your quest.
+      </p>
     </div>
-    <h1>Hamed Khademi Khaledi</h1>
-    <p class="tagline">AI Engineer &amp; NLP Researcher — building and deploying LLMs, RAG systems, and production-grade NLP services.</p>
-    <div class="contacts">
+
+    <div class="book-frame">
+      <div class="spell-circle" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="190" stroke="currentColor" stroke-width="0.6" opacity="0.4"/>
+          <circle cx="200" cy="200" r="160" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 6" opacity="0.3"/>
+          <circle cx="200" cy="200" r="120" stroke="currentColor" stroke-width="0.4" opacity="0.25"/>
+          <path d="M200 10l32.4 103.2h104.8L243.2 196.4l32.4 103.2L200 219.6 124.4 299.6l32.4-103.2L62.8 113.2h104.8z" stroke="currentColor" stroke-width="0.7" fill="none" opacity="0.3"/>
+          <circle cx="200" cy="200" r="22" stroke="currentColor" stroke-width="0.7" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="book-seal" aria-hidden="true">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="90" stroke="currentColor" stroke-width="0.6" opacity="0.4"/>
+          <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="0.4" stroke-dasharray="3 6" opacity="0.3"/>
+          <circle cx="100" cy="100" r="70" stroke="currentColor" stroke-width="0.5" opacity="0.25"/>
+          <path d="M100 10l17.6 56.2h59l-47.8 34.7 18.2 56-47-34.2-47 34.2 18.2-56L23.4 66.2h59z" stroke="currentColor" stroke-width="0.7" fill="none" opacity="0.35"/>
+          <circle cx="100" cy="100" r="12" stroke="currentColor" stroke-width="0.6" opacity="0.4"/>
+          <circle cx="100" cy="100" r="4" fill="currentColor" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="book reveal">
+        <a class="page page-left" href="cv.html" aria-label="Open the Engineer's Wing">
+          <span class="corner corner-tl" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M4 44V8a4 4 0 0 1 4-4h36" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M10 42V14a4 4 0 0 1 4-4h24" stroke="currentColor" stroke-width="0.6" opacity="0.35"/><circle cx="12" cy="12" r="1.8" fill="currentColor" opacity="0.45"/><path d="M14 12c3 0 5-2 8-2s5 2 8 2" stroke="currentColor" stroke-width="0.6" opacity="0.4" fill="none"/><path d="M8 8l4 4" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></svg></span>
+          <span class="corner corner-tr" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M44 44V8a4 4 0 0 0-4-4H4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M38 42V14a4 4 0 0 0-4-4H10" stroke="currentColor" stroke-width="0.6" opacity="0.35"/><circle cx="36" cy="12" r="1.8" fill="currentColor" opacity="0.45"/><path d="M34 12c-3 0-5-2-8-2s-5 2-8 2" stroke="currentColor" stroke-width="0.6" opacity="0.4" fill="none"/><path d="M40 8l-4 4" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></svg></span>
+          <span class="corner corner-bl" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M4 4v36a4 4 0 0 0 4 4h36" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M10 6v28a4 4 0 0 0 4 4h24" stroke="currentColor" stroke-width="0.6" opacity="0.35"/><circle cx="12" cy="36" r="1.8" fill="currentColor" opacity="0.45"/><path d="M14 36c3 0 5 2 8 2s5-2 8-2" stroke="currentColor" stroke-width="0.6" opacity="0.4" fill="none"/><path d="M8 40l4-4" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></svg></span>
+          <span class="corner corner-br" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M44 4v36a4 4 0 0 1-4 4H4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M38 6v28a4 4 0 0 1-4 4H10" stroke="currentColor" stroke-width="0.6" opacity="0.35"/><circle cx="36" cy="36" r="1.8" fill="currentColor" opacity="0.45"/><path d="M34 36c-3 0-5 2-8 2s-5-2-8-2" stroke="currentColor" stroke-width="0.6" opacity="0.4" fill="none"/><path d="M40 40l-4-4" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></svg></span>
+          <div class="page-head">
+            <span class="page-sigil-wrap" aria-hidden="true">
+            <svg class="page-sigil" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Anvil silhouette -->
+              <path d="M16 44h32v4H16z" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              <path d="M20 44v-8h24v8" stroke="currentColor" stroke-width="1.1" opacity="0.6"/>
+              <path d="M14 36h36l4 8H10z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" opacity="0.7"/>
+              <path d="M22 36V24c0-2 1-4 3-5h14c2 1 3 3 3 5v12" stroke="currentColor" stroke-width="1.1" opacity="0.6"/>
+              <!-- Hammer above -->
+              <path d="M28 18l4-6 4 6" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" opacity="0.5"/>
+              <path d="M32 12v10" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+              <!-- Ember spark -->
+              <circle cx="32" cy="30" r="2" fill="currentColor" opacity="0.7"/>
+              <circle cx="32" cy="30" r="4" stroke="currentColor" stroke-width="0.6" opacity="0.3"/>
+              <!-- Corner sigil dots -->
+              <circle cx="12" cy="12" r="1.2" fill="currentColor" opacity="0.2"/>
+              <circle cx="52" cy="12" r="1.2" fill="currentColor" opacity="0.2"/>
+              <circle cx="12" cy="52" r="1.2" fill="currentColor" opacity="0.2"/>
+              <circle cx="52" cy="52" r="1.2" fill="currentColor" opacity="0.2"/>
+            </svg>
+            <svg class="page-sigil-ring" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="39"/></svg>
+            </span>
+            <h2>The Engineer's Wing</h2>
+            <p class="page-intro">
+              Experience, selected projects, and technical skills — the production-AI account of the
+              same sorcerer of systems.
+            </p>
+          </div>
+        </a>
+
+        <div class="book-spine" aria-hidden="true"></div>
+
+        <a class="page page-right" href="work.html" aria-label="Open the Scholar's Archive">
+          <span class="corner corner-tl" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M44 44V8a4 4 0 0 0-4-4H4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M38 42V14a4 4 0 0 0-4-4H10" stroke="currentColor" stroke-width="0.6" opacity="0.35"/><circle cx="36" cy="12" r="1.8" fill="currentColor" opacity="0.45"/><path d="M34 12c-3 0-5-2-8-2s-5 2-8 2" stroke="currentColor" stroke-width="0.6" opacity="0.4" fill="none"/><path d="M40 8l-4 4" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></svg></span>
+          <span class="corner corner-tr" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M44 44V8a4 4 0 0 0-4-4H4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M38 42V14a4 4 0 0 0-4-4H10" stroke="currentColor" stroke-width="0.6" opacity="0.35"/><circle cx="36" cy="12" r="1.8" fill="currentColor" opacity="0.45"/><path d="M34 12c-3 0-5-2-8-2s-5 2-8 2" stroke="currentColor" stroke-width="0.6" opacity="0.4" fill="none"/><path d="M40 8l-4 4" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></svg></span>
+          <span class="corner corner-bl" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M4 4v36a4 4 0 0 0 4 4h36" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M10 6v28a4 4 0 0 0 4 4h24" stroke="currentColor" stroke-width="0.6" opacity="0.35"/><circle cx="12" cy="36" r="1.8" fill="currentColor" opacity="0.45"/><path d="M14 36c3 0 5 2 8 2s5-2 8-2" stroke="currentColor" stroke-width="0.6" opacity="0.4" fill="none"/><path d="M8 40l4-4" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></svg></span>
+          <span class="corner corner-br" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M44 4v36a4 4 0 0 1-4 4H4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M38 6v28a4 4 0 0 1-4 4H10" stroke="currentColor" stroke-width="0.6" opacity="0.35"/><circle cx="36" cy="36" r="1.8" fill="currentColor" opacity="0.45"/><path d="M34 36c-3 0-5 2-8 2s-5-2-8-2" stroke="currentColor" stroke-width="0.6" opacity="0.4" fill="none"/><path d="M40 40l-4-4" stroke="currentColor" stroke-width="0.5" opacity="0.3"/></svg></span>
+          <span class="dogear" aria-hidden="true"></span>
+          <div class="page-head">
+            <span class="page-sigil-wrap" aria-hidden="true">
+            <svg class="page-sigil" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Scroll -->
+              <path d="M18 16c-2 0-4 2-4 4v24c0 2 2 4 4 4h28c2 0 4-2 4-4V20c0-2-2-4-4-4" stroke="currentColor" stroke-width="1.1" opacity="0.6"/>
+              <path d="M14 20c0-3 2-5 4-5h4v36h-4c-2 0-4-2-4-4V20z" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              <path d="M46 15h4c2 0 4 2 4 4v24c0 2-2 4-4 4h-4V15z" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              <path d="M14 20h-4c-2 0-4 2-4 4v18c0 2 2 4 4 4h4" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+              <path d="M50 15h4c2 0 4 2 4 4v18c0 2-2 4-4 4h-4" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+              <!-- Quill pen -->
+              <path d="M42 12l-20 28" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+              <path d="M42 12c2 2 1 6-2 10l-6 8" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" opacity="0.5"/>
+              <path d="M22 40l-2 6 6-2" stroke="currentColor" stroke-width="1" stroke-linejoin="round" opacity="0.5"/>
+              <!-- Ink drops -->
+              <circle cx="20" cy="46" r="1.5" fill="currentColor" opacity="0.5"/>
+              <circle cx="17" cy="44" r="1" fill="currentColor" opacity="0.3"/>
+              <!-- Text lines on scroll -->
+              <path d="M22 26h20M22 32h16M22 38h12" stroke="currentColor" stroke-width="0.6" opacity="0.35"/>
+              <!-- Corner sigil dots -->
+              <circle cx="12" cy="12" r="1.2" fill="currentColor" opacity="0.2"/>
+              <circle cx="52" cy="12" r="1.2" fill="currentColor" opacity="0.2"/>
+              <circle cx="12" cy="52" r="1.2" fill="currentColor" opacity="0.2"/>
+              <circle cx="52" cy="52" r="1.2" fill="currentColor" opacity="0.2"/>
+            </svg>
+            <svg class="page-sigil-ring" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="39"/></svg>
+            </span>
+            <h2>The Scholar's Archive</h2>
+            <p class="page-intro">
+              Education &amp; GPAs, publications, teaching, and references — the research and academic
+              account of the same sorcerer of systems.
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contacts reveal">
       <a class="contact-chip" href="mailto:khaledihkh@gmail.com">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         khaledihkh@gmail.com
@@ -85,62 +199,28 @@
         Tehran, Iran
       </span>
     </div>
-  </header>
-
-  <main class="wrap">
-    <section class="cards reveal stagger">
-      <a class="card" href="cv.html">
-        <span class="card-emblem" aria-hidden="true">
-          <svg class="seal-ring" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="36" cy="36" r="33" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity="0.7"/>
-          </svg>
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="5" y="7" width="22" height="18" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M5 12h22M10 17h7M10 21h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <h2>CV / Industry</h2>
-        <p>Experience, selected projects, technical skills and interests — tailored for industry roles.</p>
-        <ul class="card-hints" aria-hidden="true">
-          <li>Experience</li>
-          <li>Selected Projects</li>
-          <li>Technical Skills</li>
-        </ul>
-      </a>
-      <a class="card" href="work.html">
-        <span class="card-emblem" aria-hidden="true">
-          <svg class="seal-ring" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="36" cy="36" r="33" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity="0.7"/>
-          </svg>
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 4 27 10v12L16 28 5 22V10L16 4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            <path d="M11 20v-5l5 3 5-3v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <h2>Academic / Work</h2>
-        <p>Education with GPAs, publications, teaching, courses and references — for academic contexts.</p>
-        <ul class="card-hints" aria-hidden="true">
-          <li>Education &amp; GPAs</li>
-          <li>Publications</li>
-          <li>References</li>
-        </ul>
-      </a>
-    </section>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="wrap">
-      <p class="footer-line">He builds AI systems that ship.</p>
-      <p class="footer-contact">
+      <svg class="footer-rune" viewBox="0 0 120 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0 6h48" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+        <path d="M72 6h48" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+        <path d="M54 6l6-4v8l-6-4Z" stroke="currentColor" stroke-width="0.6" fill="none" opacity="0.5"/>
+        <circle cx="60" cy="6" r="1.5" fill="currentColor" opacity="0.4"/>
+        <circle cx="50" cy="6" r="0.8" fill="currentColor" opacity="0.25"/>
+        <circle cx="70" cy="6" r="0.8" fill="currentColor" opacity="0.25"/>
+      </svg>
+      <p class="line">He builds AI systems that ship.</p>
+      <p class="contact">
         <a href="mailto:khaledihkh@gmail.com">khaledihkh@gmail.com</a>
         · <a href="https://www.linkedin.com/in/hamed-khademi/" target="_blank" rel="noopener">LinkedIn</a>
         · <a href="https://github.com/hamedkhaledi" target="_blank" rel="noopener">GitHub</a>
       </p>
-      <p class="footer-copy">© <span id="year"></span> Hamed Khademi Khaledi</p>
+      <p class="copy">© <span id="year"></span> Hamed Khademi Khaledi</p>
     </div>
   </footer>
 
-  <script src="assets/theme.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="assets/library.js"></script>
 </body>
 </html>

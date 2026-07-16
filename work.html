@@ -1,41 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" data-theme="light">
+<html lang="en" class="no-js" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamed Khademi Khaledi — Academic / Work</title>
-  <meta name="description" content="Academic CV of Hamed Khademi Khaledi, AI & NLP researcher." />
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Hamed Khademi Khaledi — The Scholar's Archive</title>
+  <meta name="description" content="Academic CV of Hamed Khademi Khaledi, AI & NLP researcher: education & GPAs, publications, teaching, courses, and references." />
+  <link rel="stylesheet" href="assets/wing-scholar.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <noscript><style>.reveal{opacity:1!important;transform:none!important}.hero::before,.hero::after{opacity:1!important;transform:none!important}.crest-orbit{display:none}</style></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <noscript><style>.reveal,.stagger>*{opacity:1!important;transform:none!important}.star{animation:none!important}</style></noscript>
 </head>
 <body>
-  <div class="stars" aria-hidden="true"></div>
-  <div class="stars-2" aria-hidden="true"></div>
-  <div class="aurora-rot" aria-hidden="true"></div>
-  <div class="aurora" aria-hidden="true"></div>
-  <div class="aurora-grain" aria-hidden="true"></div>
+  <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0">
+    <defs>
+      <symbol id="book-mark" viewBox="0 0 32 32">
+        <path d="M6 5h9a3 3 0 0 1 3 3v19l-12-4V5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M26 5h-9a3 3 0 0 0-3 3v19l12-4V5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M12 11h8M12 15h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="observatory-scene" aria-hidden="true"></div>
+  <div class="observatory-aurora" aria-hidden="true"></div>
+  <div class="observatory-dome" aria-hidden="true"></div>
+  <div class="observatory-wash" aria-hidden="true"></div>
+  <div class="observatory-constellation" aria-hidden="true"></div>
+  <div class="observatory-stars" aria-hidden="true"></div>
+  <div class="observatory-vignette" aria-hidden="true"></div>
+  <div class="rune-field" aria-hidden="true"></div>
+  <div class="sigil-ring" aria-hidden="true"></div>
+  <div class="wing-cursor-glow" aria-hidden="true"></div>
+
   <nav class="nav">
     <div class="wrap nav-inner">
       <div class="brand">
-        <a href="index.html">
+        <a href="index.html" aria-label="Hamed Khademi Khaledi — home">
           <span class="mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.3"/>
-              <path d="M16 4 27 22H5L16 4Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-              <path d="M16 28 5 10h22L16 28Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-              <circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.1"/>
-            </svg>
+            <svg class="mark-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#book-mark"/></svg>
           </span>
-          Hamed Khademi Khaledi
         </a>
       </div>
       <div class="nav-links">
-        <a href="cv.html">CV</a>
-        <a href="work.html">Academic</a>
-        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" title="Toggle light/dark">
+        <a href="cv.html">Engineer's Wing</a>
+        <a href="work.html">Scholar's Archive</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle light and dark library" title="Toggle theme">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
             <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
           </svg>
@@ -44,27 +54,28 @@
     </div>
   </nav>
 
-  <main class="wrap resume">
-    <header class="resume-header hero-anim">
-      <div class="crest-wrap">
-        <span class="crest-orbit" aria-hidden="true">
-          <span class="rune-dot"></span>
-          <span class="rune-dot b"></span>
-        </span>
-        <svg class="crest" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="0.8" opacity="0.25"/>
-          <g class="ring-spin">
-            <circle cx="32" cy="32" r="27" stroke="currentColor" stroke-width="1" stroke-dasharray="1.5 5" opacity="0.7"/>
-            <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="0.6" stroke-dasharray="0.5 3" opacity="0.45"/>
-          </g>
-          <path d="M32 8 52 19.5v25L32 56 12 44.5v-25L32 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          <g class="ring-spin-rev">
-            <circle cx="32" cy="32" r="14" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.55"/>
-          </g>
-          <text x="32" y="40" text-anchor="middle" font-family="Space Grotesk, Inter, sans-serif" font-size="20" font-weight="700" fill="currentColor" letter-spacing="-1">HK</text>
-        </svg>
-      </div>
-      <h1>Hamed Khademi Khaledi</h1>
+  <main class="wing wrap" data-wing="scholar">
+    <header class="wing-header reveal stagger">
+      <svg class="arc-rule" viewBox="0 0 220 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 11C40 1 180 1 214 11" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+        <circle cx="110" cy="4" r="2.4" fill="currentColor"/>
+        <circle cx="64" cy="6.5" r="1.4" fill="currentColor" opacity="0.6"/>
+        <circle cx="156" cy="6.5" r="1.4" fill="currentColor" opacity="0.6"/>
+      </svg>
+      <svg class="crest" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g class="crest-ring crest-ring--outer">
+          <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="0.8" stroke-dasharray="1 5" opacity="0.7"/>
+        </g>
+        <circle cx="32" cy="32" r="23" stroke="currentColor" stroke-width="0.7" opacity="0.45"/>
+        <g stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.7">
+          <path d="M32 9v8M32 47v-8M9 32h8M47 32h-8M15 15l5.5 5.5M41 41l-5.5-5.5M49 15l-5.5 5.5M23 41l-5.5-5.5"/>
+        </g>
+        <circle cx="32" cy="32" r="15" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+        <ellipse cx="32" cy="32" rx="15" ry="6" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+        <ellipse cx="32" cy="32" rx="6" ry="15" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+        <path d="M24 40c3-1 5-4 5-8 0-2-1-4-3-5 2-1 4-3 4-6 0-4-3-7-7-7s-7 3-7 7c0 3 2 5 4 6-2 1-3 3-3 5 0 4 2 7 5 8l-1 4h4Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" opacity="0.9"/>
+      </svg>
+      <h1>The Scholar's Archive</h1>
       <p class="sub">AI &amp; NLP Researcher</p>
       <div class="contacts">
         <a class="contact-chip" href="mailto:khaledihkh@gmail.com">
@@ -86,252 +97,200 @@
       </div>
     </header>
 
-    <nav class="toc" aria-label="Sections">
+    <nav class="toc" aria-label="Sections of the Scholar's Archive">
       <div class="toc-inner wrap">
         <a href="#education">Education</a>
         <a href="#publications">Publications</a>
-        <a href="#academics">Academics</a>
-        <a href="#experience">Experience</a>
-        <a href="#honors">Honors</a>
-        <a href="#skills">Skills</a>
-        <a href="#courses">Courses</a>
-        <a href="#languages">Languages</a>
+        <a href="#teaching">Teaching</a>
         <a href="#projects">Projects</a>
+        <a href="#courses">Courses</a>
         <a href="#references">References</a>
-        <a href="#extracurricular">Extracurricular</a>
       </div>
     </nav>
 
-    <section class="section" id="education">
-      <h2>Education</h2>
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">University of Tehran</span> · <span class="org">Tehran, Iran</span></div>
-          <div class="meta">2022 — Now</div>
+    <section class="shelf-section leaf reveal" id="education">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 7C11 4 6 5 4 6v18c2-1 7 0 12 3 5-3 10-4 12-3V6c-2-1-7-2-12 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M16 7v18" stroke="currentColor" stroke-width="1.3"/></svg>
+        <h2>Education &amp; GPAs</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
+      </div>
+      <div class="entries">
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">University of Tehran</h3><p class="entry-meta">M.Sc. · 2022 — Now · GPA 18.94 / 20.00</p></div>
+          <div class="entry-body"><ul><li><strong>M.Sc. in Artificial Intelligence and Robotics</strong>, Tehran, Iran.</li><li>Cumulative GPA: <strong>18.94 / 20.00</strong>.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Shahid Beheshti University</h3><p class="entry-meta">B.Sc. · 2018 — 2022 · GPA 18.78 / 20.00</p></div>
+          <div class="entry-body"><ul><li><strong>B.Sc. in Computer Engineering</strong>, Tehran, Iran.</li><li>Cumulative GPA: <strong>18.78 / 20.00</strong>.</li><li>Ranked 3rd in the bachelor’s class.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Allameh Helli (SAMPAD)</h3><p class="entry-meta">Diploma · 2014 — 2017 · GPA 19.62 / 20.00</p></div>
+          <div class="entry-body"><ul><li><strong>Diploma in Mathematics and Physics</strong>, Tehran, Iran.</li><li>GPA: <strong>19.62 / 20.00</strong>.</li></ul></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shelf-section leaf reveal" id="publications">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 5h14v22H9Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M12 9h8M12 13h8M12 17h6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><circle cx="16" cy="24" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M16 27v4" stroke="currentColor" stroke-width="1.3"/></svg>
+        <h2>Patents &amp; Publications</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
+      </div>
+      <div class="entries entries--rows">
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">IRUEX — COLING 2025</h3><p class="entry-meta">Proceedings of COLING 2025</p></div>
+          <div class="entry-body">
+            <p><strong>[C.1]</strong> Hamed Khademi Khaledi, Heshaam Faili (2024). <em>IRUEX: A Study on Large Language Models Problem-Solving Skills in Iran’s University Entrance Exam.</em></p>
+            <p><strong>Proceedings of the 31st International Conference on Computational Linguistics (COLING).</strong></p>
+            <p><a href='https://aclanthology.org/2025.coling-main.434/' target='_blank' rel='noopener'>Read the publication →</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shelf-section leaf reveal" id="teaching">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 4v14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M11 7h10l-2 4H13Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="currentColor" fill-opacity="0.18"/><path d="M9 24h14l-2 5H11Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M13 18h6v6h-6Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+        <h2>Teaching &amp; Academics</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
+      </div>
+      <div class="entries entries--rows">
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Graduate Research Assistant</h3><p class="entry-meta">University of Tehran · Fall 2022 — Now</p></div>
+          <div class="entry-body"><ul><li>Master’s thesis: Performance Evaluation and Enhancement of Large Language Models for the Iranian University Entrance Exam.</li><li>Supervisors: Dr. Heshaam Faili, Dr. Mohammad Javad Dousti.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Undergraduate RA</h3><p class="entry-meta">Shahid Beheshti University · Fall 2021 — Summer 2022</p></div>
+          <div class="entry-body"><ul><li>Bachelor’s thesis: A Neural Network-Based Framework for Natural Language Processing in Persian.</li><li>Supervisor: Dr. Hamed Malek.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Teaching Assistant — Neural Nets</h3><p class="entry-meta">University of Tehran · Fall 2024</p></div>
+          <div class="entry-body"><ul><li>Course: Neural Networks, Instructor: Dr. Ahmad Kalhor.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Teaching Assistant — ML</h3><p class="entry-meta">University of Tehran · Fall 2024</p></div>
+          <div class="entry-body"><ul><li>Courses: Neural Networks and Machine Learning, Instructor: Dr. Saeed Masoudnia.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Teaching Assistant — AI</h3><p class="entry-meta">Shahid Beheshti University · Winter 2022</p></div>
+          <div class="entry-body"><ul><li>Course: Computational Artificial Intelligence, Instructor: Dr. Hamed Malek.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Teaching Assistant — Discrete Math</h3><p class="entry-meta">Shahid Beheshti University · Winter 2019</p></div>
+          <div class="entry-body"><ul><li>Course: Discrete Mathematics, Instructor: Dr. Hamed Malek.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Teaching Assistant — Programming</h3><p class="entry-meta">Shahid Beheshti University · Winter 2019</p></div>
+          <div class="entry-body"><ul><li>Course: Advanced Programming, Instructor: Dr. Maedeh Mosharraf.</li></ul></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shelf-section leaf reveal" id="projects">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3 27 9v14L16 29 5 23V9Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M16 9v14M11 12l5 3 5-3M11 20l5-3 5 3" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+        <h2>Projects</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
+      </div>
+      <div class="entries">
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">HodHod Dataset</h3><p class="entry-meta">Summer 2024 · <a href='https://github.com/UT-NLP-LAB/HodHod_Preprocess' target='_blank' rel='noopener'>GitHub</a></p></div>
+          <div class="entry-body"><p>Tools: Python, Multiprocessing</p><ul><li>HodHod is the first large-scale, cleaned Persian dataset in text format. Developed a comprehensive tool for end-to-end preprocessing of large Persian raw text datasets, streamlining tokenization, normalization, and data cleaning.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Piraye</h3><p class="entry-meta">Summer 2023 · <a href='https://github.com/arushadev/piraye' target='_blank' rel='noopener'>GitHub</a></p></div>
+          <div class="entry-body"><p>Tools: Python, Spacy, Nltk</p><ul><li>Piraye is a Python library that facilitates text normalization for Persian, Arabic, and English languages.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Persian NER &amp; POS Plugin</h3><p class="entry-meta">Fall 2022 · <a href='https://github.com/hamedkhaledi/bachelor-project' target='_blank' rel='noopener'>GitHub</a></p></div>
+          <div class="entry-body"><p>Tools: Python, PyTorch, HTML, CSS</p><ul><li>Developed part-of-speech tagging and named entity recognition models for the Persian language, achieving improvements over previous language models. Additionally, created a Chrome plugin to facilitate these tasks.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Iranian Music Dastgah</h3><p class="entry-meta">Fall 2023 · <a href='https://github.com/hamedkhaledi/iranian_music_dastgah_recognition' target='_blank' rel='noopener'>GitHub</a></p></div>
+          <div class="entry-body"><p>Tools: Python, PyTorch, Librosa, SVM, LSTM</p><ul><li>Developed a classification model to recognize the Dastgah of input music, applying advanced signal processing and machine learning techniques to identify Persian musical modes accurately.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Decaf Compiler</h3><p class="entry-meta">Winter 2021 · <a href='https://github.com/hamedkhaledi/Compiler-Projectt' target='_blank' rel='noopener'>GitHub</a></p></div>
+          <div class="entry-body"><p>Tools: Java, Lex</p><ul><li>Developed a compiler for Decaf, a simple object-oriented language similar to Java. The development process was structured into three phases: scanning, parsing, and code generation.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">QA Bot</h3><p class="entry-meta">Fall 2020 · <a href='https://github.com/hamedkhaledi/ai-bot' target='_blank' rel='noopener'>GitHub</a></p></div>
+          <div class="entry-body"><p>Tools: Python, PyTorch, BERT</p><ul><li>Built a question-answering bot for the 2020 AI-Bot Challenge, implementing natural language processing techniques to understand and respond to user queries accurately.</li></ul></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Minesweeper</h3><p class="entry-meta">Fall 2020 · <a href='https://github.com/hamedkhaledi/MineSweeper-Matlab' target='_blank' rel='noopener'>GitHub</a></p></div>
+          <div class="entry-body"><p>Tools: MATLAB</p><ul><li>Developed a Minesweeper game using MATLAB, implementing game logic, user interface, and interactive features to recreate the classic puzzle experience.</li></ul></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shelf-section leaf reveal" id="courses">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.2"/><circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="1"/><path d="M16 4v24M4 16h24M7.5 7.5l17 17M24.5 7.5l-17 17" stroke="currentColor" stroke-width="0.9" opacity="0.8"/></svg>
+        <h2>Select Courses</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
+      </div>
+      <div class="courses-columns ledger">
+        <div class="course-col">
+          <div class="row period">Bachelor's (2018 — 2022)</div>
+          <div class="row"><strong>Fundamentals of Robotics</strong><span class="grade">19.92/20</span></div>
+          <div class="row"><strong>Artificial Intelligence and Expert Systems</strong><span class="grade">20/20</span></div>
+          <div class="row"><strong>Principles of Algorithms</strong><span class="grade">19.28/20</span></div>
+          <div class="row"><strong>Software Engineering</strong><span class="grade">15.75/20</span></div>
+          <div class="row"><strong>Fundamental of Computational Intelligence</strong><span class="grade">19.3/20</span></div>
+          <div class="row"><strong>Engineering Probability &amp; Statistics</strong><span class="grade">18.5/20</span></div>
+          <div class="row"><strong>Advanced Computer Programming</strong><span class="grade">19.79/20</span></div>
         </div>
-        <div class="org">M.Sc. in Artificial Intelligence and Robotics</div>
-        <ul><li>GPA: 18.94 / 20.00</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">Shahid Beheshti University</span> · <span class="org">Tehran, Iran</span></div>
-          <div class="meta">2018 — 2022</div>
+        <div class="course-col">
+          <div class="row period">Master's (2022 — Now)</div>
+          <div class="row"><strong>Natural Language Processing</strong><span class="grade">18.4/20</span></div>
+          <div class="row"><strong>Foundation Models in NLP</strong><span class="grade">18.2/20</span></div>
+          <div class="row"><strong>Deep Generative Models</strong><span class="grade">18.3/20</span></div>
+          <div class="row"><strong>Statistical Inference</strong><span class="grade">19.5/20</span></div>
+          <div class="row"><strong>Neural Network</strong><span class="grade">19.69/20</span></div>
+          <div class="row"><strong>Machine Learning</strong><span class="grade">19.8/20</span></div>
+          <div class="row"><strong>Data Analysis</strong><span class="grade">19.04/20</span></div>
         </div>
-        <div class="org">B.Sc. in Computer Engineering</div>
-        <ul><li>GPA: 18.78 / 20.00</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">Allameh Helli High School (SAMPAD)</span> · <span class="org">Tehran, Iran</span></div>
-          <div class="meta">2014 — 2017</div>
-        </div>
-        <div class="org">Diploma in Mathematics and Physics</div>
-        <ul><li>GPA: 19.62 / 20.00</li></ul>
       </div>
     </section>
 
-    <section class="section" id="publications">
-      <h2>Patents and Publications</h2>
-      <ul class="reveal">
-        <li><strong>[C.1]</strong> Hamed Khademi Khaledi, Heshaam Faili (2024). <strong>IRUEX: A Study on Large Language Models Problem-Solving Skills in Iran's University Entrance Exam</strong>. <em>Proceedings of the 31st International Conference on Computational Linguistics (COLING)</em>.</li>
-      </ul>
-    </section>
-
-    <section class="section" id="academics">
-      <h2>Academics</h2>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Graduate Research Assistant</span> · <span class="org">University of Tehran</span></div><div class="meta">Fall 2022 — Now</div></div>
-        <ul>
-          <li>Master’s thesis: Performance Evaluation and Enhancement of Large Language Models for the Iranian University Entrance Exam.</li>
-          <li>Supervisors: Dr. Heshaam Faili, Dr. Mohammad Javad Dousti.</li>
-        </ul>
+    <section class="shelf-section leaf reveal" id="references">
+      <div class="shelf-head">
+        <svg class="rune" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16 3a13 13 0 0 1 13 13c0 4-2 8-13 13C5 24 3 20 3 16 3 9 7 3 16 3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M16 10v12M11 16h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="16" cy="16" r="2" fill="currentColor"/></svg>
+        <h2>References</h2>
+        <span class="alchemy-rule" aria-hidden="true"></span>
       </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Undergraduate Research Assistant</span> · <span class="org">Shahid Beheshti University</span></div><div class="meta">Fall 2021 — Summer 2022</div></div>
-        <ul>
-          <li>Bachelor’s thesis: A Neural Network-Based Framework for Natural Language Processing in Persian.</li>
-          <li>Supervisor: Dr. Hamed Malek.</li>
-        </ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Teaching Assistant</span> · <span class="org">University of Tehran</span></div><div class="meta">Fall 2024</div></div>
-        <ul><li>Course: Neural Networks — Instructor: Dr. Ahmad Kalhor.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Teaching Assistant</span> · <span class="org">University of Tehran</span></div><div class="meta">Fall 2024</div></div>
-        <ul><li>Courses: Neural Networks and Machine Learning — Instructor: Dr. Saeed Masoudnia.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Teaching Assistant</span> · <span class="org">Shahid Beheshti University</span></div><div class="meta">Winter 2022</div></div>
-        <ul><li>Course: Computational Artificial Intelligence — Instructor: Dr. Hamed Malek.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Teaching Assistant</span> · <span class="org">Shahid Beheshti University</span></div><div class="meta">Winter 2019</div></div>
-        <ul><li>Course: Discrete Mathematics — Instructor: Dr. Hamed Malek.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Teaching Assistant</span> · <span class="org">Shahid Beheshti University</span></div><div class="meta">Winter 2019</div></div>
-        <ul><li>Course: Advanced Programming — Instructor: Dr. Maedeh Mosharraf.</li></ul>
+      <div class="entries">
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Dr. Heshaam Faili</h3><p class="entry-meta">Professor, University of Tehran</p></div>
+          <div class="entry-body"><p>Email: <a href='mailto:hfaili@ut.ac.ir'>hfaili@ut.ac.ir</a></p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Dr. Mohammad Javad Dousti</h3><p class="entry-meta">Assistant Professor, University of Tehran</p></div>
+          <div class="entry-body"><p>Email: <a href='mailto:mjdousti@ut.ac.ir'>mjdousti@ut.ac.ir</a></p></div>
+        </article>
+        <article class="entry lit">
+          <div class="entry-head"><h3 class="entry-title">Dr. Hamed Malek</h3><p class="entry-meta">Assistant Professor, Shahid Beheshti University</p></div>
+          <div class="entry-body"><p>Email: <a href='mailto:h_malek@sbu.ac.ir'>h_malek@sbu.ac.ir</a></p></div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="experience">
-      <h2>Experience</h2>
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">Arusha Company</span> · <span class="org">Tehran, Iran</span> · <a href="https://www.arusha.dev/" target="_blank" rel="noopener">🌐</a></div>
-          <div class="meta">NLP Engineer · Fall 2023 — Now</div>
-        </div>
-        <ul>
-          <li>Developed a specialized database for retrieving relevant texts efficiently.</li>
-          <li>Analyzed different types of document retrieval methods.</li>
-        </ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row">
-          <div><span class="title">Ahdsoft Company</span> · <span class="org">Remote</span> · <a href="https://www.ahdsoft.dev/" target="_blank" rel="noopener">🌐</a></div>
-          <div class="meta">Data Science Intern · Summer 2022 — Fall 2023</div>
-        </div>
-        <ul>
-          <li>Developed an entity linking API for Persian Wikipedia.</li>
-          <li>Trained a model to enhance entity linking accuracy in Persian.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="honors">
-      <h2>Honors and Awards</h2>
-      <ul class="reveal">
-        <li>Irancell Labs artificial intelligence hackathon winner (<a href="https://quera.org/certificate/cfk1u8ko/" target="_blank" rel="noopener">Certificate</a>) — Fall 2023.</li>
-        <li>Ranked 3rd in bachelor's class (qualified to start a master’s degree directly, entrance exam requirement waived) — 2022.</li>
-        <li>Ranked 1040th out of more than 140,000 attendees in Iran universities national entrance exam (Konkour) — 2018.</li>
-        <li>Ranked 200th in Iran universities national entrance exam for master’s degree in artificial intelligence / computer science — 2022.</li>
-      </ul>
-    </section>
-
-    <section class="section" id="skills">
-      <h2>Skills</h2>
-      <div class="skills">
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 6l-2 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="label">Programming Languages</div><div class="items">Python, Java (OOP), MATLAB, C++, VHDL, Assembly X86, R</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 19V5M4 19h16M8 16V9M12 16V6M16 16v-4M20 16v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div><div class="label">Data Science</div><div class="items">Pandas, NumPy, TensorFlow, PyTorch, Jupyter</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3 4 6v5c0 4.5 3.2 7.8 8 9 4.8-1.2 8-4.5 8-9V6l-8-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m9 12 2 2 4-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="label">DevOps &amp; Version Control</div><div class="items">Git, Docker</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke="currentColor" stroke-width="1.3"/></svg><div><div class="label">Web Technologies</div><div class="items">HTML, CSS, JavaScript, Angular, React</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><div class="label">Research</div><div class="items">Highly motivated in AI research; prepared for in-depth independent self-study</div></div></div>
-        <div class="skill reveal"><svg class="logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M9 7V5.5A2.5 2.5 0 0 1 11.5 3h1A2.5 2.5 0 0 1 15 5.5V7M8.5 12h7M8.5 15h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><div><div class="label">Other Tools &amp; Technologies</div><div class="items">Webots, Linux, LaTeX</div></div></div>
-      </div>
-    </section>
-
-    <section class="section" id="courses">
-      <h2>Select Courses</h2>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">During Master's</span></div><div class="meta">2022 — Now</div></div>
-        <ul>
-          <li>Natural Language Processing (18.4 / 20)</li>
-          <li>Foundation Models in Natural Language Processing (18.2 / 20)</li>
-          <li>Deep Generative Models (18.3 / 20)</li>
-          <li>Statistical Inference (19.5 / 20)</li>
-          <li>Neural Network (19.69 / 20)</li>
-          <li>Machine Learning (19.8 / 20)</li>
-          <li>Data Analysis (19.04 / 20)</li>
-        </ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">During Bachelor's</span></div><div class="meta">2018 — 2022</div></div>
-        <ul>
-          <li>Fundamentals of Robotics (19.92 / 20)</li>
-          <li>Artificial Intelligence and Expert Systems (20 / 20)</li>
-          <li>Principles of Algorithms (19.28 / 20)</li>
-          <li>Software Engineering (15.75 / 20)</li>
-          <li>Fundamental of Computational Intelligence (19.3 / 20)</li>
-          <li>Engineering Probability &amp; Statistics (18.5 / 20)</li>
-          <li>Advanced Computer Programming (19.79 / 20)</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="languages">
-      <h2>Languages</h2>
-      <ul class="reveal">
-        <li><b>Persian:</b> Native</li>
-        <li><b>English:</b> Professional work proficiency (TOEFL total: 100)</li>
-        <li><b>Arabic:</b> Elementary proficiency</li>
-      </ul>
-    </section>
-
-    <section class="section" id="projects">
-      <h2>Projects</h2>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">HodHod Dataset</span> · <a href="https://github.com/UT-NLP-LAB/HodHod_Preprocess" target="_blank" rel="noopener">GitHub</a></div><div class="meta">Summer 2024</div></div>
-        <div class="org">Tools: Python, Multiprocessing</div>
-        <ul><li>HodHod is the first large-scale, cleaned Persian dataset in text format. Developed a comprehensive tool for end-to-end preprocessing of large Persian raw text datasets, streamlining tokenization, normalization, and data cleaning.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Piraye</span> · <a href="https://github.com/arushadev/piraye" target="_blank" rel="noopener">GitHub</a></div><div class="meta">Summer 2023</div></div>
-        <div class="org">Tools: Python, Spacy, Nltk</div>
-        <ul><li>Piraye is a Python library that facilitates text normalization for Persian, Arabic, and English languages.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Persian NER &amp; POS Plugin</span> · <a href="https://github.com/hamedkhaledi/bachelor-project" target="_blank" rel="noopener">GitHub</a></div><div class="meta">Fall 2022</div></div>
-        <div class="org">Tools: Python, PyTorch, HTML, CSS</div>
-        <ul><li>Developed part-of-speech tagging and named entity recognition models for the Persian language, achieving improvements over previous language models. Additionally, created a Chrome plugin to facilitate these tasks.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Iranian Music Dastgah Detection</span> · <a href="https://github.com/hamedkhaledi/iranian_music_dastgah_recognition" target="_blank" rel="noopener">GitHub</a></div><div class="meta">Fall 2023</div></div>
-        <div class="org">Tools: Python, PyTorch, Librosa, SVM, LSTM</div>
-        <ul><li>Developed a classification model to recognize the Dastgah of input music, applying advanced signal processing and machine learning techniques to identify Persian musical modes accurately.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Decaf Compiler</span> · <a href="https://github.com/hamedkhaledi/Compiler-Projectt" target="_blank" rel="noopener">GitHub</a></div><div class="meta">Winter 2021</div></div>
-        <div class="org">Tools: Java, Lex</div>
-        <ul><li>Developed a compiler for Decaf, a simple object-oriented language similar to Java. The development process was structured into three phases: scanning, parsing, and code generation.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">QA Bot</span> · <a href="https://github.com/hamedkhaledi/ai-bot" target="_blank" rel="noopener">GitHub</a></div><div class="meta">Fall 2020</div></div>
-        <div class="org">Tools: Python, PyTorch, BERT</div>
-        <ul><li>Built a question-answering bot for the 2020 AI-Bot Challenge, implementing natural language processing techniques to understand and respond to user queries accurately.</li></ul>
-      </div>
-      <div class="entry reveal">
-        <div class="row"><div><span class="title">Minesweeper</span> · <a href="https://github.com/hamedkhaledi/MineSweeper-Matlab" target="_blank" rel="noopener">GitHub</a></div><div class="meta">Fall 2020</div></div>
-        <div class="org">Tools: MATLAB</div>
-        <ul><li>Developed a Minesweeper game using MATLAB, implementing game logic, user interface, and interactive features to recreate the classic puzzle experience.</li></ul>
-      </div>
-    </section>
-
-    <section class="section" id="references">
-      <h2>References</h2>
-      <ul class="reveal">
-        <li><strong>Dr. Heshaam Faili</strong> — Professor, University of Tehran · hfaili@ut.ac.ir</li>
-        <li><strong>Dr. Mohammad Javad Dousti</strong> — Assistant Professor, University of Tehran · mjdousti@ut.ac.ir</li>
-        <li><strong>Dr. Hamed Malek</strong> — Assistant Professor, Shahid Beheshti University · h_malek@sbu.ac.ir</li>
-      </ul>
-    </section>
-
-    <section class="section" id="extracurricular">
-      <h2>Extracurricular</h2>
-      <ul class="reveal">
-        <li>Watching series and movies</li>
-        <li>Listening to music</li>
-        <li>Playing video games and board games</li>
-        <li>Hiking, basketball, and soccer</li>
-      </ul>
-    </section>
-
-    <a class="back-link" href="index.html">← Back to all versions</a>
+    <a class="back-link" href="index.html">← Return to the entrance hall</a>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="wrap">
-      <p class="footer-line">He builds AI systems that ship.</p>
-      <p class="footer-contact">
+      <p class="line">He builds AI systems that ship.</p>
+      <p class="contact">
         <a href="mailto:khaledihkh@gmail.com">khaledihkh@gmail.com</a>
         · <a href="https://www.linkedin.com/in/hamed-khademi/" target="_blank" rel="noopener">LinkedIn</a>
         · <a href="https://github.com/hamedkhaledi" target="_blank" rel="noopener">GitHub</a>
       </p>
-      <p class="footer-copy">© <span id="year"></span> Hamed Khademi Khaledi</p>
+      <p class="copy">© <span id="year"></span> Hamed Khademi Khaledi</p>
     </div>
   </footer>
 
-  <script src="assets/theme.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="assets/wing.js"></script>
 </body>
 </html>

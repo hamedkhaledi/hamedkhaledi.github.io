@@ -1,0 +1,1007 @@
+/* ============================================================
+   Hamed Khademi Khaledi — The Scholar's Archive
+   "The Observatory" — a distinct arcane sub-theme. Deep
+   midnight-indigo canvas lit by moonlight silver + faint
+   star-violet, a refined book-serif (Cormorant Garamond) over
+   Spectral body. Signature motif: a slow starfield + faint
+   constellation lines, celestial sigils, ink-on-night. This is
+   NOT the warm walnut library and NOT the ember forge — it is a
+   quiet, scholarly night sky. Self-contained; reuses the same
+   class hooks (wing / entry / toc / crest / reveal) so the
+   markup is identical to the other pages. Vanilla CSS + wing.js.
+   No build step.
+   ============================================================ */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Wine & rose identity */
+  --moon:    oklch(0.72 0.13 12);   /* rose wine */
+  --moon-bright: oklch(0.85 0.08 15); /* bright rose-white */
+  --moon-deep: oklch(0.50 0.14 18);  /* oxblood, AA on light */
+  --star:    oklch(0.58 0.15 10);   /* deep wine */
+  --star-soft: oklch(0.70 0.11 14);
+  --night:   oklch(0.38 0.12 350);   /* deep oxblood */
+
+  /* Secondary accent — teal / mint, the cool counterpoint to rose. */
+  --teal:        oklch(0.78 0.12 195); /* mint */
+  --teal-bright: oklch(0.88 0.09 190);
+  --teal-deep:   oklch(0.55 0.11 200); /* AA on light */
+  --teal-glow:   oklch(0.70 0.13 195);
+
+  /* Dark observatory (default) — plum / oxblood night */
+  --bg:      oklch(0.18 0.04 350);   /* plum-charcoal */
+  --bg-2:    oklch(0.13 0.045 350);  /* deep oxblood */
+  --bg-elev: oklch(0.24 0.045 355);  /* raised plum table */
+
+  --panel:       oklch(0.23 0.04 355 / 0.94);
+  --panel-2:     oklch(0.19 0.045 352 / 0.96);
+  --panel-ink:   oklch(0.94 0.02 15);
+  --panel-soft:  oklch(0.80 0.05 14);
+  --panel-rule:  oklch(0.42 0.05 355);
+
+  --text:      oklch(0.93 0.015 15);
+  --text-soft: oklch(0.82 0.035 12);
+  --text-dim:  oklch(0.70 0.03 10);
+  --meta:      var(--moon);
+  --border:    oklch(0.42 0.05 355);
+  --border-lit: oklch(0.60 0.11 12);
+  --rule:      oklch(0.38 0.04 355);
+
+  --shadow: 0 1px 2px oklch(0.10 0.04 350 / 0.45),
+              0 18px 44px oklch(0.10 0.04 350 / 0.55);
+
+  --max: 1080px;
+  --gutter: clamp(18px, 4vw, 40px);
+  --radius: 14px;
+
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-body: "Spectral", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-ui: "Cormorant Garamond", Georgia, serif;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Wing persona accent — rose wine with oxblood glow. */
+  --wing-accent:        var(--moon);
+  --wing-accent-bright: var(--moon-bright);
+  --wing-accent-soft:   var(--star-soft);
+  --wing-glow:          oklch(0.62 0.15 12);
+}
+
+[data-theme="light"] {
+  --bg:      oklch(0.96 0.015 20);   /* faint rose paper */
+  --bg-2:    oklch(0.92 0.02 18);
+  --bg-elev: oklch(0.99 0.012 18);
+  --panel:       oklch(0.985 0.014 18 / 0.96);
+  --panel-2:     oklch(0.95 0.018 16);
+  --panel-ink:   oklch(0.26 0.05 18);
+  --panel-soft:  oklch(0.42 0.06 14);
+  --panel-rule:  oklch(0.80 0.04 18);
+  --text:      oklch(0.26 0.05 18);   /* rose-ink */
+  --text-soft: oklch(0.28 0.05 14);
+  --text-dim:  oklch(0.27 0.05 12);
+  --meta:      oklch(0.48 0.14 15);   /* oxblood, AA on light */
+  --border:    oklch(0.80 0.04 18);
+  --border-lit: oklch(0.60 0.11 12);
+  --rule:      oklch(0.82 0.03 18);
+  --shadow: 0 1px 2px oklch(0.26 0.05 18 / 0.08),
+              0 16px 38px oklch(0.26 0.05 18 / 0.14);
+
+  /* In light mode the teal atmosphere is a faint mint wash on paper,
+     not a vivid bloom — so it never competes with the rose-ink text. */
+  --teal-glow: oklch(0.72 0.11 195);
+}
+[data-theme="light"] .observatory-scene {
+  background:
+    radial-gradient(120% 80% at 82% -8%, oklch(0.85 0.08 15 / 0.20), transparent 55%),
+    radial-gradient(90% 70% at 8% 110%, oklch(0.72 0.11 195 / 0.10), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+[data-theme="light"] .observatory-wash {
+  background:
+    radial-gradient(44vmax 44vmax at 20% 14%, oklch(0.72 0.11 195 / 0.05), transparent 60%),
+    radial-gradient(40vmax 40vmax at 90% 90%, oklch(0.85 0.08 15 / 0.06), transparent 62%);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background 0.45s ease, color 0.45s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* The observatory backdrop: midnight gradient with a soft moon
+   glow high-right and a faint nebula bottom-left. Fixed. */
+.observatory-scene {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 82% -8%, oklch(0.85 0.08 15 / 0.34), transparent 55%),
+    radial-gradient(90% 70% at 8% 110%, oklch(0.55 0.11 200 / 0.4), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+/* Faint meridian grid — the celestial dome, suggested with thin
+   radial lines from the moon. Pure CSS. */
+.observatory-dome {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.4;
+  background:
+    repeating-conic-gradient(
+      from 0deg at 82% -8%,
+      transparent 0deg 9deg,
+      oklch(0.85 0.08 15 / 0.05) 9deg 9.4deg
+    );
+  -webkit-mask-image: radial-gradient(120% 100% at 82% -8%, #000 20%, transparent 80%);
+          mask-image: radial-gradient(120% 100% at 82% -8%, #000 20%, transparent 80%);
+}
+/* Nebula wash — slow drifting violet + silver blooms. */
+.observatory-wash {
+  position: fixed;
+  inset: -10vmax;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(44vmax 44vmax at 20% 14%, oklch(0.70 0.13 195 / 0.14), transparent 60%),
+    radial-gradient(40vmax 40vmax at 90% 90%, oklch(0.85 0.08 15 / 0.12), transparent 62%);
+  animation: dome-drift 30s ease-in-out infinite alternate;
+}
+/* Aurora borealis of the night sky — a slow shearing violet + silver
+   veil across the dome. Frozen under reduced-motion. */
+.observatory-aurora {
+  position: fixed;
+  inset: -20vmax;
+  z-index: -3;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  background:
+    conic-gradient(from 20deg at 70% 30%,
+      transparent 0deg,
+      oklch(0.62 0.15 12 / 0.16) 50deg,
+      transparent 110deg,
+      oklch(0.70 0.13 195 / 0.14) 180deg,
+      transparent 240deg),
+    radial-gradient(50vmax 24vmax at 30% 70%, oklch(0.70 0.13 195 / 0.12), transparent 60%);
+  animation: aurora-shear 46s linear infinite;
+}
+/* Constellation lines — faint connective filaments between stars,
+   drawn by JS as <svg> lines over the starfield. */
+.observatory-constellation {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.35;
+}
+.observatory-constellation line {
+  stroke: oklch(0.85 0.08 15 / 0.5);
+  stroke-width: 0.6;
+  stroke-dasharray: 2 5;
+  animation: line-drift 14s ease-in-out infinite alternate;
+}
+@keyframes line-drift {
+  0%   { opacity: 0.25; }
+  100% { opacity: 0.55; }
+}
+.observatory-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(130% 100% at 50% 45%, transparent 52%, oklch(0 0 0 / 0.5) 100%);
+}
+/* Cursor glow — cool starlight bloom that follows the pointer, mirroring the main page candle glow. */
+.wing-cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 360px;
+  margin: -180px 0 0 -180px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle, color-mix(in oklab, var(--teal-bright) 20%, transparent), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  will-change: transform;
+}
+/* Starfield — populated by JS as tiny points with twinkle. */
+.observatory-stars {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: oklch(0.90 0.05 20 / 0.95);
+  box-shadow: 0 0 5px oklch(0.85 0.08 15 / 0.9);
+  will-change: opacity;
+  animation: twinkle ease-in-out infinite;
+}
+@keyframes dome-drift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  100% { transform: translate3d(1.5vmax,-1.5vmax,0) scale(1.05); }
+}
+@keyframes aurora-shear {
+  0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1.1); }
+  50%  { transform: translate3d(-3vmax,2vmax,0) rotate(-7deg) scale(1.18); }
+  100% { transform: translate3d(2vmax,-1vmax,0) rotate(6deg) scale(1.1); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 1; }
+}
+
+/* Wand sigil: a small glowing star-rune trailing the pointer (tinted per
+   wing via inline style on the element). Sits just behind content. */
+.wand-sigil {
+  position: fixed;
+  top: 0; left: 0;
+  width: 24px; height: 24px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  filter: drop-shadow(0 0 8px color-mix(in oklab, var(--teal-glow) 75%, transparent));
+  transition: opacity 0.5s ease;
+  will-change: transform;
+}
+.wand-sigil svg { width: 100%; height: 100%; display: block; }
+
+/* Rare bright shooting stars arcing across the scholar's night dome. */
+.shooting-star {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: oklch(0.95 0.04 20 / 0.95);
+  box-shadow: 0 0 10px 2px oklch(0.85 0.08 15 / 0.7);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: shoot linear infinite;
+}
+.shooting-star::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 0;
+  width: 140px; height: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, oklch(0.85 0.08 15 / 0.7), transparent);
+}
+@keyframes shoot {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  4%   { opacity: 1; }
+  18%  { transform: translate(60vw, 34vh); opacity: 0; }
+  100% { transform: translate(60vw, 34vh); opacity: 0; }
+}
+
+/* ---------- Floating rune layer ---------- */
+.rune-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.rune-field .rune-float {
+  position: absolute;
+  bottom: -40px;
+  pointer-events: none;
+  opacity: 0;
+  color: var(--moon);
+  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--wing-glow) 50%, transparent));
+  will-change: transform, opacity;
+  animation: rune-drift linear infinite;
+}
+@keyframes rune-drift {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  8%   { opacity: 0.45; }
+  85%  { opacity: 0.35; }
+  100% { transform: translateY(-110vh) rotate(18deg); opacity: 0; }
+}
+
+/* ---------- Pulsing sigil ring ---------- */
+.sigil-ring {
+  position: fixed;
+  top: 50%; left: 50%;
+  width: min(520px, 80vw);
+  height: min(520px, 80vw);
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 1px dashed color-mix(in oklab, var(--wing-glow) 30%, transparent);
+  opacity: 0.10;
+  animation: sigil-breathe 8s ease-in-out infinite, sigil-spin 80s linear infinite;
+}
+.sigil-ring::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 68%; height: 68%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--wing-glow) 22%, transparent);
+  animation: sigil-spin 60s linear infinite reverse;
+}
+@keyframes sigil-breathe {
+  0%, 100% { opacity: 0.08; transform: translate(-50%, -50%) scale(0.95); }
+  50%      { opacity: 0.14; transform: translate(-50%, -50%) scale(1.05); }
+}
+@keyframes sigil-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* ---------- Enhanced aurora curtain ---------- */
+.observatory-aurora {
+  background:
+    conic-gradient(from 20deg at 70% 30%,
+      transparent 0deg,
+      oklch(0.62 0.15 12 / 0.22) 35deg,
+      transparent 70deg,
+      oklch(0.70 0.13 195 / 0.20) 120deg,
+      transparent 165deg),
+    conic-gradient(from 80deg at 25% 65%,
+      transparent 0deg,
+      oklch(0.70 0.13 195 / 0.16) 40deg,
+      transparent 85deg,
+      oklch(0.62 0.15 12 / 0.14) 130deg,
+      transparent 175deg),
+    radial-gradient(50vmax 24vmax at 30% 70%, oklch(0.70 0.13 195 / 0.12), transparent 60%);
+  opacity: 0.65;
+}
+
+/* ---------- Layout helpers ---------- */
+.wrap { width: min(100% - 2 * var(--gutter), var(--max)); margin-inline: auto; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+a { color: var(--moon); text-decoration: none; }
+a:hover { color: var(--moon-bright); }
+
+/* ---------- Top navigation ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--bg) 72%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.brand { display: flex; align-items: center; gap: 11px; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.02em; font-size: 1.15rem; color: var(--text); }
+.brand:hover { color: var(--moon); }
+.brand .mark { display: inline-flex; width: 44px; height: 44px; color: var(--teal); flex: none; }
+.brand .mark svg { width: 100%; height: 100%; display: block; }
+.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-links a { color: var(--text-soft); font-family: var(--font-ui); letter-spacing: 0.04em; font-size: 1.02rem; }
+.nav-links a:hover { color: var(--moon); }
+/* Keyboard focus ring — visible only for keyboard nav, not mouse. */
+:where(a, button, .theme-toggle):focus-visible {
+  outline: 2px solid var(--moon-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px oklch(0.74 0.13 50 / 0.22);
+}
+.theme-toggle {
+  display: inline-grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: transparent; color: var(--moon);
+  border: 1px solid var(--border); cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.theme-toggle:hover { border-color: var(--border-lit); box-shadow: 0 0 14px oklch(0.70 0.13 195 / 0.4); transform: translateY(-1px); }
+
+/* ============================================================
+   ENTRANCE HALL compatibility — contact chips + footer.
+   ============================================================ */
+.contacts {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+}
+.contact-chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 9px 16px; border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.contact-chip svg { width: 17px; height: 17px; color: var(--teal); flex: none; }
+.contact-chip:hover {
+  color: var(--text); border-color: var(--border-lit);
+  box-shadow: 0 0 16px oklch(0.70 0.13 195 / 0.26); transform: translateY(-2px);
+}
+
+/* ============================================================
+   WING PAGES (work.html = observatory)
+   ============================================================ */
+.wing {
+  padding: clamp(34px, 6vh, 64px) 0 80px;
+}
+/* Ornate halo + arc framing behind the wing header crest. */
+.wing-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: clamp(30px, 5vh, 54px);
+  padding-top: clamp(14px, 3vh, 26px);
+}
+.wing-header::before {
+  content: "";
+  position: absolute;
+  top: -6%; left: 50%;
+  transform: translateX(-50%);
+  width: min(440px, 82vw);
+  height: min(440px, 82vw);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, color-mix(in oklab, var(--teal-glow) 20%, transparent) 0%, transparent 62%);
+  filter: blur(8px);
+  z-index: -1;
+}
+.wing-header .crest {
+  position: relative;
+  width: 72px; height: 72px; color: var(--teal);
+  margin: 0 auto 16px; display: block;
+}
+/* Counter-rotating celestial rings orbiting the crest. */
+.wing-header .crest::before,
+.wing-header .crest::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1px solid color-mix(in oklab, var(--teal-glow) 55%, transparent);
+}
+.wing-header .crest::before {
+  width: 116px; height: 116px;
+  transform: translate(-50%, -50%);
+  border-style: dashed;
+  border-color: color-mix(in oklab, var(--teal-glow) 45%, transparent);
+  opacity:0.6;
+  animation: ring-spin 70s linear infinite;
+}
+.wing-header .crest::after {
+  width: 150px; height: 150px;
+  transform: translate(-50%, -50%);
+  border-color: color-mix(in oklab, var(--teal-glow) 30%, transparent);
+  box-shadow: inset 0 0 22px color-mix(in oklab, var(--wing-glow) 16%, transparent);
+  opacity: 0.4;
+  animation: ring-spin 100s linear infinite reverse;
+}
+/* Decorative arc rule above the title. */
+.wing-header .arc-rule {
+  display: block;
+  width: 220px; max-width: 70vw;
+  height: 14px;
+  margin: 0 auto 14px;
+  color: var(--moon);
+  opacity: 0.7;
+}
+.wing-header h1 {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(2.1rem, 5.4vw, 3.2rem); margin: 0; letter-spacing: 0.01em;
+  text-wrap: balance;
+  text-shadow: 0 0 26px color-mix(in oklab, var(--wing-glow) 30%, transparent);
+}
+.wing-header .sub {
+  font-family: var(--font-ui); letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--moon); margin: 10px 0 0; font-size: 1rem;
+}
+.wing-header .sub::before,
+.wing-header .sub::after { content: "✶"; margin: 0 0.7em; color: color-mix(in oklab, var(--teal-glow) 70%, transparent); }
+.wing-header .contacts { margin-top: 22px; }
+
+/* Sticky section TOC pills */
+.toc {
+  position: sticky; top: 60px; z-index: 30;
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: clamp(28px, 5vh, 48px);
+}
+.toc-inner {
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0;
+  scrollbar-width: thin;
+  /* Faded edge mask signals the row scrolls horizontally. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18px, #000 calc(100% - 18px), transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 18px, #000 calc(100% - 18px), transparent 100%);
+}
+.toc a {
+  flex: none;
+  font-family: var(--font-ui); font-size: 0.98rem; letter-spacing: 0.04em;
+  color: var(--text-soft);
+  padding: 7px 15px; border-radius: 999px; border: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  white-space: nowrap;
+}
+.toc a:hover { color: var(--moon); }
+.toc a:focus-visible { outline-offset: 2px; border-radius: 999px; }
+.toc a.active {
+  color: var(--moon-bright);
+  border-color: var(--border-lit);
+  background: oklch(0.62 0.15 12 / 0.10);
+}
+
+/* A section of the wing, presented as a leaf of the tome — a
+   framed "page" with a vellum bloom, gold double-rule, and
+   gold-leaf corner flourishes. */
+.shelf-section {
+  position: relative;
+  margin-bottom: clamp(48px, 8vh, 86px);
+  padding: clamp(26px, 4vw, 44px) clamp(22px, 4vw, 46px);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 90% at 50% -10%, color-mix(in oklab, var(--wing-glow) 9%, transparent), transparent 68%),
+    color-mix(in oklab, var(--bg-elev) 86%, transparent);
+  border: 1px solid var(--border-lit);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--wing-glow) 16%, transparent),
+    0 1px 2px oklch(0 0 0 / 0.45),
+    0 22px 54px oklch(0 0 0 / 0.45);
+}
+/* Faint paper weave — a barely-there vellum texture (no noise filter),
+   tinted to the wing's own hue so it never reads as warm-default cream. */
+.shelf-section::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: calc(var(--radius) - 4px);
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(45deg,
+      color-mix(in oklab, var(--wing-glow) 3%, transparent) 0 1px,
+      transparent 1px 7px),
+    repeating-linear-gradient(-45deg,
+      color-mix(in oklab, var(--wing-glow) 3%, transparent) 0 1px,
+      transparent 1px 7px);
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 40%, #000 30%, transparent 92%);
+          mask-image: radial-gradient(120% 90% at 50% 40%, #000 30%, transparent 92%);
+  opacity: 0.5;
+  z-index: 0;
+}
+/* Inner gold double-rule framing the leaf. */
+.shelf-section::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: calc(var(--radius) - 4px);
+  pointer-events: none;
+  border: 1px solid color-mix(in oklab, var(--wing-glow) 28%, transparent);
+  box-shadow: inset 0 0 24px color-mix(in oklab, var(--wing-glow) 8%, transparent);
+  z-index: 0;
+}
+.shelf-section > * { position: relative; z-index: 1; }
+/* Gold-leaf corner flourishes — the same glyph language as the
+   entrance-hall book pages, tinted to the wing accent. */
+.shelf-section .corner {
+  position: absolute;
+  width: clamp(30px, 4vw, 46px);
+  aspect-ratio: 1;
+  color: color-mix(in oklab, var(--wing-glow) 78%, var(--text));
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--wing-glow) 45%, transparent));
+  opacity: 0.92;
+}
+.shelf-section .corner svg { width: 100%; height: 100%; display: block; }
+.shelf-section .corner-tl { top: 2px; left: 2px; }
+.shelf-section .corner-tr { top: 2px; right: 2px; transform: scaleX(-1); }
+.shelf-section .corner-bl { bottom: 2px; left: 2px; transform: scaleY(-1); }
+.shelf-section .corner-br { bottom: 2px; right: 2px; transform: scale(-1); }
+.shelf-section:hover .corner { color: var(--wing-accent-bright); }
+
+.shelf-head {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 26px;
+}
+.shelf-head h2 {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.6rem, 3.8vw, 2.1rem); margin: 0; letter-spacing: 0.01em;
+  color: var(--text);
+}
+.shelf-head .rune { width: 30px; height: 30px; color: var(--teal); flex: none; }
+.shelf-head .line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border-lit), transparent); }
+/* Centered ornamental node between the sigil and the title, matching
+   the entrance-hall book's gold-leaf dividers. */
+.shelf-head .leaf-node {
+  flex: none; width: 22px; height: 22px; color: var(--wing-accent);
+  display: inline-flex; align-items: center; justify-content: center;
+  filter: drop-shadow(0 0 7px color-mix(in oklab, var(--wing-glow) 55%, transparent));
+}
+.shelf-head .leaf-node svg { width: 100%; height: 100%; display: block; }
+
+/* ============================================================
+   ENTRY (always-expanded inline block)
+   ============================================================ */
+.entries {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.entries--rows {
+  grid-template-columns: 1fr;
+}
+.entries:has(.entry-body li:nth-child(4)) .entry {
+  grid-column: 1 / -1;
+}
+.entry {
+  padding: 18px 22px;
+  border-radius: 12px;
+  background:
+    radial-gradient(120% 80% at 50% -20%, color-mix(in oklab, var(--wing-glow) 10%, transparent), transparent 70%),
+    color-mix(in oklab, var(--bg-elev) 80%, transparent);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease);
+  will-change: transform;
+}
+.entry:hover {
+  border-color: var(--border-lit);
+  box-shadow: 0 0 18px oklch(0.70 0.13 195 / 0.18);
+}
+.entry-head { margin-bottom: 10px; }
+.entry-title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 1.3rem; margin: 0; letter-spacing: 0.01em;
+  color: var(--text);
+}
+.entry-meta {
+  font-family: var(--font-ui); font-size: 0.92rem; letter-spacing: 0.04em;
+  color: var(--meta); text-transform: uppercase; margin: 4px 0 0;
+}
+.entry-body { color: var(--text-soft); line-height: 1.6; }
+.entry-body p, .entry-body li { color: var(--text-soft); }
+.entry-body ul { padding-left: 1.1em; margin: 8px 0; }
+.entry-body li { margin: 6px 0; }
+.entry-body strong { color: var(--text); }
+.entry-body a { color: var(--moon); text-decoration: underline; text-underline-offset: 2px; }
+.entry-body a:hover { color: var(--moon-bright); }
+
+/* Generic content blocks */
+.ledger { display: grid; gap: 14px; }
+.ledger .row {
+  padding: 16px 20px; border-radius: 10px;
+  background: color-mix(in oklab, var(--bg-elev) 80%, transparent);
+  border: 1px solid var(--border);
+}
+.ledger .row { display: flex; align-items: baseline; justify-content: space-between; gap: 1.25rem; }
+.ledger .row .grade {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  color: var(--wing-accent-bright);
+  letter-spacing: 0.02em;
+}
+.ledger .row strong { color: var(--text); }
+.ledger .row .meta { color: var(--text-dim); font-size: 0.88rem; }
+
+/* Select Courses: two facing columns (Bachelor's / Master's). */
+.courses-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 28px; align-items: start; }
+@media (max-width: 640px) { .courses-columns { grid-template-columns: 1fr; gap: 20px; } }
+.courses-columns .course-col { display: flex; flex-direction: column; gap: 8px; }
+.courses-columns .row { padding: 11px 14px; }
+.ledger .row.period {
+  display: block;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  border-top: 1px solid color-mix(in oklab, var(--teal-glow) 22%, transparent);
+}
+.ledger .row.period:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.ledger .row:not(.period):hover {
+  border-color: color-mix(in oklab, var(--teal-glow) 70%, transparent);
+  box-shadow: 0 0 22px color-mix(in oklab, var(--teal-glow) 32%, transparent),
+              inset 0 0 14px color-mix(in oklab, var(--teal-glow) 12%, transparent);
+}
+.ledger .row { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+  padding: 34px var(--gutter);
+  text-align: center;
+  background: color-mix(in oklab, var(--bg-2) 70%, transparent);
+}
+.footer .line { font-family: var(--font-display); font-size: 1.3rem; color: var(--teal); letter-spacing: 0.03em; }
+.footer .contact { margin-top: 10px; color: var(--text-soft); font-size: 0.92rem; }
+.footer .contact a { color: var(--text-soft); }
+.footer .contact a:hover { color: var(--moon); }
+.footer .copy { margin-top: 12px; color: var(--text-dim); font-size: 0.82rem; }
+
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 8px 0 0; font-family: var(--font-ui);
+  color: var(--text-soft); letter-spacing: 0.04em; font-size: 1.02rem;
+}
+.back-link:hover { color: var(--moon); }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* Leaf reveal — a section settles into view like a page turning to
+   face the reader: a slight rotateY from the spine plus a rise. */
+.leaf { opacity: 0; transform: perspective(1400px) rotateY(-7deg) translateY(26px); transform-origin: left center; transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.leaf.is-visible { opacity: 1; transform: perspective(1400px) rotateY(0deg) translateY(0); }
+
+/* TOC navigation flourish — a quick page-turn as you flip to a leaf. */
+.leaf.is-turning { animation: leaf-turn 0.62s var(--ease); }
+@keyframes leaf-turn {
+  0%   { transform: perspective(1400px) rotateY(14deg) translateY(-6px); opacity: 0.55; }
+  55%  { opacity: 1; }
+  100% { transform: perspective(1400px) rotateY(0deg) translateY(0); opacity: 1; }
+}
+
+.stagger > * { opacity: 0; transform: translateY(22px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.stagger.is-visible > * { opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .toc { top: 60px; }
+  .wing-header .crest { width: 46px; height: 46px; }
+  .wing-header .crest::before { width: 86px; height: 86px; }
+  .wing-header .crest::after { width: 112px; height: 112px; }
+  .wing-header::before { width: 92vw; height: 92vw; }
+  .entry-title.lead-cap::first-letter { font-size: 2.3em; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .star, .observatory-wash, .observatory-aurora, .observatory-constellation line,
+  .wing-header .crest::before, .wing-header .crest::after,
+  .shelf-head .alchemy-rule::before, .shelf-head .alchemy-rule::after,
+  .entry.lit::before, .footer .line::before, .footer .line::after,
+  .entry.lit:hover::before, .leaf.is-turning, .wand-sigil, .shooting-star { animation: none !important; }
+  .observatory-aurora { opacity: 0.3; }
+  .wand-sigil, .shooting-star { display: none !important; }
+  .sigil-ring, .sigil-ring::after { animation: none !important; opacity: 0.08; }
+  .reveal, .stagger > *, .leaf { opacity: 1 !important; transform: none !important; }
+  .wing-header.stagger > * { opacity: 1 !important; transform: none !important; }
+  .entry:hover { transform: none !important; }
+}
+
+/* ---------- No-JS fallback ---------- */
+.no-js .reveal, .no-js .stagger > *, .no-js .leaf { opacity: 1 !important; transform: none !important; }
+
+/* ---------- Print: clean CV, no observatory atmosphere ---------- */
+@media print {
+  .observatory-scene, .observatory-aurora, .observatory-dome, .observatory-wash,
+  .observatory-constellation, .observatory-stars, .observatory-vignette,
+  .rune-field, .sigil-ring, .wing-cursor-glow, .nav, .toc, .wing-header::before,
+  .wing-header .crest::before, .wing-header .crest::after, .arc-rule,
+  .shelf-head .alchemy-rule, .shelf-head .leaf-node, .shelf-section .corner,
+  .shelf-section::before, .shelf-section::after,
+  .entry.lit::before, .entry.lit::after,
+  .back-link::before, .footer .line::before, .footer .line::after { display: none !important; }
+  body { background: #fff !important; color: #111 !important; overflow: visible; }
+  .wing, .toc-inner { width: 100%; }
+  .wing-header h1, .wing-header .sub, .shelf-head h2, .entry-title { color: #111 !important; text-shadow: none; }
+  .wing-header .sub, .entry-meta { color: #444 !important; }
+  .shelf-section {
+    margin-bottom: 22px; padding: 16px; border: 1px solid #ccc;
+    background: #fff !important; box-shadow: none !important;
+  }
+  .entry, .ledger .row {
+    background: #fff !important; color: #111 !important; border: 1px solid #ccc;
+    box-shadow: none !important; transform: none !important; break-inside: avoid;
+  }
+  .entry-body, .entry-body p, .entry-body li, .ledger .row { color: #222 !important; }
+  .entry-body strong, .ledger .row strong { color: #111; }
+  .entry-body a, .ledger .row a { color: #111 !important; }
+  .contact-chip { border-color: #ccc; background: #fff; color: #222; }
+  .contact-chip svg { color: #111; }
+  .footer { background: #fff; border-top: 1px solid #ccc; }
+  .footer .line, .footer .contact a { color: #111 !important; }
+  a { color: #111 !important; }
+}
+
+/* ============================================================
+   WING CRAFT — celestial sigil dividers, moon-lit entries,
+   choreographed header. Scoped to `.wing`. Reduced-motion
+   parity handled above.
+   ============================================================ */
+body.js-loaded .wing-header.stagger > * { opacity: 0; transform: translateY(22px); }
+body.js-loaded .wing-header.stagger.is-visible > * {
+  opacity: 1; transform: none;
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+body.js-loaded .wing-header.stagger.is-visible > *:nth-child(2) { transition-delay: 0.10s; }
+body.js-loaded .wing-header.stagger.is-visible > *:nth-child(3) { transition-delay: 0.20s; }
+body.js-loaded .wing-header.stagger.is-visible > *:nth-child(4) { transition-delay: 0.30s; }
+
+.wing-header .crest.is-loaded {
+  animation: crest-rise 1.1s var(--ease) both;
+}
+@keyframes crest-rise {
+  0%   { opacity: 0; transform: rotate(-12deg) scale(0.82); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+
+.crest-ring--outer { transform-origin: 50% 50%; animation: ring-slow 38s linear infinite; }
+@keyframes ring-slow { to { transform: rotate(360deg); } }
+
+/* Alchemy-rule divider: moonlight hairline + a centered star node. */
+.shelf-head .alchemy-rule {
+  flex: 1;
+  height: 1px;
+  position: relative;
+  background: linear-gradient(90deg, color-mix(in oklab, var(--teal-glow) 70%, transparent), transparent 92%);
+}
+.shelf-head .alchemy-rule::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: var(--teal);
+  box-shadow: 0 0 8px color-mix(in oklab, var(--teal-glow) 75%, transparent);
+  animation: star-twinkle 3.4s ease-in-out infinite;
+}
+/* A faint connecting constellation dash trailing the node. */
+.shelf-head .alchemy-rule::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 30px;
+  width: 62px; height: 1px;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(90deg,
+    color-mix(in oklab, var(--teal-glow) 60%, transparent) 0 2px,
+    transparent 2px 7px);
+  opacity: 0.6;
+  animation: dash-drift 6s linear infinite;
+}
+@keyframes star-twinkle {
+  0%, 100% { box-shadow: 0 0 5px color-mix(in oklab, var(--teal-glow) 45%, transparent); }
+  50%      { box-shadow: 0 0 14px color-mix(in oklab, var(--teal-glow) 85%, transparent); }
+}
+@keyframes dash-drift {
+  0%   { background-position: 0 0; opacity: 0.3; }
+  100% { background-position: 14px 0; opacity: 0.7; }
+}
+
+/* Lit entry headers: moonlight halo + a brief shimmer on hover. */
+.entry.lit { position: relative; }
+.entry.lit::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.entry.lit:hover { border-color: transparent; }
+.entry.lit:hover::after {
+  border-color: color-mix(in oklab, var(--teal-glow) 70%, transparent);
+  box-shadow: 0 0 22px color-mix(in oklab, var(--teal-glow) 32%, transparent),
+              inset 0 0 14px color-mix(in oklab, var(--teal-glow) 12%, transparent);
+  animation: moon-shimmer 0.6s ease-in-out 2;
+}
+@keyframes moon-shimmer {
+  0%, 100% { box-shadow: 0 0 22px color-mix(in oklab, var(--teal-glow) 32%, transparent),
+                          inset 0 0 14px color-mix(in oklab, var(--teal-glow) 10%, transparent); }
+  50%      { box-shadow: 0 0 30px color-mix(in oklab, var(--teal-glow) 50%, transparent),
+                          inset 0 0 18px color-mix(in oklab, var(--teal-glow) 20%, transparent); }
+}
+
+.entries .entry:nth-child(even),
+.ledger .row:nth-child(even) {
+  background: color-mix(in oklab, var(--bg-elev) 80%, color-mix(in oklab, var(--wing-glow) 6%, var(--bg-2)));
+}
+
+.shelf-section:hover .shelf-head .rune {
+  color: var(--teal-bright);
+  filter: drop-shadow(0 0 8px color-mix(in oklab, var(--teal-glow) 60%, transparent));
+  transition: color 0.4s ease, filter 0.4s ease;
+}
+.shelf-head .rune { color: var(--teal); transition: color 0.4s ease, filter 0.4s ease; }
+
+.wing[data-wing] .toc a.active {
+  color: var(--teal-bright);
+  border-color: color-mix(in oklab, var(--teal-glow) 80%, transparent);
+  background: color-mix(in oklab, var(--teal-glow) 14%, transparent);
+  box-shadow: 0 0 14px color-mix(in oklab, var(--teal-glow) 28%, transparent);
+}
+
+.wing[data-wing] .contact-chip:hover {
+  color: var(--text);
+  border-color: color-mix(in oklab, var(--teal-glow) 80%, transparent);
+  box-shadow: 0 0 16px color-mix(in oklab, var(--teal-glow) 26%, transparent);
+}
+
+@media (max-width: 720px) {
+  .wing-header .crest { width: 46px; height: 46px; }
+  .entry-title.lead-cap::first-letter { font-size: 2.3em; }
+}
+
+/* ============================================================
+   MAX FANTASY — lead drop-caps, entry sigil ignition, footer
+   starlight. Scoped to `.wing`. Reduced-motion parity below.
+   ============================================================ */
+.entry-title.lead-cap::first-letter {
+  font-family: var(--font-display);
+  font-size: 2.6em;
+  font-weight: 600;
+  line-height: 0.7;
+  float: left;
+  margin: 6px 10px 0 0;
+  color: var(--teal);
+  text-shadow: 0 0 12px color-mix(in oklab, var(--teal-glow) 60%, transparent);
+}
+.entry.lit::before {
+  content: "";
+  position: absolute;
+  top: 12px; right: 14px;
+  width: 14px; height: 14px;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle, var(--teal-bright) 0%, transparent 60%);
+  box-shadow: 0 0 10px color-mix(in oklab, var(--teal-glow) 70%, transparent);
+  transition: opacity 0.4s ease, transform 0.6s var(--ease);
+}
+.entry.lit:hover::before {
+  opacity: 0.9;
+  animation: star-twinkle 2.4s ease-in-out infinite;
+}
+
+.footer .line {
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 18px color-mix(in oklab, var(--wing-glow) 35%, transparent);
+}
+.footer .line::before,
+.footer .line::after {
+  content: "✶";
+  font-size: 0.7em;
+  color: color-mix(in oklab, var(--teal-glow) 80%, transparent);
+  margin: 0 0.6em;
+  vertical-align: middle;
+  animation: star-twinkle 3.8s ease-in-out infinite;
+}
+.footer .line::after { animation-delay: 1.9s; }
+
+.back-link::before {
+  content: "❉";
+  color: var(--teal);
+  margin-right: 2px;
+  text-shadow: 0 0 8px color-mix(in oklab, var(--teal-glow) 60%, transparent);
+}
