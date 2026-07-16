@@ -9,7 +9,7 @@
   /* Arcane dual-tone identity */
   --accent:        oklch(0.82 0.13 85);   /* gilded amber */
   --accent-2:      oklch(0.62 0.18 300);  /* arcane violet */
-  --accent-strong: oklch(0.70 0.14 72);   /* warm gold, high-contrast */
+  --accent-strong: oklch(0.34 0.12 56);   /* antique gold, AA on light bg */
   --accent-soft:   oklch(0.95 0.04 90);   /* pale gold tint */
 
   /* Tinted neutrals — warm/indigo lean */
@@ -17,7 +17,7 @@
   --bg-elev:   oklch(0.99 0.01 90);
   --bg-soft:   oklch(0.95 0.03 92);
   --text:      oklch(0.24 0.04 70);
-  --text-soft: oklch(0.42 0.04 72);
+  --text-soft: oklch(0.28 0.04 70);
   --border:    oklch(0.86 0.04 85);
   --rule:      oklch(0.84 0.04 85);
 
@@ -26,14 +26,23 @@
   --radius: 16px;
   --max: 920px;
 
-  /* Light "day grimoire" hero surface */
+  /* Landing hero follows the theme toggle (light in light mode) */
   --hero-surface: linear-gradient(
      158deg,
-     oklch(0.98 0.03 90) 0%,
-     oklch(0.96 0.045 300) 100%
-   );
+      oklch(0.99 0.01 90) 0%,
+      oklch(0.96 0.03 92) 100%
+    );
   --hero-text: var(--text);
-  --hero-sub:  oklch(0.42 0.04 72);
+  --hero-sub:  oklch(0.28 0.04 70);
+
+  /* Resume header follows the theme toggle (light in light mode) */
+  --header-surface: linear-gradient(
+     158deg,
+      oklch(0.99 0.01 90) 0%,
+      oklch(0.96 0.03 92) 100%
+    );
+  --header-text: var(--text);
+  --header-sub:  oklch(0.28 0.04 70);
 
   /* Glass */
   --glass: color-mix(in srgb, var(--bg-elev) 74%, transparent);
@@ -51,8 +60,8 @@
   --bg:        oklch(0.16 0.05 285);
   --bg-elev:   oklch(0.21 0.06 288);
   --bg-soft:   oklch(0.25 0.06 288);
-  --text:      oklch(0.96 0.02 90);
-  --text-soft: oklch(0.80 0.04 300);
+  --text:      oklch(0.97 0.02 90);
+  --text-soft: oklch(0.84 0.045 300);
   --border:    oklch(0.45 0.07 290);
   --rule:      oklch(0.38 0.06 290);
 
@@ -61,11 +70,19 @@
 
   --hero-surface: linear-gradient(
      158deg,
-     oklch(0.23 0.06 288) 0%,
-     oklch(0.18 0.07 300) 100%
-   );
+      oklch(0.19 0.06 288) 0%,
+      oklch(0.13 0.075 300) 100%
+    );
   --hero-text: oklch(0.98 0.02 90);
-  --hero-sub:  oklch(0.82 0.04 300);
+  --hero-sub:  oklch(0.84 0.045 300);
+
+  --header-surface: linear-gradient(
+     158deg,
+      oklch(0.23 0.06 288) 0%,
+      oklch(0.17 0.07 300) 100%
+    );
+  --header-text: oklch(0.98 0.02 90);
+  --header-sub:  oklch(0.84 0.045 300);
 
   --glass: oklch(0.22 0.06 288 / 0.55);
   --glass-border: oklch(0.58 0.11 85 / 0.32);
@@ -276,8 +293,7 @@ button:focus-visible,
 }
 
 /* ---------- Hero / resume header (glowing grimoire panel) ---------- */
-.hero,
-.resume-header {
+.hero {
   position: relative;
   background: var(--hero-surface);
   color: var(--hero-text);
@@ -289,6 +305,19 @@ button:focus-visible,
     var(--shadow),
     0 0 0 1px oklch(0.82 0.13 85 / 0.07),
     0 0 44px oklch(0.82 0.13 85 / 0.12);
+}
+.resume-header {
+  position: relative;
+  background: var(--header-surface);
+  color: var(--header-text);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    var(--shadow),
+    0 0 0 1px oklch(0.82 0.13 85 / 0.07),
+    0 0 44px oklch(0.82 0.13 85 / 0.10);
 }
 .hero > *,
 .resume-header > * { position: relative; z-index: 1; }
@@ -452,12 +481,12 @@ button:focus-visible,
   font-size: clamp(2rem, 5vw, 2.8rem);
   line-height: 1.1;
   margin: 0 0 8px;
-  color: var(--hero-text);
+  color: var(--header-text);
   font-weight: 600;
   letter-spacing: 0.015em;
 }
 .resume-header .sub {
-  color: var(--hero-sub);
+  color: var(--header-sub);
   margin: 0 0 14px;
   font-size: 1.04rem;
   letter-spacing: 0.03em;
@@ -702,17 +731,277 @@ footer .footer-copy { margin: 0; }
   to   { opacity: 1; transform: none; }
 }
 
+/* ============================================================
+   FANTASY AMPLIFICATION — spell-circle aura, orbiting asterism,
+   wax-seal cards, recurring sigil mark, entry ignition.
+   All motion is frozen under prefers-reduced-motion (see below).
+   ============================================================ */
+
+/* ---------- Spell-circle aura behind the drenched hero ---------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -8% -4% 30%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 70% at 50% 28%,
+      oklch(0.82 0.13 85 / 0.22) 0%,
+      oklch(0.62 0.18 300 / 0.14) 38%,
+      transparent 70%),
+    conic-gradient(from 210deg at 50% 30%,
+      transparent 0deg,
+      oklch(0.82 0.13 85 / 0.10) 40deg,
+      transparent 90deg,
+      oklch(0.62 0.18 300 / 0.10) 200deg,
+      transparent 260deg,
+      oklch(0.82 0.13 85 / 0.08) 320deg,
+      transparent 360deg);
+  filter: blur(8px);
+  opacity: 0;
+  transform: scale(0.92);
+  animation: circle-awaken 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: clamp(120px, 22vw, 240px);
+  width: min(560px, 92vw);
+  height: min(560px, 92vw);
+  translate: -50% -50%;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(
+      circle at center,
+      transparent 0 38px,
+      oklch(0.82 0.13 85 / 0.05) 38px 39px,
+      transparent 39px 78px
+    );
+  -webkit-mask: radial-gradient(circle at center, #000 0 60%, transparent 72%);
+          mask: radial-gradient(circle at center, #000 0 60%, transparent 72%);
+  opacity: 0;
+  animation: circle-awaken 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+@keyframes circle-awaken {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- Orbiting asterism around the crest ---------- */
+.crest-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+}
+.crest-orbit {
+  position: absolute;
+  inset: -12px;
+  pointer-events: none;
+  animation: orbit-spin 26s linear infinite;
+}
+.crest-orbit::before,
+.crest-orbit::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin: -2px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px oklch(0.82 0.13 85 / 0.9);
+}
+.crest-orbit::before { transform: rotate(0deg) translateX(46px); }
+.crest-orbit::after  { transform: rotate(180deg) translateX(46px); background: var(--accent-2); box-shadow: 0 0 8px oklch(0.62 0.18 300 / 0.9); }
+.crest-orbit .rune-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  margin: -1.5px;
+  border-radius: 50%;
+  background: oklch(0.88 0.06 300 / 0.9);
+  box-shadow: 0 0 6px oklch(0.62 0.18 300 / 0.8);
+  transform: rotate(90deg) translateX(46px);
+}
+.crest-orbit .rune-dot.b { transform: rotate(270deg) translateX(46px); }
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+.crest {
+  position: relative;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 14px oklch(0.82 0.13 85 / 0.55));
+  animation: crest-pulse 5s ease-in-out infinite;
+}
+
+/* ---------- Hero name: engraved glow + floating accent ---------- */
+.hero h1 {
+  background: none;
+  color: var(--hero-text);
+  text-shadow: 0 0 26px oklch(0.82 0.13 85 / 0.25);
+}
+.hero .tagline { color: var(--hero-sub); }
+.hero .contact-chip {
+  color: var(--hero-sub);
+  border-color: var(--glass-border);
+  background: var(--glass);
+}
+.hero .contact-chip:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+}
+[data-theme="dark"] .hero .contact-chip {
+  color: var(--hero-sub);
+  border-color: oklch(0.78 0.10 85 / 0.35);
+  background: oklch(0.22 0.06 288 / 0.45);
+}
+[data-theme="dark"] .hero .contact-chip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Wax-seal version cards ---------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.card .card-emblem {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 10px oklch(0.82 0.13 85 / 0.5));
+}
+/* the wax-seal ring that draws in on hover */
+.card .seal-ring {
+  position: absolute;
+  inset: -4px;
+  color: var(--accent);
+  opacity: 0;
+  transform: rotate(-30deg) scale(0.9);
+  transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card .seal-ring circle { stroke-dasharray: 180; stroke-dashoffset: 180; transition: stroke-dashoffset 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.card:hover .seal-ring { opacity: 0.9; transform: rotate(0) scale(1); }
+.card:hover .seal-ring circle { stroke-dashoffset: 0; }
+.card h2 { color: var(--text); }
+.card p { color: var(--text-soft); margin-left: auto; margin-right: auto; }
+.card-hints li {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in oklch, var(--accent) 35%, transparent);
+}
+
+/* ---------- Ornamental divider between the two cards (wide screens) ---------- */
+.cards { position: relative; }
+.cards::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 56%;
+  translate: -50% -50%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--glass-border) 30%,
+    var(--glass-border) 70%,
+    transparent
+  );
+  pointer-events: none;
+}
+.cards::before {
+  content: "✦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 2;
+  font-size: 14px;
+  color: var(--accent);
+  text-shadow: 0 0 10px oklch(0.82 0.13 85 / 0.7);
+  background: var(--bg);
+  padding: 2px 4px;
+}
+@media (max-width: 620px) {
+  .cards::after, .cards::before { display: none; }
+}
+
+/* ---------- Recurring sigil mark above section headings ---------- */
+.section > h2::before {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 26px;
+  margin-bottom: 12px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 54 26' fill='none'><path d='M27 2 33 13 27 24 21 13Z' stroke='%23c79a3a' stroke-width='1.2' stroke-linejoin='round'/><circle cx='27' cy='13' r='3' fill='%23c79a3a'/><path d='M6 13h12M36 13h12' stroke='%239a5cd6' stroke-width='1' stroke-dasharray='2 3'/><circle cx='6' cy='13' r='1.6' fill='%239a5cd6'/><circle cx='48' cy='13' r='1.6' fill='%239a5cd6'/><path d='M10 8l4 5-4 5M44 8l-4 5 4 5' stroke='%23c79a3a' stroke-width='1' stroke-linecap='round' stroke-linejoin='round' opacity='0.7'/></svg>");
+  filter: drop-shadow(0 0 6px oklch(0.82 0.13 85 / 0.4));
+}
+
+/* ---------- Entry ignition on hover (resume pages) ---------- */
+.entry {
+  padding: 14px 16px;
+  margin: 0 -16px 22px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+.entry:hover {
+  border-color: var(--glass-border);
+  background: color-mix(in oklch, var(--accent) 6%, transparent);
+  box-shadow: 0 0 22px oklch(0.82 0.13 85 / 0.10);
+}
+.entry .title { color: var(--text); }
+.entry .org { color: var(--text-soft); }
+.entry .meta { color: var(--text-soft); }
+
+/* ---------- Decisive hover ignition for skills ---------- */
+.skill:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 22px oklch(0.82 0.13 85 / 0.22);
+  transform: translateY(-2px);
+}
+
+/* ---------- Dark-mode chip fixes (AA) ---------- */
+[data-theme="dark"] .card-hints li {
+  color: var(--text);
+  background: oklch(0.22 0.06 85);
+  border-color: color-mix(in oklch, var(--accent) 45%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .aurora { animation: none; }
-  .crest { animation: none; }
+  .aurora, .aurora-rot { animation: none; }
+  .crest, .crest-orbit { animation: none; }
   .ring-spin, .ring-spin-rev { animation: none; }
+  .hero::before, .hero::after { animation: none; opacity: 1; transform: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .reveal.is-visible .stagger > *,
   .reveal.is-visible.stagger > * { animation: none; }
   .hero-anim > * { opacity: 1; animation: none; }
-  .card, .skill, .contact-chip, .theme-toggle { transition: none; }
-  .card:hover, .skill:hover, .contact-chip:hover { transform: none; }
+  .card, .skill, .contact-chip, .theme-toggle, .entry { transition: none; }
+  .card:hover, .skill:hover, .contact-chip:hover, .entry:hover { transform: none; }
+  .card .seal-ring { transition: none; }
 }
 
 @media (max-width: 520px) {
